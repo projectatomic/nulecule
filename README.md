@@ -2,11 +2,24 @@
 
 ## Goals
 
-1. Provide simple, flexible way to describe a multi-container application, including all dependencies.
+1. Provide a simple, flexible way to describe a multi-container application, including all dependencies.
 1. Provide a way for an application designer to describe an application while allowing a sysadmin a clear way to parameterize the deployment at runtime.
 1. Provide a versioned specification for developer tools and runtime implementations to agree on.
 
 ## User Experience
+
+### Kelly the System Administrator
+
+Kelly is deploying an application that she's been provided by Acme Corp's internal developer team, led by Rufus. 
+
+Kelly will read the `README` to discover the capabilities and start up requirements for this application. She will edit `params.conf` and then use `/usr/bin/atomic` to deploy the application by pointing at the `Atomicfile`.
+
+````
+cd appdirectory
+atomic run Atomicfile
+````
+
+### Rufus the Developer
 
 ## Implementations
 
