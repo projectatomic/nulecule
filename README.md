@@ -34,3 +34,9 @@ Developer implementation provides tooling to help developers quickly package sev
 Deployment implementation provides tooling for deploying the complete application using this spec.
 
 * Python implementation: https://github.com/vpavlin/app-ent
+
+## TODO
+
+* Create machine-readable schema that is self-documenting
+* Create schema validation script
+
