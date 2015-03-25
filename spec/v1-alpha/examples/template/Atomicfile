@@ -1,0 +1,8 @@
+{
+  "name": "My WP app",
+  "description": "CSS file on top of Wordpress",
+  "specversion": "v1-alpha",
+  "appversion": "1.3.6",
+  "graph": [ "centos/mariadb-app", "myapp" ]
+}
+
