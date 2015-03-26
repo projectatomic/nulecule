@@ -29,7 +29,7 @@ Rufus has been tasked to package an existing application into container images t
 
 1. Develop an architecture to define how the services are connected and exposed.
 1. Create Dockerfiles and artifacts to package services as container images.
-1. Create kubernetes files (pods, services, replication controllers)
+1. Create provider files, e.g. for kubernetes pod, service, replication controller files
 1. Reviews example templates of the container application specification
 1. Builds the deployment container describing the application.
 1. Pushes all container images to a registy.
