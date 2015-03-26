@@ -36,7 +36,7 @@ foo = buzz
 
 * `Dockerfile`: standard packaging for this application metadata
 * `Atomicfile`: application manifest
-* `graph`: directories of applications referenced in Atomicfile
+* `graph`: directories of applications referenced in Atomicfile separated by provisioning provider
   * contains kubernetes files
   * optional params.conf file for app-specific params
 * `params.conf`: runtime parameters for application
@@ -49,11 +49,14 @@ foo = buzz
 │   └── myapp
 │       └── run.sh
 ├── graph
-│   └── myapp
-│       ├── pod.json
-│       ├── replication_controller.json
-│       ├── service.json
-│       └── params.conf
+│   ├── myapp
+│   │   └── kubernetes 
+│   │       ├── pod.json
+│   │       ├── replication_controller.json
+│   │       ├── service.json
+│   │       └── params.conf
+│   └── puppet
+│       └── sssd.pp
 └── params.conf
 
 ```
