@@ -10,13 +10,18 @@
 
 ### Kelly the System Administrator
 
-Kelly is deploying an application that she's been provided by Acme Corp's internal developer team, led by Rufus. 
+Kelly is deploying an application that she's been provided by Acme Corp's internal developer team, led by Rufus.
 
 Kelly will read the `README` to discover the capabilities and start-up requirements for this application. She will edit `params.conf` and then use `/usr/bin/atomic` to deploy the application by pointing at the `Atomicfile`.
 
-````
-atomic run <application-definition-container-image> [ --answerfile answerfile.conf ]
-````
+1. Download the application README and answerfile template
+
+         atomic run <application-definition-container-image> --dry-run
+
+2. Review README and edit the local answerfile for your deployment environment
+3. Deploy the application
+
+         atomic run <application-definition-container-image> --answerfile answerfile.conf
 
 ### Rufus the Developer
 TBD
