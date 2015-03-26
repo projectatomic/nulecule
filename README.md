@@ -14,17 +14,25 @@ Kelly is deploying an application that she's been provided by Acme Corp's intern
 
 1. Download the application README and answerfile template
 
-         atomic run <application-container-image> --dry-run
+         atomic run <deployment-container-image> --dry-run
 
 2. Review README and edit the local answerfile for your deployment environment
 3. Deploy the application
 
-         atomic run <application--container-image> --answerfile answerfile.conf
+         atomic run <deployment-container-image> --answerfile answerfile.conf
 
-At deployment the `<application--container-image>` is pulled, the target deployment files (e.g. kubernetes) are parameterized using the `answerfile.conf` and the application is started.
+At deployment the `<deployment-container-image>` is pulled, the target deployment files (e.g. kubernetes) are parameterized using the `answerfile.conf` and the application is started.
 
 ### Rufus the Developer
-TBD
+
+Rufus has been tasked to package an existing application into container images that can be deployed via kubernetes. He has some combination of RPMs, jar files and source code.
+
+1. Develop an architecture to define how the services are connected and exposed.
+1. Create Dockerfiles and artifacts to package services as container images.
+1. Create kubernetes files (pods, services, replication controllers)
+1. Reviews example templates of the container application specification
+1. Builds the deployment container describing the application.
+1. Pushes all container images to a registy.
 
 ## Implementations
 
