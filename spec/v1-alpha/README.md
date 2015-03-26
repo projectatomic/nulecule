@@ -31,11 +31,15 @@ boo = baz
 foo = buzz
 ```
 
+## README.md
+
+The README.md is the human-readable document for the sysadmin.
 
 ## Directory Layout
 
 * `Dockerfile`: standard packaging for this application metadata
 * `Atomicfile`: application manifest
+* `README.md`: information for deploying this application targetted towards deployment ops sysadmin
 * `graph`: directories of applications referenced in Atomicfile
   * contains kubernetes files
   * optional params.conf file for app-specific params
@@ -45,6 +49,7 @@ foo = buzz
 ```
 ├── Dockerfile
 ├── Atomicfile
+├── README.md
 ├── init
 │   └── myapp
 │       └── run.sh

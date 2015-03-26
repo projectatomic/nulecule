@@ -12,14 +12,14 @@
 
 Kelly is deploying an application that she's been provided by Acme Corp's internal developer team, led by Rufus. 
 
-Kelly will read the `README` to discover the capabilities and start up requirements for this application. She will edit `params.conf` and then use `/usr/bin/atomic` to deploy the application by pointing at the `Atomicfile`.
+Kelly will read the `README` to discover the capabilities and start-up requirements for this application. She will edit `params.conf` and then use `/usr/bin/atomic` to deploy the application by pointing at the `Atomicfile`.
 
 ````
-cd appdirectory
-atomic run Atomicfile
+atomic run <application-definition-container-image> [ --answerfile answerfile.conf ]
 ````
 
 ### Rufus the Developer
+TBD
 
 ## Implementations
 
@@ -33,7 +33,7 @@ Developer implementation provides tooling to help developers quickly package sev
 
 Deployment implementation provides tooling for deploying the complete application using this spec.
 
-* Python implementation: https://github.com/vpavlin/app-ent
+* Python implementation: https://github.com/vpavlin/atomicapp-run
 
 ## TODO
 
