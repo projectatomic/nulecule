@@ -12,16 +12,16 @@
 
 Kelly is deploying an application that she's been provided by Acme Corp's internal developer team, led by Rufus.
 
-Kelly will read the `README` to discover the capabilities and start-up requirements for this application. She will edit `params.conf` and then use `/usr/bin/atomic` to deploy the application by pointing at the `Atomicfile`.
-
 1. Download the application README and answerfile template
 
-         atomic run <application-definition-container-image> --dry-run
+         atomic run <application-container-image> --dry-run
 
 2. Review README and edit the local answerfile for your deployment environment
 3. Deploy the application
 
-         atomic run <application-definition-container-image> --answerfile answerfile.conf
+         atomic run <application--container-image> --answerfile answerfile.conf
+
+At deployment the `<application--container-image>` is pulled, the target deployment files (e.g. kubernetes) are parameterized using the `answerfile.conf` and the application is started.
 
 ### Rufus the Developer
 TBD
