@@ -37,11 +37,11 @@ The README.md is the human-readable document for the sysadmin.
 
 ## Directory Layout
 
-* `Dockerfile`: standard packaging for this application metadata
 * `Atomicfile`: application manifest
+* `Dockerfile`: standard packaging for this application metadata
 * `README.md`: information for deploying this application targetted towards deployment ops sysadmin
-* `graph`: directories of applications referenced in Atomicfile
-  * `provider`: a string matching a list (TBD) of container or orchestration technologies: `kubernetes`, `docker`
+* `graph`: directories of applications referenced in Atomicfile separated by provisioning provider
+  * `provider`: a string matching a list (TBD) of container or orchestration technologies: `kubernetes`, `docker`, `compose`, `systemd`, etc.
     * contains files necessary for deploying to provider
     * optional params.conf file for app-specific params
 * `params.conf`: runtime parameters for application
