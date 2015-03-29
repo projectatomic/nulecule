@@ -16,6 +16,32 @@
 * `graph`: list of applications. Strings may either match a local graph sub directory or an application metadata container that can be pulled via docker.
 * `specversion`: version of this specification, ex. "v1-alpha"
 
+## Directory Layout
+
+```
+├── Atomicfile
+├── Dockerfile
+├── graph
+│   └── <application>
+│       └── <provider>
+│           ├── <PROVIDER_FILES>
+│           └── params.conf
+├── params.conf
+└── README.md
+
+```
+
+* `Atomicfile`: application manifest
+* `Dockerfile`: standard packaging for this application metadata
+* `graph`: directories of applications referenced in Atomicfile separated by provisioning provider
+  * `<application>`: a directory whose name matches the graph list in the Atomicfile.
+  * `<provider>`: a directory whose name matches a list (TBD) of container or orchestration technologies: `kubernetes`, `docker`, `compose`, `systemd`, etc.
+      * `PROVIDER_FILES`: provider-specific files necessary for deploying to provider, e.g. kubernetes pod and service files.
+      * `params.conf`: optional file for app-specific params
+* `params.conf`: runtime parameters for application
+* `README.md`: information for deploying this application targetted towards deployment ops sysadmin
+
+
 ## params.conf
 
 App-specific section overrides global.
@@ -33,32 +59,5 @@ foo = buzz
 
 ## README.md
 
-The README.md is the human-readable document for the sysadmin.
-
-## Directory Layout
-
-* `Atomicfile`: application manifest
-* `Dockerfile`: standard packaging for this application metadata
-* `README.md`: information for deploying this application targetted towards deployment ops sysadmin
-* `graph`: directories of applications referenced in Atomicfile separated by provisioning provider
-  * `provider`: a string matching a list (TBD) of container or orchestration technologies: `kubernetes`, `docker`, `compose`, `systemd`, etc.
-    * contains files necessary for deploying to provider
-    * optional params.conf file for app-specific params
-* `params.conf`: runtime parameters for application
-
-
-```
-├── Dockerfile
-├── Atomicfile
-├── README.md
-├── graph
-│   └── myapp
-│       └── provider
-│           ├── pod.json
-│           ├── replication_controller.json
-│           ├── service.json
-│           └── params.conf
-└── params.conf
-
-```
+The README.md is the human-readable document for the sysadmin. It describes the application in enough detail so an operator can make parameterization and other deployment decisions.
 
