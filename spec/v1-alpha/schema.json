@@ -1,0 +1,81 @@
+{
+    "version": "v1-alpha",
+    "elements": [
+        {
+            "name": "Atomicfile",
+            "value": "Atomicfile",
+            "description": "application manifest",
+            "elementType": "file",
+            "contents": {
+                "name": "String",
+                "description": "String",
+                "appversion": "String",
+                "graph": [
+                    "String"
+                ],
+                "specversion": "v1-alpha"
+            }
+        },
+        {
+            "name": "README",
+            "value": "README.md",
+            "description": "information for deploying this application targetted towards deployment ops sysadmin",
+            "elementType": "file",
+            "contents": null
+        },
+        {
+            "name": "Dockerfile",
+            "value": "Dockerfile",
+            "description": "standard packaging for this application metadata",
+            "elementType": "file",
+            "contents": "FROM scratch\n\nADD / /application-entity"
+        },
+        {
+            "name": "Parameters",
+            "value": "params.conf",
+            "description": "runtime parameters for application",
+            "elementType": "file",
+            "contents": "[general]\n\n"
+        },
+        {
+            "name": "graph",
+            "description": "directories of applications referenced in Atomicfile separated by provisioning provider",
+            "elementType": "directory",
+            "contents": [
+                {
+                    "name": "application",
+                    "value": null,
+                    "description": "a directory whose name matches the graph list in the Atomicfile",
+                    "elementType": "directory",
+                    "contents": [
+                        {
+                            "name": "provider",
+                            "value": [
+                                "kubernetes",
+                                "docker",
+                                "systemd",
+                                "heat"
+                            ],
+                            "description": "a directory whose name matches a list of container or orchestration technologies",
+                            "contents": [
+                                {
+                                    "name": "provider files",
+                                    "description": "provider-specific files necessary for deploying to provider, e.g. kubernetes pod and service files",
+                                    "elementType": "file",
+                                    "contents": null
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Parameters",
+                            "value": "params.conf",
+                            "description": "runtime parameters for application",
+                            "elementType": "file",
+                            "contents": "[general]\n\n"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
