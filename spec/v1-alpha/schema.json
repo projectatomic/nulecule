@@ -10,13 +10,11 @@
             "contentType": "application/json",
             "required": true,
             "contents": {
-                "name": "String",
-                "id": "String",
-                "shortDescription": "String",
-                "appversion": "String",
-                "graph": [
-                    "String"
-                ],
+                "name": "",
+                "id": "",
+                "description": "",
+                "appversion": "",
+                "graph": [],
                 "specversion": "v1-alpha"
             }
         },
