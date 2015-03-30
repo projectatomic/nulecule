@@ -1,5 +1,7 @@
 # Implementation Guide
 
+This specification has been fully described in the [schema.json](/spec/v1-alpha/schema.json) file. Developer and deployment tools should be implemented using this file.
+
 ## Developer Tools
 
 Developer tooling helps application developers or designers get going quickly. Tools may be template-based or wizard-style tools, command line or graphical interface. When creating a tool for developers decide how much assistance you want to expose for the providers. Each provider has its own documentation and potential tooling but integrating provider features can be a big help to getting something working quickly.
@@ -29,4 +31,4 @@ Provider files may be generated based on some templates. Providing a mechanism t
 
 ## Runtime Tools
 
-Reference implementation: https://github.com/vpavlin/atomicapp-run
+Reference implementation (python): https://github.com/vpavlin/atomicapp-run

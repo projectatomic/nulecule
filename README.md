@@ -36,7 +36,7 @@ Rufus has been tasked to package an existing application into container images t
 
 ## Implementations
 
-This is only a specification. Implementations may be written in any language.
+This is only a specification. Implementations may be written in any language. See [implementation guide](https://github.com/aweiteka/containerapp-spec/blob/master/implementation_guide.md) for more details.
 
 ### Developer tooling
 
@@ -46,10 +46,9 @@ Developer implementation provides tooling to help developers quickly package sev
 
 Deployment implementation provides tooling for deploying the complete application using this spec.
 
-* Python implementation: https://github.com/vpavlin/atomicapp-run
+* Reference implementation (python): https://github.com/vpavlin/atomicapp-run
 
 ## TODO
 
-* Create machine-readable schema that is self-documenting
 * Create schema validation script
 
