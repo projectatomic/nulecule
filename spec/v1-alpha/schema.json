@@ -6,8 +6,10 @@
             "value": "Atomicfile",
             "description": "application manifest",
             "elementType": "file",
+            "contentType": "application/json",
             "contents": {
                 "name": "String",
+                "id": "String",
                 "description": "String",
                 "appversion": "String",
                 "graph": [
@@ -21,6 +23,7 @@
             "value": "README.md",
             "description": "information for deploying this application targetted towards deployment ops sysadmin",
             "elementType": "file",
+            "contentType": "text/plain",
             "contents": null
         },
         {
@@ -28,6 +31,7 @@
             "value": "Dockerfile",
             "description": "standard packaging for this application metadata",
             "elementType": "file",
+            "contentType": "text/plain",
             "contents": "FROM scratch\n\nADD / /application-entity"
         },
         {
@@ -35,10 +39,12 @@
             "value": "params.conf",
             "description": "runtime parameters for application",
             "elementType": "file",
+            "contentType": "text/plain",
             "contents": "[general]\n\n"
         },
         {
             "name": "graph",
+            "value": "graph",
             "description": "directories of applications referenced in Atomicfile separated by provisioning provider",
             "elementType": "directory",
             "contents": [
@@ -50,16 +56,13 @@
                     "contents": [
                         {
                             "name": "provider",
-                            "value": [
-                                "kubernetes",
-                                "docker",
-                                "systemd",
-                                "heat"
-                            ],
-                            "description": "a directory whose name matches a list of container or orchestration technologies",
+                            "value": "provider",
+                            "description": "a directory whose name matches a list of container or orchestration technologies available in selected implementation",
+                            "elementType": "directory",
                             "contents": [
                                 {
                                     "name": "provider files",
+                                    "value": null,
                                     "description": "provider-specific files necessary for deploying to provider, e.g. kubernetes pod and service files",
                                     "elementType": "file",
                                     "contents": null
@@ -71,6 +74,7 @@
                             "value": "params.conf",
                             "description": "runtime parameters for application",
                             "elementType": "file",
+                            "contentType": "text/plain",
                             "contents": "[general]\n\n"
                         }
                     ]
