@@ -9,6 +9,7 @@
             "contentType": "application/json",
             "contents": {
                 "name": "String",
+                "id": "String",
                 "description": "String",
                 "appversion": "String",
                 "graph": [
@@ -43,6 +44,7 @@
         },
         {
             "name": "graph",
+            "value": "graph",
             "description": "directories of applications referenced in Atomicfile separated by provisioning provider",
             "elementType": "directory",
             "contents": [
@@ -54,16 +56,13 @@
                     "contents": [
                         {
                             "name": "provider",
-                            "value": [
-                                "kubernetes",
-                                "docker",
-                                "systemd",
-                                "heat"
-                            ],
-                            "description": "a directory whose name matches a list of container or orchestration technologies",
+                            "value": "provider",
+                            "description": "a directory whose name matches a list of container or orchestration technologies available in selected implementation",
+                            "elementType": "directory",
                             "contents": [
                                 {
                                     "name": "provider files",
+                                    "value": null,
                                     "description": "provider-specific files necessary for deploying to provider, e.g. kubernetes pod and service files",
                                     "elementType": "file",
                                     "contents": null
