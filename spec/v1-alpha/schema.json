@@ -5,7 +5,7 @@
             "name": "Atomicfile",
             "value": "Atomicfile",
             "shortDescription": "application manifest",
-            "longDescription": null,
+            "longDescription": "'name': arbitrary name\n'description': arbitrary description\n'appversion': version of the application\n'graph': list of applications. Strings may either match a local graph sub directory or an application metadata container that can be pulled via docker.\n'specversion': version of this specification, ex. 'v1-alpha'",
             "elementType": "file",
             "contentType": "application/json",
             "required": true,
@@ -22,7 +22,7 @@
             "name": "README",
             "value": "README.md",
             "shortDescription": "information for deploying this application targetted towards deployment ops sysadmin",
-            "longDescription": null,
+            "longDescription": "The README describes the application in enough detail so an operator can make parameterization and other deployment decisions.",
             "elementType": "file",
             "contentType": "text/plain",
             "required": true,
@@ -42,7 +42,7 @@
             "name": "Parameters",
             "value": "params.conf",
             "shortDescription": "runtime parameters for application",
-            "longDescription": null,
+            "longDescription": "Each application listed in the graph may optionally have a parameters section, for example [myapp]. Application-specific parameters override general parameters.",
             "elementType": "file",
             "contentType": "text/plain",
             "required": false,
@@ -86,12 +86,12 @@
                         {
                             "name": "Parameters",
                             "value": "params.conf",
-                            "shortDescription": "runtime parameters for application",
-                            "longDescription": null,
+                            "shortDescription": "runtime parameters for this particular application",
+                            "longDescription": "These parameters are concatenated with the larger application definition parameters. Parameters defined here may be overriden by the larger applications parameters. There must only be a single section defined which matches the application name.",
                             "elementType": "file",
                             "contentType": "text/plain",
                             "required": false,
-                            "contents": "[general]\n\n"
+                            "contents": "[application]\n\n"
                         }
                     ]
                 }
