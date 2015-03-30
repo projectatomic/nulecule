@@ -4,13 +4,14 @@
         {
             "name": "Atomicfile",
             "value": "Atomicfile",
-            "description": "application manifest",
+            "shortDescription": "application manifest",
+            "longDescription": null,
             "elementType": "file",
             "contentType": "application/json",
             "contents": {
                 "name": "String",
                 "id": "String",
-                "description": "String",
+                "shortDescription": "String",
                 "appversion": "String",
                 "graph": [
                     "String"
@@ -21,7 +22,8 @@
         {
             "name": "README",
             "value": "README.md",
-            "description": "information for deploying this application targetted towards deployment ops sysadmin",
+            "shortDescription": "information for deploying this application targetted towards deployment ops sysadmin",
+            "longDescription": null,
             "elementType": "file",
             "contentType": "text/plain",
             "contents": null
@@ -29,7 +31,8 @@
         {
             "name": "Dockerfile",
             "value": "Dockerfile",
-            "description": "standard packaging for this application metadata",
+            "shortDescription": "standard packaging for this application metadata",
+            "longDescription": null,
             "elementType": "file",
             "contentType": "text/plain",
             "contents": "FROM scratch\n\nADD / /application-entity"
@@ -37,7 +40,8 @@
         {
             "name": "Parameters",
             "value": "params.conf",
-            "description": "runtime parameters for application",
+            "shortDescription": "runtime parameters for application",
+            "longDescription": null,
             "elementType": "file",
             "contentType": "text/plain",
             "contents": "[general]\n\n"
@@ -45,25 +49,29 @@
         {
             "name": "graph",
             "value": "graph",
-            "description": "directories of applications referenced in Atomicfile separated by provisioning provider",
+            "shortDescription": "directories of applications referenced in Atomicfile separated by provisioning provider",
+            "longDescription": null,
             "elementType": "directory",
             "contents": [
                 {
                     "name": "application",
                     "value": null,
-                    "description": "a directory whose name matches the graph list in the Atomicfile",
+                    "shortDescription": "a directory whose name matches the graph list in the Atomicfile",
+                    "longDescription": null,
                     "elementType": "directory",
                     "contents": [
                         {
                             "name": "provider",
                             "value": "provider",
-                            "description": "a directory whose name matches a list of container or orchestration technologies available in selected implementation",
+                            "shortDescription": "a directory whose name matches a list of container or orchestration technologies available in selected implementation",
+                            "longDescription": null,
                             "elementType": "directory",
                             "contents": [
                                 {
                                     "name": "provider files",
                                     "value": null,
-                                    "description": "provider-specific files necessary for deploying to provider, e.g. kubernetes pod and service files",
+                                    "shortDescription": "provider-specific files necessary for deploying to provider, e.g. kubernetes pod and service files",
+                                    "longDescription": null,
                                     "elementType": "file",
                                     "contents": null
                                 }
@@ -72,7 +80,8 @@
                         {
                             "name": "Parameters",
                             "value": "params.conf",
-                            "description": "runtime parameters for application",
+                            "shortDescription": "runtime parameters for application",
+                            "longDescription": null,
                             "elementType": "file",
                             "contentType": "text/plain",
                             "contents": "[general]\n\n"
