@@ -6,6 +6,7 @@
             "value": "Atomicfile",
             "description": "application manifest",
             "elementType": "file",
+            "contentType": "application/json",
             "contents": {
                 "name": "String",
                 "description": "String",
@@ -21,6 +22,7 @@
             "value": "README.md",
             "description": "information for deploying this application targetted towards deployment ops sysadmin",
             "elementType": "file",
+            "contentType": "text/plain",
             "contents": null
         },
         {
@@ -28,6 +30,7 @@
             "value": "Dockerfile",
             "description": "standard packaging for this application metadata",
             "elementType": "file",
+            "contentType": "text/plain",
             "contents": "FROM scratch\n\nADD / /application-entity"
         },
         {
@@ -35,6 +38,7 @@
             "value": "params.conf",
             "description": "runtime parameters for application",
             "elementType": "file",
+            "contentType": "text/plain",
             "contents": "[general]\n\n"
         },
         {
@@ -71,6 +75,7 @@
                             "value": "params.conf",
                             "description": "runtime parameters for application",
                             "elementType": "file",
+                            "contentType": "text/plain",
                             "contents": "[general]\n\n"
                         }
                     ]
