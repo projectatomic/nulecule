@@ -1,0 +1,21 @@
+tosca_definitions_version: tosca_simple_yaml_1_0_0
+description: This is mariadb-app
+inputs:
+  image:
+    description: Runtime binary docker image, ex. docker://user/myapp
+    default: docker://mariadb
+  replicas:
+    description: Number of replicas for replication_controller
+    default: 1
+node_templates:
+  mariadb:
+    derived_from: atomic.nodes.Kubernetes
+    artifacts:
+    - kubernetes_service: k8s/service.json
+      type: tosca.artifacts.File
+    - kubernetes_pod: k8s/pod.json
+      type: tosca.artifacts.File
+    - kubernetes_rc: k8s/replication_controller.json
+      type: tosca.artifacts.File
+    properties:
+      image: { get_input: image }

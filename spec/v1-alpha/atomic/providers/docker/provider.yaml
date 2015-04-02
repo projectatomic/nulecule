@@ -1,0 +1,23 @@
+provider:
+  docker:
+    executor: host_agent
+    source: ../../types.yaml
+
+node_types:
+
+  atomic.nodes.Docker:
+    derived_from: atomic.nodes.Root
+
+  atomic.docker.Container:
+    derived_from: atomic.nodes.Docker
+    properties:
+      image_name:
+        description: A docker image name
+    interfaces:
+      atomic.interfaces.lifecycle:
+        run:
+          implementation: atomic.docker_provider.tasks.run
+        stop:
+          implementation: atomic.docker_provider.tasks.stop
+        remove:
+          implementation: atomic.docker_provider.tasks.remove

@@ -1,0 +1,29 @@
+tosca_definitions_version: tosca_simple_yaml_1_0_0
+description: This is CSS on top of Wordpress
+inputs:
+  ip_addr:
+    description: The ip of the host the application will be deployed on
+  image:
+    description: Runtime binary docker image, ex. docker://user/myapp
+    default: docker://user/myapp
+node_templates:
+  myapp:
+    derived_from: wordpress
+    properties:
+      public_ip: { get_input: ip_addr }
+      image: { get_input: image }
+  mariadb:
+    derived_from: docker://maria/db:app-1.0.0
+  wordpress:
+    derived_from: atomic.nodes.Kubernetes
+    artifacts:
+    - kubernetes_service: k8s/service.json
+      type: tosca.artifacts.File
+    - kubernetes_pod: k8s/pod.json
+      type: tosca.artifacts.File
+    - kubernetes_rc: k8s/replication_controller.json
+      type: tosca.artifacts.File
+    requirements:
+    - service: mariadb
+    properties:
+      image: wordpress

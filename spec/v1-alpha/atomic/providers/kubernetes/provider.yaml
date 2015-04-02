@@ -1,0 +1,25 @@
+provider:
+  kubernetes:
+    executor: host_agent
+    source: ../../types.yaml
+
+node_types:
+
+  atomic.nodes.Kubernetes:
+    derived_from: atomic.nodes.Root
+
+  atomic.kubernetes.Pod:
+    derived_from: atomic.nodes.Kubernetes
+    properties:
+      file_name:
+        description: A kubernetes pod filename
+    interfaces:
+      atomic.interfaces.lifecycle:
+        create:
+          implementation: atomic.kubernetes_provider.tasks.create_pod
+        update:
+          implementation: atomic.kubernetes_provider.tasks.update_pod
+        stop:
+          implementation: atomic.kubernetes_provider.tasks.stop_pod
+        delete:
+          implementation: atomic.kubernetes_provider.tasks.delete_pod

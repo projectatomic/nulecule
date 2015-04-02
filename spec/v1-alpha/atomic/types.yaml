@@ -1,0 +1,13 @@
+node_types:
+
+  atomic.nodes.Root:
+    derived_from: tosca.nodes.Root
+    interfaces:
+      atomic.interfaces.lifecycle:
+        install:
+          description: --dry-run action that installs, downloads, etc
+          implementation: atomic.tasks.install_app
+        uninstall:
+          description: remove --dry-run artifacts
+          implementation: atomic.tasks.uninstall_app
+
