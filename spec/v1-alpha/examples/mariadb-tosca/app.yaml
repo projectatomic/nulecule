@@ -9,7 +9,7 @@ inputs:
     default: 1
 node_templates:
   mariadb:
-    derived_from: atomic.nodes.Kubernetes
+    type: atomic.nodes.Kubernetes
     artifacts:
     - kubernetes_service: k8s/service.json
       type: tosca.artifacts.File

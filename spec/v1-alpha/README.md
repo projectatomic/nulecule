@@ -18,7 +18,8 @@ There are three main sections in the yaml file: inputs, node_templates and outpu
   * `defaults`: parameter defaults
 * `node_templates`:
   * sub-section for each application service
-  * components:
+  * elements:
+    * `type`: specifies provider, e.g. "atomic.nodes.Kubernetes"
     * `derived_from`: a node_template or remote application
     * `artifacts`: a list of provider artifacts
     * `requirements`: specifies a dependent service. The service listed will be started first.

@@ -15,7 +15,7 @@ node_templates:
   mariadb:
     derived_from: docker://maria/db:app-1.0.0
   wordpress:
-    derived_from: atomic.nodes.Kubernetes
+    type: atomic.nodes.Kubernetes
     artifacts:
     - kubernetes_service: k8s/service.json
     - kubernetes_pod: k8s/pod.json
