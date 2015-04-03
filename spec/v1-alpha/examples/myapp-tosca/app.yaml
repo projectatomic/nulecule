@@ -18,11 +18,8 @@ node_templates:
     derived_from: atomic.nodes.Kubernetes
     artifacts:
     - kubernetes_service: k8s/service.json
-      type: tosca.artifacts.File
     - kubernetes_pod: k8s/pod.json
-      type: tosca.artifacts.File
     - kubernetes_rc: k8s/replication_controller.json
-      type: tosca.artifacts.File
     requirements:
     - service: mariadb
     properties:
