@@ -24,3 +24,7 @@ node_templates:
     - service: mariadb
     properties:
       image: wordpress
+  interfaces:
+    atomic.interfaces.lifecycle:
+      create:
+        implementation: atomic.kubernetes_provider.tasks.create_pod
