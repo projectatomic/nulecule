@@ -1,0 +1,24 @@
+app_template_version: v1-alpha
+
+description: This is mariadb-app
+
+parameters:
+  image:
+    description: Runtime binary docker image, ex. docker://user/myapp
+    default: docker://mariadb
+  replicas:
+    description: Number of replicas for replication_controller
+    default: 3
+
+resources:
+  mariadb:
+    type: kubernetes::metadata
+    properties:
+      deploy:
+        - template: {get_file: k8s/pod.json}
+          params:
+            $IMAGE: {get_param: image}
+        - get_file: k8s/service.json
+        - template: {get_file: k8s/replication_controller.json}
+          params:
+            $REPLICAS: {get_param: replicas}
