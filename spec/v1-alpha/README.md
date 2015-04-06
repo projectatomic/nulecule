@@ -4,7 +4,7 @@
 
 ## app.yaml
 
-The yaml file is the primary file defining the application and relationship to dependencies. It is largely based on [OpenStack Heat](https://wiki.openstack.org/wiki/Heat) and [AWS CloudFormation](http://aws.amazon.com/cloudformation/aws-cloudformation-templates/) orchestration templates.
+The yaml file is the primary file defining the application and relationship to dependencies. It is largely based on [OpenStack Heat](http://docs.openstack.org/developer/heat/template_guide/hot_guide.html) and [AWS CloudFormation](http://aws.amazon.com/cloudformation/aws-cloudformation-templates/) orchestration templates.
 
 Heat provides some standard ways of defining metadata:
 
