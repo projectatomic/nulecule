@@ -1,8 +1,8 @@
-# Application specification
+# Application Template
 
 **NOTE**: This is a proof-of-concept effort that is expected to change dramatically.
 
-## app.yaml
+## template.yaml
 
 The yaml file is the primary file defining the application and relationship to dependencies. It is largely based on [OpenStack Heat](http://docs.openstack.org/developer/heat/template_guide/hot_guide.html) and [AWS CloudFormation](http://aws.amazon.com/cloudformation/aws-cloudformation-templates/) orchestration templates.
 
@@ -16,9 +16,9 @@ Heat provides some standard ways of defining metadata:
 
 The yaml file defines applications in 3 ways:
 
-* **local**: an application whose provider files and metadata are contained in the local context. See the ["wordpress" example](/spec/v1-alpha/examples/myapp-heat/app.yaml).
-* **composite**: an application which has both local and remote sources. See the ["mariadb" example](/spec/v1-alpha/examples/myapp-heat/app.yaml).
-* **extended**: an application which inherits metadata from a local or remote source container but overrides parameters. Use `"kubernetes::metadata": docker://remote/app-image"` instead of `"type": "kubernetes::metadata"`. See the ["myapp" example](/spec/v1-alpha/examples/myapp-heat/app.yaml).
+* **local**: an application whose provider files and metadata are contained in the local context. See the ["wordpress" example](/spec/v1-alpha/examples/myapp-heat/template.yaml).
+* **composite**: an application which has both local and remote sources. See the ["mariadb" example](/spec/v1-alpha/examples/myapp-heat/template.yaml).
+* **extended**: an application which inherits metadata from a local or remote source container but overrides parameters. Use `"kubernetes::metadata": docker://remote/app-image"` instead of `"type": "kubernetes::metadata"`. See the ["myapp" example](/spec/v1-alpha/examples/myapp-heat/template.yaml).
 
 There are three main sections in the yaml file: parameters, resources and outputs.
 * `parameters`: a section defining parameters for this application.
@@ -36,7 +36,7 @@ There are three main sections in the yaml file: parameters, resources and output
 ## Directory Layout
 
 ```
-├── app.yaml
+├── template.yaml
 ├── Dockerfile
 ├── <provider_files_dir>
 │   ├── ...
@@ -44,9 +44,9 @@ There are three main sections in the yaml file: parameters, resources and output
 └── README.md
 ```
 
-* `app.yaml`: application manifest
+* `template.yaml`: application template
 * `Dockerfile`: standard packaging for this application metadata
-* `<artifacts>`: directories of provider-specific files referenced in manifest
+* `<provider_files_dir>`: directories of provider-specific files referenced in manifest
   * `PROVIDER_FILES`: provider-specific files necessary for deploying to provider, e.g. kubernetes pod and service files.
 * `README.md`: information for deploying this application targetted towards deployment ops sysadmin
 
