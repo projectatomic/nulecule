@@ -8,6 +8,9 @@ parameters:
   image:
     description: Runtime binary docker image, ex. docker://user/myapp
     default: user/custom_wpapp
+  replicas:
+    description: database replicas
+    default: 3
 
 resources:
   myapp:
