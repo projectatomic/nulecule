@@ -1,0 +1,80 @@
+app_template_version: v1-alpha
+
+metadata:
+  annotations:
+    description: This example shows how to create a simple ruby application in openshift origin v3
+  name: ruby-helloworld-sample
+
+labels:
+  template: application-template-custombuild
+
+parameters:
+  admin_username:
+    description: administrator username
+    constraints:
+      - allowed_pattern: "admin[A-Z0-9]+"
+        description: Must consist of characters and numbers only.
+  admin_password:
+    description: administrator password
+    constraints:
+      - allowed_pattern: "[a-zA-Z0-9]+"
+        description: Must consist of characters and numbers only.
+  database_username:
+    description: database username
+    constraints:
+      - allowed_pattern: "user[A-Z0-9]+"
+        description: Must consist of characters and numbers only.
+  database_password:
+    description: database password
+    hidden: true
+    constraints:
+      - allowed_pattern: "[a-zA-Z0-9]+"
+        description: Must consist of characters and numbers only.
+  database_name:
+    description: database name
+    default: root
+  hostname:
+    description: frontend hostname
+
+items:
+  rubyserver:
+    type: kubernetes::openshift
+    deploy:
+      - get_file: k8s/frontend_service.json
+      - template: {get_file: k8s/frontend_rc.json}
+        params:
+          $ADMIN_USERNAME: {get_param: admin_username}
+          $ADMIN_PASSWORD: {get_param: admin_password}
+          $MYSQL_USER: {get_param: database_username}
+          $MYSQL_PASSWORD: {get_param: database_password}
+          $MYSQL_DATABASE: {get_param: database_name}
+    triggers:
+      imageChangeParams:
+        automatic: true,
+        containerNames:
+          - ruby-helloworld
+        from:
+          name: origin-ruby-sample
+        tag: latest
+      type: ImageChange
+
+  mysql:
+    type: kubernetes::openshift
+    deploy:
+      - get_file: k8s/database_service.json
+      - template: {get_file: k8s/database_rc.json}
+        params:
+          $MYSQL_USER: {get_param: database_username}
+          $MYSQL_PASSWORD: {get_param: database_password}
+          $MYSQL_DATABASE: {get_param: database_name}
+    triggers:
+      type: ConfigChange
+    strategy:
+      type: Recreate
+
+  route:
+    type: openshift
+    deploy:
+      - template: {get_file: openshift/route.json}
+        params:
+          $HOSTNAME: {get_param: hostname}
