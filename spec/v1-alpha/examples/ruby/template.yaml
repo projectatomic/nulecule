@@ -1,0 +1,101 @@
+app_template_version: v1-alpha
+
+metadata:
+  annotations:
+    description: This example shows how to create a simple ruby application in openshift origin v3
+  name: ruby-helloworld-sample
+
+labels:
+  template: application-template-custombuild
+
+parameters:
+  admin_username:
+    description: administrator username
+    constraints:
+      - allowed_pattern: "admin[A-Z0-9]+"
+        description: Must consist of characters and numbers only.
+  admin_password:
+    description: administrator password
+    constraints:
+      - allowed_pattern: "[a-zA-Z0-9]+"
+        description: Must consist of characters and numbers only.
+  database_username:
+    description: database username
+    constraints:
+      - allowed_pattern: "user[A-Z0-9]+"
+        description: Must consist of characters and numbers only.
+  database_password:
+    description: database password
+    hidden: true
+    constraints:
+      - allowed_pattern: "[a-zA-Z0-9]+"
+        description: Must consist of characters and numbers only.
+  database_name:
+    description: database name
+    default: root
+  hostname:
+    description: frontend hostname
+
+items:
+  rubyserver:
+    - provider0:
+      type: kubernetes::openshift
+      deploy:
+        artifacts: 
+          - k8s/frontend_service.json
+          - k8s/frontend_rc.json
+        params:
+          $ADMIN_USERNAME: {get_param: admin_username}
+          $ADMIN_PASSWORD: {get_param: admin_password}
+          $MYSQL_USER: {get_param: database_username}
+          $MYSQL_PASSWORD: {get_param: database_password}
+          $MYSQL_DATABASE: {get_param: database_name}
+      triggers:
+        imageChangeParams:
+          automatic: true,
+          containerNames:
+            - ruby-helloworld
+          from:
+            name: origin-ruby-sample
+          tag: latest
+        type: ImageChange
+    - provider1:
+        type: docker::label
+        deploy:
+          params:
+            $ADMIN_USERNAME: {get_param: admin_username}
+            $ADMIN_PASSWORD: {get_param: admin_password}
+            $MYSQL_USER: {get_param: database_username}
+            $MYSQL_PASSWORD: {get_param: database_password}
+            $MYSQL_DATABASE: {get_param: database_name}
+
+  mysql:
+    - provider0:
+      type: kubernetes::openshift
+      deploy:
+        artifacts:
+          - k8s/database_service.json
+          - k8s/database_rc.json
+        params:
+          $MYSQL_USER: {get_param: database_username}
+          $MYSQL_PASSWORD: {get_param: database_password}
+          $MYSQL_DATABASE: {get_param: database_name}
+      triggers:
+        type: ConfigChange
+      strategy:
+        type: Recreate
+    - provider1:
+      type: docker::label
+      deploy:
+        params:
+          $MYSQL_USER: {get_param: database_username}
+          $MYSQL_PASSWORD: {get_param: database_password}
+          $MYSQL_DATABASE: {get_param: database_name}
+
+  route:
+    type: openshift
+    deploy:
+      artifacts:
+        - penshift/route.json
+      params:
+        $HOSTNAME: {get_param: hostname}
