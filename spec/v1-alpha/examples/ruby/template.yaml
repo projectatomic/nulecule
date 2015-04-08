@@ -38,43 +38,64 @@ parameters:
 
 items:
   rubyserver:
-    type: kubernetes::openshift
-    deploy:
-      - get_file: k8s/frontend_service.json
-      - template: {get_file: k8s/frontend_rc.json}
+    - provider0:
+      type: kubernetes::openshift
+      deploy:
+        artifacts: 
+          - k8s/frontend_service.json
+          - k8s/frontend_rc.json
         params:
           $ADMIN_USERNAME: {get_param: admin_username}
           $ADMIN_PASSWORD: {get_param: admin_password}
           $MYSQL_USER: {get_param: database_username}
           $MYSQL_PASSWORD: {get_param: database_password}
           $MYSQL_DATABASE: {get_param: database_name}
-    triggers:
-      imageChangeParams:
-        automatic: true,
-        containerNames:
-          - ruby-helloworld
-        from:
-          name: origin-ruby-sample
-        tag: latest
-      type: ImageChange
+      triggers:
+        imageChangeParams:
+          automatic: true,
+          containerNames:
+            - ruby-helloworld
+          from:
+            name: origin-ruby-sample
+          tag: latest
+        type: ImageChange
+    - provider1:
+        type: docker::label
+        deploy:
+          params:
+            $ADMIN_USERNAME: {get_param: admin_username}
+            $ADMIN_PASSWORD: {get_param: admin_password}
+            $MYSQL_USER: {get_param: database_username}
+            $MYSQL_PASSWORD: {get_param: database_password}
+            $MYSQL_DATABASE: {get_param: database_name}
 
   mysql:
-    type: kubernetes::openshift
-    deploy:
-      - get_file: k8s/database_service.json
-      - template: {get_file: k8s/database_rc.json}
+    - provider0:
+      type: kubernetes::openshift
+      deploy:
+        artifacts:
+          - k8s/database_service.json
+          - k8s/database_rc.json
         params:
           $MYSQL_USER: {get_param: database_username}
           $MYSQL_PASSWORD: {get_param: database_password}
           $MYSQL_DATABASE: {get_param: database_name}
-    triggers:
-      type: ConfigChange
-    strategy:
-      type: Recreate
+      triggers:
+        type: ConfigChange
+      strategy:
+        type: Recreate
+    - provider1:
+      type: docker::label
+      deploy:
+        params:
+          $MYSQL_USER: {get_param: database_username}
+          $MYSQL_PASSWORD: {get_param: database_password}
+          $MYSQL_DATABASE: {get_param: database_name}
 
   route:
     type: openshift
     deploy:
-      - template: {get_file: openshift/route.json}
-        params:
-          $HOSTNAME: {get_param: hostname}
+      artifacts:
+        - penshift/route.json
+      params:
+        $HOSTNAME: {get_param: hostname}
