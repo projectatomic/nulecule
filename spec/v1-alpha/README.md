@@ -5,6 +5,34 @@
 ## template.yaml
 
 The yaml file is the primary file defining the application and relationship to dependencies. See [OpenShift documentation](http://docs.openshift.org/latest/using_openshift/templates.html).
+=======
+```
+{
+  "name": String,
+  "description": String,
+  "appversion": String,
+  "specversion": String,
+  "graph": [ String, ...]
+  
+  "requirements": {
+    "persistantVolume": {
+      "type": "claim",
+      "name": String,
+      "accessModes": [
+        "ReadWrite" or "ReadOnly"
+      ],
+      "size": Integer # GB by default
+    }
+  }
+}
+```
+
+* `name`: arbitrary name
+* `description`: arbitrary description
+* `appversion`: version of the application
+* `specversion`: version of this specification, ex. "v1-alpha"
+* `graph`: list of applications. Strings may either match a local graph sub directory or an application metadata container that can be pulled via docker.
+* `requirements`: list of requirements of this application, may include storage and is interpreted by the provider implementation.
 
 ## Directory Layout
 
