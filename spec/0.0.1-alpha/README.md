@@ -67,6 +67,7 @@ Field Name | Type | Description
 <a name="containerAppSpecVersion"></a>specversion | `string` | **Required.** The semantic version string of the Container Application Specification used to describe the app. The value MUST be `"0.0.1-alpha"`. 
 <a name="containerAppGraph"></a>graph | [ [GraphObject](#graphObject) ] | **Required.** A list of depending containerapps. Strings may either match a local graph sub directory or an another containerapp-spec compliant container image that can be pulled via a provider.
 <a name="containerAppRequirements"></a>requirements | [ [RequirementsObject](#requirementsObject) ] | A list of requirements of this containerapp.
+<a name="containerAppParameters"></a>params | [ [ParametersObject](#parametersObject) ] | A list of parameters the containerapp requires, has set defaults or needs user input.
 <a name="containerAppLicenseObject"></a>license | [License Object](#licenseObject) | The license information for the containerapp.
 
 #### <a name="graphObject"></a>Graph Object
@@ -116,6 +117,38 @@ Field Name | Type | Description
     size: 4 # GB by default
 
 ```
+
+
+#### <a name="parametersObject"></a>Parameters Object
+
+Parameters the containerapp requires, has set some defaults for or needs user input.
+
+##### Fields
+
+Field Name | Type | Description
+---|:---:|---
+<a name="description"></a>description | `string` | **Required.** A human readable description of the parameter.
+<a name="constraints"></a>constraints | [ConstraintObject](#constraintObject) | An optional definition of constraints to the parameter.
+
+##### Parameters Object Example:
+
+```yaml
+description: mongoDB Admin password
+constraints: 
+  - allowed_pattern: "[A-Z0-9]+"
+    description: Must consist of characters and numbers only.
+```
+
+#### <a name="constraintObject"></a>Constraint Object
+
+Constraints to the parameter.
+
+##### Fields
+
+Field Name | Type | Description
+---|:---:|---
+<a name="constraintObjectPattern"></a>allowed_pattern | `string` | **Required.** A human readable description of the parameter.
+<a name="constraintObjectDescription"></a>description | `string` | **Required.** A human readable description of the parameter.
 
 
 #### <a name="licenseObject"></a>License Object
