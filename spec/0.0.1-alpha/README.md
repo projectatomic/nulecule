@@ -42,10 +42,8 @@ The formats defined by the Container Application Specification are:
 
 Common Name | [`type`](#dataTypeType) | [`format`](#dataTypeFormat) | Comments
 ----------- | ------ | -------- | --------
-integer | `integer` | `int32` | signed 32 bits
-long | `integer` | `int64` | signed 64 bits
+integer | `integer` | `int32` | signed 64 bits
 float | `number` | `float` | 
-double | `number` | `double` |
 string | `string` | |
 byte | `string` | `byte` |
 boolean | `boolean` | |
@@ -67,8 +65,83 @@ Field Name | Type | Description
 <a name="containerAppDescription"></a>description | `string` | **Required.** The human readable description of the Container Application.
 <a name="containerAppVersion"></a>appversion | `string` | **Required.**  The semantic version string of the Container Application.
 <a name="containerAppSpecVersion"></a>specversion | `string` | **Required.** The semantic version string of the Container Application Specification used to describe the app. The value MUST be `"0.0.1-alpha"`. 
-<a name="containerAppGraph"></a>graph | [GraphObject](#graphObject) | **Required.** A list of depending containerapps. Strings may either match a local graph sub directory or an another containerapp-spec compliant container image that can be pulled via a provider.
-<a name="containerAppRequirements"></a>requirements | [RequirementsObject](#requirementsObject) | A list of requirements of this containerapp.
+<a name="containerAppGraph"></a>graph | [ [GraphObject](#graphObject) ] | **Required.** A list of depending containerapps. Strings may either match a local graph sub directory or an another containerapp-spec compliant container image that can be pulled via a provider.
+<a name="containerAppRequirements"></a>requirements | [ [RequirementsObject](#requirementsObject) ] | A list of requirements of this containerapp.
+<a name="containerAppLicenseObject"></a>license | [License Object](#licenseObject) | The license information for the containerapp.
+
+#### <a name="graphObject"></a>Graph Object
+
+The graph is a list of items (containerapps) the Container Application depends on.
+
+##### Fields of a Graph Item Object
+
+Field Name | Type | Description
+---|:---:|---
+<a name="dependingContainerAppName"></a>name | `string` | **Required.** The name of a containerapp the Container Application depends on.
+<a name="dependingContainerAppRepository"></a>repository | `string` | The name of the repository where the a containerapp could be found.
+
+##### Graph Item Object Example:
+
+```js
+{
+  "name": "atomicapp-mongodb",
+  "repository": "registry.company.example.com"
+}
+```
+
+#### <a name="requirementsObject"></a>Requirements Object
+
+The list of requirements of the Container Application. It MAY be [Storage Requirement Objects](#storageRequirementsObject) (for a persistant Volume).
+
+
+#### <a name="storageRequirementsObject"></a>Storage Requirements Object
+
+This describes a requirement for persistent, read-only or read-write storage that should be available to the containerapp on runtime. The name of this object MUST be `"persistantVolume"`.
+
+##### Fields of Storage Requirement
+
+Field Name | Type | Description
+---|:---:|---
+<a name="containerAppRequirementsName"></a>name | `string` | **Required.** A name associated with the storage requirement.
+<a name="containerAppRequirementsAccessMode"></a>accessModes | `string` | **Required.** May be `"ReadWrite"` or `"ReadOnly"`.
+<a name="containerAppRequirementsSize"></a>size | `integer` | **Required.** Size of required the storage.
+
+##### Storage Requirement Example:
+
+```yaml
+---
+- persistantVolume:
+    name: "var-lib-mongodb-data"
+    accessMode: "ReadWrite"
+    size: 4 # GB by default
+
+```
+
+
+#### <a name="licenseObject"></a>License Object
+
+License information for the Container Application.
+
+##### Fields
+
+Field Name | Type | Description
+---|:---:|---
+<a name="licenseName"></a>name | `string` | **Required.** The license name used for the API.
+<a name="licenseUrl"></a>url | `string` | A URL to the license used for the API. MUST be in the format of a URL.
+
+##### License Object Example:
+
+```js
+{
+  "name": "GNU GPL, Version 3",
+  "url": "https://www.gnu.org/copyleft/gpl.html"
+}
+```
+
+```yaml
+name: Apache 2.0
+url: http://www.apache.org/licenses/LICENSE-2.0.html
+```
 
 
 ## Directory Layout
