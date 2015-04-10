@@ -1,12 +1,40 @@
 ---
-name: Atomicapp-mongoDB
-description: This is a mongoDB 2.4 Atomicapp
-appversion: 2.4
 specversion: 0.0.1-alpha
+# 0.0.1-alpha requires:
+# - Docker 1.6 or later
+# - OpenShift3 0.4 or later
+# - Atomic Host 7.1.1 or later
+id: Atomicapp-mongoDB
+metadata:
+  name: Atomicapp mongoDB
+  appversion: 2.4
+  description: This is a mongoDB 2.4 Atomicapp
+  license:
+    name: GNU AFFERO GENERAL PUBLIC LICENSE, Version 3
+    url: https://www.gnu.org/licenses/agpl-3.0.html
 graph:
- - name: "atomicapp-zabbix-mongodb"
-   repository: "registry.evops.example.com"
- - name: "atomicapp-backupagent-mongodb"
+  atomicapp-zabbix-mongodb:
+    source: uri://registry.devops.example.com
+    # if no artifacts is specified, than it is an external Atomicapp to be pulled 
+    # and installed from the specified source
+  atomicapp-backupagent-mongodb:
+    params:
+      frequency: daily
+      retentiontime: 60 # days
+      confidential: true
+    artifacts: # list of files to be processed by the provider selected on install-time
+      atomicplatform:
+        - file://relative/path/pod.json.tmpl
+        - https://git.devops.example.com
+      openshift:
+        - file://routes.json
+        - inherit:
+          - atomicplatform
+      docker:
+        - file://systemd/mongodb-service.tmpl
+      atomichost:
+        - file://pod.json.tmpl
+        - file://service.json.tmpl
 requirements: 
   persistantVolume:
     name: "var-lib-mongodb-data"
@@ -18,6 +46,11 @@ params:
     constraints:
       - allowed_pattern: "[a-zA-Z0-9]+"
         description: Must consist of characters and numbers only.
-license:
- name: GNU AFFERO GENERAL PUBLIC LICENSE, Version 3
- url: https://www.gnu.org/licenses/agpl-3.0.html
+  openshift:
+    labels:
+      - eu-west-1
+      - eu-west-1a
+      - qe
+  atomichost:
+    labels:
+      - devel
