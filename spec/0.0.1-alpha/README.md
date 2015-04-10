@@ -127,8 +127,9 @@ Parameters the containerapp requires, has set some defaults for or needs user in
 
 Field Name | Type | Description
 ---|:---:|---
-<a name="description"></a>description | `string` | **Required.** A human readable description of the parameter.
-<a name="constraints"></a>constraints | [ConstraintObject](#constraintObject) | An optional definition of constraints to the parameter.
+<a name="parametersDescription"></a>description | `string` | **Required.** A human readable description of the parameter.
+<a name="parametersConstraints"></a>constraints | [ConstraintObject](#constraintObject) | An optional definition of constraints to the parameter.
+<a name="parametersDefault"></a>default | `string` | An optional default value for the parameter.
 
 ##### Parameters Object Example:
 
