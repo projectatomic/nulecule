@@ -83,6 +83,12 @@ Field Name | Type | Description
 
 ##### Graph Item Object Example:
 
+```yaml
+---
+  name: "atomicapp-mongodb"
+  repository: "registry.company.example.com"
+```
+
 ```js
 {
   "name": "atomicapp-mongodb",
@@ -115,7 +121,15 @@ Field Name | Type | Description
     name: "var-lib-mongodb-data"
     accessMode: "ReadWrite"
     size: 4 # GB by default
-
+```
+```js
+  {
+    "persistantVolume": {
+      "name": "var-lib-mongodb-data",
+      "accessMode": "ReadWrite",
+      "size": 4
+    }
+  }
 ```
 
 
@@ -138,6 +152,17 @@ description: mongoDB Admin password
 constraints: 
   - allowed_pattern: "[A-Z0-9]+"
     description: Must consist of characters and numbers only.
+```
+```js
+{
+  "description": "mongoDB Admin password",
+  "constraints": [
+    {
+      "allowed_pattern": "[A-Z0-9]+",
+      "description": "Must consist of characters and numbers only."
+    }
+  ]
+}
 ```
 
 #### <a name="constraintObject"></a>Constraint Object
@@ -165,16 +190,16 @@ Field Name | Type | Description
 
 ##### License Object Example:
 
+
+```yaml
+name: Apache 2.0
+url: http://www.apache.org/licenses/LICENSE-2.0.html
+```
 ```js
 {
   "name": "GNU GPL, Version 3",
   "url": "https://www.gnu.org/copyleft/gpl.html"
 }
-```
-
-```yaml
-name: Apache 2.0
-url: http://www.apache.org/licenses/LICENSE-2.0.html
 ```
 
 
