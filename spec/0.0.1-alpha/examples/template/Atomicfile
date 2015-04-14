@@ -6,7 +6,7 @@
   "graph": [ "centos/mariadb-app", "myapp" ]
 
   "requirements": {
-    "persistantVolume": {
+    "persistentVolume": {
       "type": "claim",
       "name": "myapp-vol1,
       "accessModes": [

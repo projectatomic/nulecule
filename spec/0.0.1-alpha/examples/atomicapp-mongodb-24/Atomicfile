@@ -42,7 +42,7 @@ graph:
         - file://pod.json.tmpl
         - file://service.json.tmpl
 requirements: 
-  persistantVolume:
+  persistentVolume:
     name: "var-lib-mongodb-data"
     accessMode: "ReadWrite" 
     size: 4 # GB by default
