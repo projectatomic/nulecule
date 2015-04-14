@@ -52,6 +52,13 @@ dateTime | `string` | `date-time` | As defined by `date-time` - [RFC3339](http:/
 password | `string` | `password` | Used to hint UIs the input needs to be obscured.
 URL | `URL` | `URL` | As defined by `URL` - [RFC3986 Section 1.1.3](https://tools.ietf.org/html/rfc3986#section-1.1.3)
 
+### Terminology
+
+Container Application
+
+Provider
+
+
 ### Schema
 
 #### <a name="containerAppObject"></a>Container Application Object
@@ -67,6 +74,46 @@ Field Name | Type | Description
 <a name="containerAppMetadata"></a>metadata | [ [MetadataObject](#metadataObject) ] | **Optional** And object holding optional metadata related to the Container Application, this may include license information or human readable information.
 <a name="containerAppGraph"></a>graph | [ [GraphObject](#graphObject) ] | **Required.** A list of depending containerapps. Strings may either match a local sub directory or another containerapp-spec compliant containerapp image that can be pulled via a provider.
 <a name="containerAppRequirements"></a>requirements | [ [RequirementsObject](#requirementsObject) ] | **Optional** A list of requirements of this containerapp.
+
+
+#### <a name="metadataObject"></a>Metadata Object
+
+Metadata for the Container Application.
+
+##### Fields
+
+Field Name | Type | Description
+---|:---:|---
+<a name="metadataName"></a>name | `string` | **Optional** A human readable name of the containerapp.
+<a name="metadataAppVersion"></a>appversion | `string` | **Optional** The semantic version string of the Container Application.
+<a name="metadataDescription"></a>description | `string` | **Optional** A human readable description of the Container Application. This may contain information for the deployer of the containerapp.
+<a name="metadataLicenseObject"></a>license | [License Object](#licenseObject) | **Optional** The license information for the containerapp.
+
+#### <a name="licenseObject"></a>License Object
+
+License information for the Container Application.
+
+##### Fields
+
+Field Name | Type | Description
+---|:---:|---
+<a name="licenseName"></a>name | `string` | **Required.** The license name used for the API.
+<a name="licenseUrl"></a>url | `string` | **Optional** A URL to the license used for the API. MUST be in the format of a URL.
+
+##### License Object Example:
+
+
+```yaml
+name: Apache 2.0
+url: http://www.apache.org/licenses/LICENSE-2.0.html
+```
+```js
+{
+  "name": "GNU GPL, Version 3",
+  "url": "https://www.gnu.org/copyleft/gpl.html"
+}
+```
+
 
 #### <a name="graphObject"></a>Graph Object
 
@@ -145,7 +192,7 @@ Field Name | Type | Description
 
 #### <a name="requirementsObject"></a>Requirements Object
 
-The list of requirements of the Container Application. It MAY be [Storage Requirement Objects](#storageRequirementsObject) (for a persistant Volume).
+The list of requirements of the Container Application. It may be [Storage Requirement Objects](#storageRequirementsObject) (for a persistant Volume).
 
 
 #### <a name="storageRequirementsObject"></a>Storage Requirements Object
@@ -179,41 +226,40 @@ Field Name | Type | Description
   }
 ```
 
-#### <a name="metadataObject"></a>Metadata Object
 
-Metadata for the Container Application.
+#### <a name="artifactsObject"></a>Artifacts Object
 
-##### Fields
+The Artifacts Object describes a list of provider specific artifact items. These artifact items will be used during installation of the containerapp to deploy it to the provider. Each artifact itme is a `URL`.
 
-Field Name | Type | Description
----|:---:|---
-<a name="metadataName"></a>name | `string` | **Optional** A human readable name of the containerapp.
-<a name="metadataAppVersion"></a>appversion | `string` | **Optional** The semantic version string of the Container Application.
-<a name="metadataDescription"></a>description | `string` | **Optional** A human readable description of the Container Application. This may contain information for the deployer of the containerapp.
-<a name="metadataLicenseObject"></a>license | [License Object](#licenseObject) | **Optional** The license information for the containerapp.
-
-#### <a name="licenseObject"></a>License Object
-
-License information for the Container Application.
-
-##### Fields
-
-Field Name | Type | Description
----|:---:|---
-<a name="licenseName"></a>name | `string` | **Required.** The license name used for the API.
-<a name="licenseUrl"></a>url | `string` | **Optional** A URL to the license used for the API. MUST be in the format of a URL.
-
-##### License Object Example:
-
+##### Artifacts Example:
 
 ```yaml
-name: Apache 2.0
-url: http://www.apache.org/licenses/LICENSE-2.0.html
+---
+artifacts: # list of files to be processed by the provider selected on install-time
+  atomicplatform:
+    - file://relative/path/pod.json.tmpl
+    - https://git.devops.example.com
+  openshift:
+    - file://routes.json
+    - inherit:
+      - atomicplatform
 ```
 ```js
 {
-  "name": "GNU GPL, Version 3",
-  "url": "https://www.gnu.org/copyleft/gpl.html"
+  "artifacts": {
+    "atomicplatform": [
+      "file://relative/path/pod.json.tmpl",
+      "https://git.devops.example.com"
+    ],
+    "openshift": [
+      "file://routes.json",
+      {
+        "inherit": [
+          "atomicplatform"
+        ]
+      }
+    ]
+  }
 }
 ```
 
@@ -241,3 +287,12 @@ url: http://www.apache.org/licenses/LICENSE-2.0.html
 The README.md is the human-readable document. It describes the containerapp in enough detail so an operator can make parameterization and other deployment decisions.
 
 NOTE: This is optional. It is possible for some applications to be "self-describing" through well-written descriptions and input validation.
+
+
+## Conventions
+
+A few conventions are used in the context of Container Applications.
+
+### Parameters for Providers
+
+Each provider in the [ArtifactsObject](#artifactsObject) of the [GraphObject](#graphObject) may correspond to a containerapp level [ParamsObject](#paramsObject). 
