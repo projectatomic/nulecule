@@ -10,7 +10,7 @@ The Container Application Specification is licensed under [GNU Free Documentatio
 
 ## Introduction
 
-The Container Application specification is a project to describe 'an Application' that is composed of a set of dependend Container Applications (containerapp). The Container Application specification defines a set of files required to describe such an containerapp. These files can then be used by other tools to deploy containerapp. Developers may use a tool set to generate most of the containerapp files. Additional utilities can also take advantage of the resulting files, such as testing tools.
+The Container Application specification is a project to describe 'an Application' that is composed of a set of dependent Container Applications (containerapp). The Container Application specification defines a set of files required to describe such a containerapp. These files can then be used by other tools to deploy a containerapp. Developers may use other tools to generate most of the required containerapp files. Additional utilities can also take advantage of the resulting files, such as testing tools.
 
 ### Versioning
 
@@ -71,7 +71,7 @@ Field Name | Type | Description
 ---|:---:|---
 <a name="containerAppId"></a>id | `string` | **Required.** The machine readable id of the Container Application.
 <a name="containerAppSpecVersion"></a>specversion | `string` | **Required.** The semantic version string of the Container Application Specification used to describe the app. The value MUST be `"0.0.1-alpha"`. 
-<a name="containerAppMetadata"></a>metadata | [ [MetadataObject](#metadataObject) ] | **Optional** And object holding optional metadata related to the Container Application, this may include license information or human readable information.
+<a name="containerAppMetadata"></a>metadata | [ [MetadataObject](#metadataObject) ] | **Optional** An object holding optional metadata related to the Container Application, this may include license information or human readable information.
 <a name="containerAppGraph"></a>graph | [ [GraphObject](#graphObject) ] | **Required.** A list of depending containerapps. Strings may either match a local sub directory or another containerapp-spec compliant containerapp image that can be pulled via a provider.
 <a name="containerAppRequirements"></a>requirements | [ [RequirementsObject](#requirementsObject) ] | **Optional** A list of requirements of this containerapp.
 
@@ -124,7 +124,7 @@ The graph is a list of items (containerapps) the Container Application depends o
 Field Name | Type | Description
 ---|:---:|---
 <a name="dependingContainerAppSource"></a>source | `URL` | **Optional** Source location of the Container Application, the source MUST be specified by a valid URL. If source is present, all other fields SHALL be ignored.
-<a name="dependingContainerAppParams"></a>params | [ [ParamsObject](#paramsObject) ] | **Optional** A list of [ParamsObject](#paramsObject) that contain providr specific information. If params is present, source field SHALL be ignored.
+<a name="dependingContainerAppParams"></a>params | [ [ParamsObject](#paramsObject) ] | **Optional** A list of [ParamsObject](#paramsObject) that contain provider specific information. If params is present, source field SHALL be ignored.
 <a name="dependingContainerAppArtifacts"></a>artifacts | [ [ArtifactsObject](#artifactsObject) ] | **Optional** A list of [ArtifactsObject](#artifactsObject) that contain providr specific information. If artifacts is present, source field SHALL be ignored.
 
 ##### Graph Item Object Example:
@@ -133,7 +133,7 @@ Field Name | Type | Description
 ---
 atomicapp-zabbix-mongodb:
   source: uri://registry.devops.example.com
-  # if no artifacts is specified, than it is an external Atomicapp to be pulled 
+  # if no "artifacts" is specified, than it is an external Atomicapp to be pulled 
   # and installed from the specified source
 ```
 
@@ -192,12 +192,12 @@ Field Name | Type | Description
 
 #### <a name="requirementsObject"></a>Requirements Object
 
-The list of requirements of the Container Application. It may be [Storage Requirement Objects](#storageRequirementsObject) (for a persistant Volume).
+The list of requirements of the Container Application. It may be [Storage Requirement Objects](#storageRequirementsObject) (for a persistent Volume).
 
 
 #### <a name="storageRequirementsObject"></a>Storage Requirements Object
 
-This describes a requirement for persistent, read-only or read-write storage that should be available to the containerapp on runtime. The name of this object MUST be `"persistantVolume"`.
+This describes a requirement for persistent, read-only or read-write storage that should be available to the containerapp on runtime. The name of this object MUST be `"persistentVolume"`.
 
 ##### Fields of Storage Requirement
 
@@ -211,14 +211,14 @@ Field Name | Type | Description
 
 ```yaml
 ---
-- persistantVolume:
+- persistentVolume:
     name: "var-lib-mongodb-data"
     accessMode: "ReadWrite"
     size: 4 # GB by default
 ```
 ```js
   {
-    "persistantVolume": {
+    "persistentVolume": {
       "name": "var-lib-mongodb-data",
       "accessMode": "ReadWrite",
       "size": 4
@@ -229,13 +229,13 @@ Field Name | Type | Description
 
 #### <a name="artifactsObject"></a>Artifacts Object
 
-The Artifacts Object describes a list of provider specific artifact items. These artifact items will be used during installation of the containerapp to deploy it to the provider. Each artifact itme is a `URL`.
+The Artifacts Object describes a list of provider specific artifact items. These artifact items will be used during installation of the containerapp to deploy it to the provider. Each artifact item is a `URL`.
 
 ##### Artifacts Example:
 
 ```yaml
 ---
-artifacts: # list of files to be processed by the provider selected on install-time
+artifacts: # list of files to be processed by the provider selected at install-time
   atomicplatform:
     - file://relative/path/pod.json.tmpl
     - https://git.devops.example.com
@@ -270,14 +270,14 @@ artifacts: # list of files to be processed by the provider selected on install-t
 ├── Atomicfile
 ├── Dockerfile
 ├── <provider_files_dir>
-│   ├── ...
-│   └── <provider_files>
+│   ├── ...
+│   └── <provider_files>
 └── README.md
 ```
 
 * `Atomicfile`: Container Application definition
 * `Dockerfile`: standard packaging for this containerapp
-* `<provider_files_dir>`: directories of provider-specific files referenced in containerapp definition file
+* `<provider_files_dir>`: directories of provider-specific files referenced in a containerapp definition file
   * `PROVIDER_FILES`: provider-specific files necessary for deploying to provider
 * `README.md`: information for deploying this application
 
@@ -296,3 +296,4 @@ A few conventions are used in the context of Container Applications.
 ### Parameters for Providers
 
 Each provider in the [ArtifactsObject](#artifactsObject) of the [GraphObject](#graphObject) may correspond to a containerapp level [ParamsObject](#paramsObject). 
+
