@@ -50,6 +50,7 @@ boolean | `boolean` | |
 date | `string` | `date` | As defined by `full-date` - [RFC3339](http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14)
 dateTime | `string` | `date-time` | As defined by `date-time` - [RFC3339](http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14)
 password | `string` | `password` | Used to hint UIs the input needs to be obscured.
+URL | `URL` | `URL` | As defined by `URL` - [RFC3986 Section 1.1.3](https://tools.ietf.org/html/rfc3986#section-1.1.3)
 
 ### Schema
 
@@ -63,12 +64,9 @@ Field Name | Type | Description
 ---|:---:|---
 <a name="containerAppId"></a>id | `string` | **Required.** The machine readable id of the Container Application.
 <a name="containerAppSpecVersion"></a>specversion | `string` | **Required.** The semantic version string of the Container Application Specification used to describe the app. The value MUST be `"0.0.1-alpha"`. 
-<a name="containerAppMetadata"></a>metadata | [ [MetadataObject](#metadataObject) ] | And object holding optional metadata related to the Container Application, this may include license information or human readable information.
+<a name="containerAppMetadata"></a>metadata | [ [MetadataObject](#metadataObject) ] | **Optional** And object holding optional metadata related to the Container Application, this may include license information or human readable information.
 <a name="containerAppGraph"></a>graph | [ [GraphObject](#graphObject) ] | **Required.** A list of depending containerapps. Strings may either match a local sub directory or another containerapp-spec compliant containerapp image that can be pulled via a provider.
-
-
-<a name="containerAppRequirements"></a>requirements | [ [RequirementsObject](#requirementsObject) ] | A list of requirements of this containerapp.
-<a name="containerAppParameters"></a>params | [ [ParametersObject](#parametersObject) ] | A list of parameters the containerapp requires, has set defaults or needs user input.
+<a name="containerAppRequirements"></a>requirements | [ [RequirementsObject](#requirementsObject) ] | **Optional** A list of requirements of this containerapp.
 
 #### <a name="graphObject"></a>Graph Object
 
@@ -78,24 +76,72 @@ The graph is a list of items (containerapps) the Container Application depends o
 
 Field Name | Type | Description
 ---|:---:|---
-<a name="dependingContainerAppSource"></a>source | `URL` | Source location of the Container Application, the source MUST be specified by a valid URL. If source is present, all other fields SHALL be ignored.
-<a name="dependingContainerAppParams"></a>params | [ [ParamsObject](#paramsObject) ] | A list of [ParamsObject](#paramsObject) that contain providr specific information. 
-<a name="dependingContainerAppArtifacts"></a>params | [ [ArtifactsObject](#artifactsObject) ] | A list of [ArtifactsObject](#artifactsObject) that contain providr specific information. 
+<a name="dependingContainerAppSource"></a>source | `URL` | **Optional** Source location of the Container Application, the source MUST be specified by a valid URL. If source is present, all other fields SHALL be ignored.
+<a name="dependingContainerAppParams"></a>params | [ [ParamsObject](#paramsObject) ] | **Optional** A list of [ParamsObject](#paramsObject) that contain providr specific information. If params is present, source field SHALL be ignored.
+<a name="dependingContainerAppArtifacts"></a>artifacts | [ [ArtifactsObject](#artifactsObject) ] | **Optional** A list of [ArtifactsObject](#artifactsObject) that contain providr specific information. If artifacts is present, source field SHALL be ignored.
 
 ##### Graph Item Object Example:
 
 ```yaml
 ---
-  name: "atomicapp-mongodb"
-  repository: "registry.company.example.com"
+atomicapp-zabbix-mongodb:
+  source: uri://registry.devops.example.com
+  # if no artifacts is specified, than it is an external Atomicapp to be pulled 
+  # and installed from the specified source
 ```
 
 ```js
 {
-  "name": "atomicapp-mongodb",
-  "repository": "registry.company.example.com"
+  "atomicapp-zabbix-mongodb": {
+    "source": "uri://registry.devops.example.com"
+  }
 }
 ```
+
+#### <a name="paramsObject"></a>Parameters Object
+
+A set of Parameters the containerapp requires, has set some defaults for or needs user input.
+
+##### Fields
+
+Field Name | Type | Description
+---|:---:|---
+<a name="parametersDescription"></a>description | `string` | **Required.** A human readable description of the parameter.
+<a name="parametersConstraints"></a>constraints | [ConstraintObject](#constraintObject) | **Optional** An optional definition of constraints to the parameter.
+<a name="parametersDefault"></a>default | `string` | **Optional** An optional default value for the parameter.
+
+##### Parameters Object Example:
+
+```yaml
+description: mongoDB Admin password
+constraints: 
+  - allowed_pattern: "[A-Z0-9]+"
+    description: Must consist of characters and numbers only.
+```
+```js
+{
+  "description": "mongoDB Admin password",
+  "constraints": [
+    {
+      "allowed_pattern": "[A-Z0-9]+",
+      "description": "Must consist of characters and numbers only."
+    }
+  ]
+}
+```
+
+#### <a name="constraintObject"></a>Constraint Object
+
+Constraints to the parameter.
+
+##### Fields
+
+Field Name | Type | Description
+---|:---:|---
+<a name="constraintObjectPattern"></a>allowed_pattern | `string` | **Required.** A human readable description of the parameter.
+<a name="constraintObjectDescription"></a>description | `string` | **Required.** A human readable description of the parameter.
+
+
 
 #### <a name="requirementsObject"></a>Requirements Object
 
@@ -133,51 +179,6 @@ Field Name | Type | Description
   }
 ```
 
-
-#### <a name="parametersObject"></a>Parameters Object
-
-Parameters the containerapp requires, has set some defaults for or needs user input.
-
-##### Fields
-
-Field Name | Type | Description
----|:---:|---
-<a name="parametersDescription"></a>description | `string` | **Required.** A human readable description of the parameter.
-<a name="parametersConstraints"></a>constraints | [ConstraintObject](#constraintObject) | An optional definition of constraints to the parameter.
-<a name="parametersDefault"></a>default | `string` | An optional default value for the parameter.
-
-##### Parameters Object Example:
-
-```yaml
-description: mongoDB Admin password
-constraints: 
-  - allowed_pattern: "[A-Z0-9]+"
-    description: Must consist of characters and numbers only.
-```
-```js
-{
-  "description": "mongoDB Admin password",
-  "constraints": [
-    {
-      "allowed_pattern": "[A-Z0-9]+",
-      "description": "Must consist of characters and numbers only."
-    }
-  ]
-}
-```
-
-#### <a name="constraintObject"></a>Constraint Object
-
-Constraints to the parameter.
-
-##### Fields
-
-Field Name | Type | Description
----|:---:|---
-<a name="constraintObjectPattern"></a>allowed_pattern | `string` | **Required.** A human readable description of the parameter.
-<a name="constraintObjectDescription"></a>description | `string` | **Required.** A human readable description of the parameter.
-
-
 #### <a name="metadataObject"></a>Metadata Object
 
 Metadata for the Container Application.
@@ -186,10 +187,10 @@ Metadata for the Container Application.
 
 Field Name | Type | Description
 ---|:---:|---
-<a name="metadataName"></a>name | `string` | A human readable name of the containerapp.
-<a name="metadataAppVersion"></a>appversion | `string` | The semantic version string of the Container Application.
-<a name="metadataDescription"></a>description | `string` | A human readable description of the Container Application. This may contain information for the deployer of the containerapp.
-<a name="metadataLicenseObject"></a>license | [License Object](#licenseObject) | The license information for the containerapp.
+<a name="metadataName"></a>name | `string` | **Optional** A human readable name of the containerapp.
+<a name="metadataAppVersion"></a>appversion | `string` | **Optional** The semantic version string of the Container Application.
+<a name="metadataDescription"></a>description | `string` | **Optional** A human readable description of the Container Application. This may contain information for the deployer of the containerapp.
+<a name="metadataLicenseObject"></a>license | [License Object](#licenseObject) | **Optional** The license information for the containerapp.
 
 #### <a name="licenseObject"></a>License Object
 
@@ -200,7 +201,7 @@ License information for the Container Application.
 Field Name | Type | Description
 ---|:---:|---
 <a name="licenseName"></a>name | `string` | **Required.** The license name used for the API.
-<a name="licenseUrl"></a>url | `string` | A URL to the license used for the API. MUST be in the format of a URL.
+<a name="licenseUrl"></a>url | `string` | **Optional** A URL to the license used for the API. MUST be in the format of a URL.
 
 ##### License Object Example:
 
