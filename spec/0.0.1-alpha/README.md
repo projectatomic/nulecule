@@ -61,14 +61,14 @@ This is the root object for the specification.
 
 Field Name | Type | Description
 ---|:---:|---
-<a name="containerAppName"></a>name | `string` | **Required.** The human readable name of the Container Application.
-<a name="containerAppDescription"></a>description | `string` | **Required.** The human readable description of the Container Application.
-<a name="containerAppVersion"></a>appversion | `string` | **Required.**  The semantic version string of the Container Application.
+<a name="containerAppId"></a>id | `string` | **Required.** The machine readable id of the Container Application.
 <a name="containerAppSpecVersion"></a>specversion | `string` | **Required.** The semantic version string of the Container Application Specification used to describe the app. The value MUST be `"0.0.1-alpha"`. 
-<a name="containerAppGraph"></a>graph | [ [GraphObject](#graphObject) ] | **Required.** A list of depending containerapps. Strings may either match a local graph sub directory or an another containerapp-spec compliant container image that can be pulled via a provider.
+<a name="containerAppMetadata"></a>metadata | [ [MetadataObject](#metadataObject) ] | And object holding optional metadata related to the Container Application, this may include license information or human readable information.
+<a name="containerAppGraph"></a>graph | [ [GraphObject](#graphObject) ] | **Required.** A list of depending containerapps. Strings may either match a local sub directory or another containerapp-spec compliant containerapp image that can be pulled via a provider.
+
+
 <a name="containerAppRequirements"></a>requirements | [ [RequirementsObject](#requirementsObject) ] | A list of requirements of this containerapp.
 <a name="containerAppParameters"></a>params | [ [ParametersObject](#parametersObject) ] | A list of parameters the containerapp requires, has set defaults or needs user input.
-<a name="containerAppLicenseObject"></a>license | [License Object](#licenseObject) | The license information for the containerapp.
 
 #### <a name="graphObject"></a>Graph Object
 
@@ -78,8 +78,9 @@ The graph is a list of items (containerapps) the Container Application depends o
 
 Field Name | Type | Description
 ---|:---:|---
-<a name="dependingContainerAppName"></a>name | `string` | **Required.** The name of a containerapp the Container Application depends on.
-<a name="dependingContainerAppRepository"></a>repository | `string` | The name of the repository where the a containerapp could be found.
+<a name="dependingContainerAppSource"></a>source | `URL` | Source location of the Container Application, the source MUST be specified by a valid URL. If source is present, all other fields SHALL be ignored.
+<a name="dependingContainerAppParams"></a>params | [ [ParamsObject](#paramsObject) ] | A list of [ParamsObject](#paramsObject) that contain providr specific information. 
+<a name="dependingContainerAppArtifacts"></a>params | [ [ArtifactsObject](#artifactsObject) ] | A list of [ArtifactsObject](#artifactsObject) that contain providr specific information. 
 
 ##### Graph Item Object Example:
 
@@ -176,6 +177,19 @@ Field Name | Type | Description
 <a name="constraintObjectPattern"></a>allowed_pattern | `string` | **Required.** A human readable description of the parameter.
 <a name="constraintObjectDescription"></a>description | `string` | **Required.** A human readable description of the parameter.
 
+
+#### <a name="metadataObject"></a>Metadata Object
+
+Metadata for the Container Application.
+
+##### Fields
+
+Field Name | Type | Description
+---|:---:|---
+<a name="metadataName"></a>name | `string` | A human readable name of the containerapp.
+<a name="metadataAppVersion"></a>appversion | `string` | The semantic version string of the Container Application.
+<a name="metadataDescription"></a>description | `string` | A human readable description of the Container Application. This may contain information for the deployer of the containerapp.
+<a name="metadataLicenseObject"></a>license | [License Object](#licenseObject) | The license information for the containerapp.
 
 #### <a name="licenseObject"></a>License Object
 
