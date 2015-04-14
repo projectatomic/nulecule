@@ -19,9 +19,15 @@ graph:
     # and installed from the specified source
   atomicapp-backupagent-mongodb:
     params:
-      frequency: daily
-      retentiontime: 60 # days
-      confidential: true
+      frequency: 
+	description: How often shall the backup be performed?
+	default: daily
+      retentiontime: 
+	description: For how long shall backups be kept?
+	default: 60 # days
+      confidential: 
+	description: Does this backup container confidential data?
+	default: true
     artifacts: # list of files to be processed by the provider selected on install-time
       atomicplatform:
         - file://relative/path/pod.json.tmpl
