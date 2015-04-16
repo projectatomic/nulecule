@@ -1,21 +1,39 @@
-{
-  "name": "My WP app",
-  "description": "CSS file on top of Wordpress",
-  "specversion": "v1-alpha",
-  "appversion": "1.3.6",
-  "graph": [ "centos/mariadb-app", "myapp" ]
+---
+id: 191131-abcd
+specversion: 0.0.1-alpha
 
-  "requirements": {
-    "persistentVolume": {
-      "type": "claim",
-      "name": "myapp-vol1,
-      "accessModes": [
-        "ReadWrite"
-      ],
-      "size": 4 
-    }
-  }
+metadata:
+  name: my app
+  appversion: v1.0.0
+  description: some application
+  license:
+    name: Apache 2.0
+    url: www.example.com/license
 
+graph:
+  somedb:
+    source: docker://registry.example.com/some/database
 
-}
+  mycode:
+    params:
+      username:
+        description: username
+        constraints:
+          - allowed_pattern: "[A-Z0-9]+"
+            description: Must consist of characters and numbers only.
+      password:
+        description: passphrase
+    artifacts:
+      provider1:
+        - file://providers/pod.json
+        - file://providers/service.json
+      provider2:
+        - file://providers/file.json
+        - inherit:
+          - provider1
 
+requirements:
+- persistentVolume:
+  name: "var-lib-data"
+  accessMode: "ReadWrite"
+  size: 4
