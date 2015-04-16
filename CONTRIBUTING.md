@@ -1,4 +1,4 @@
-# Contributing to Nulecle
+# Contributing to Nulecule
 
 The following is a set of guidelines for contributing to Nulecule,
 which is hosted in the [Project Atomic Organization](https://github.com/projectatomic) on GitHub.
