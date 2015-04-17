@@ -48,6 +48,10 @@ Deployment implementation provides tooling for deploying the complete applicatio
 
 * Reference implementation (python): https://github.com/vpavlin/atomicapp-run
 
+### Contributing
+
+Please review the [contributing guidelines](CONTRIBUTING.md) before submitting pull requests.
+
 ## TODO
 
 * Create schema validation script
