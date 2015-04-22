@@ -97,7 +97,7 @@ License information for the Container Application.
 
 Field Name | Type | Description
 ---|:---:|---
-<a name="licenseName"></a>name | `string` | **Required.** The license name used for the API.
+<a name="licenseName"></a>name | `string` | **Required.** The human readable license name used for the Container Application, no format imposed.
 <a name="licenseUrl"></a>url | `string` | **Optional** A URL to the license used for the API. MUST be in the format of a URL.
 
 ##### License Object Example:
