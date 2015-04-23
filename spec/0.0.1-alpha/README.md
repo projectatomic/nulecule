@@ -88,6 +88,32 @@ Field Name | Type | Description
 <a name="metadataAppVersion"></a>appversion | `string` | **Optional** The semantic version string of the Container Application.
 <a name="metadataDescription"></a>description | `string` | **Optional** A human readable description of the Container Application. This may contain information for the deployer of the containerapp.
 <a name="metadataLicenseObject"></a>license | [License Object](#licenseObject) | **Optional** The license information for the containerapp.
+<a name="metadataKey"></a>arbitrary_data | `string` | **Optional** Arbitrary `key: value` pair(s) of metadata. May contain nested objects.
+
+##### Metadata Object Example:
+
+```yaml
+name: myapp
+appversion: 1.0.0
+description: description of myapp
+foo: bar
+othermetadata:
+  foo: bar
+  files: file://path/to/local/file
+```
+
+```js
+{
+  "name": "myapp",
+  "appversion": "1.0.0",
+  "description": "description of myapp",
+  "foo": "bar",
+  "othermetadata": {
+    "foo": "bar",
+    "files": "file://path/to/local/file"
+  }
+}
+```
 
 #### <a name="licenseObject"></a>License Object
 
