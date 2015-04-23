@@ -1,0 +1,171 @@
+{
+    "version": "0.0.1-alpha",
+    "description": "The Container Application specification is a project to describe 'an Application' that is composed of a set of dependent Container Applications (containerapp). The Container Application specification defines a set of files required to describe such a containerapp. These files can then be used by other tools to deploy a containerapp. Developers may use other tools to generate most of the required containerapp files. Additional utilities can also take advantage of the resulting files, such as testing tools.",
+    "format": "The files describing a containerapp in accordance with the Container Application Specification are represented using YAML 1.2 or JSON.",
+    "elements": [
+        {
+            "name": "Atomicfile",
+            "value": "Atomicfile",
+            "description": "Application template. This is the root object for the specification.",
+            "type": "file",
+            "required": true,
+            "contents": {
+                "id": {
+                    "required": true,
+                    "description": "The machine readable id of the Container Application.",
+                    "type": "string",
+                    "value": null
+                },
+                "specversion": {
+                    "required": true,
+                    "description": "The semantic version string of the Container Application Specification used to describe the app. The value MUST be '0.0.1-alpha'.",
+                    "type": "string",
+                    "value": "0.0.1-alpha"
+                },
+                "metadata": {
+                    "required": false,
+                    "description": "An object holding optional metadata related to the Container Application, this may include license information or human readable information.",
+                    "value": {
+                        "name": {
+                            "required": false,
+                            "description": "A human readable name of the containerapp.",
+                            "type": "string",
+                            "value": null
+                        },
+                        "appversion": {
+                            "required": false,
+                            "description": "The semantic version string of the Container Application.",
+                            "type": "string",
+                            "value": null
+                        },
+                        "description": {
+                            "required": false,
+                            "description": "A human readable description of the Container Application. This may contain information for the deployer of the containerapp.",
+                            "type": "string",
+                            "value": null
+                        },
+                        "license": {
+                            "required": false,
+                            "description": "",
+                            "type": "object",
+                            "value": {
+                                "name": {
+                                    "required": true,
+                                    "description": "The human readable license name used for the Container Application, no format imposed.",
+                                    "type": "string",
+                                    "value": null
+                                },
+                                "url": {
+                                    "required": false,
+                                    "description": "A URL to the license used for the API. MUST be in the format of a URL.",
+                                    "type": "string",
+                                    "value": null
+                                }
+                            }
+                        }
+                    }
+                },
+                "graph": {
+                    "required": true,
+                    "description": "A list of depending containerapps. Strings may either match a local sub directory or another containerapp-spec compliant containerapp image that can be pulled via a provider.",
+                    "type": "object",
+                    "value": {
+                        "source": {
+                            "required": false,
+                            "description": "Source location of the Container Application, the source MUST be specified by a valid URL. If source is present, all other fields SHALL be ignored.",
+                            "type": "url",
+                            "value": null
+                        },
+                        "params": {
+                            "required": false,
+                            "description": "A list of ParamsObject that contain provider specific information. If params is present, source field SHALL be ignored.",
+                            "type": "object",
+                            "value": {
+                                "description": {
+                                    "required": true,
+                                    "description": "A human readable description of the parameter.",
+                                    "type": "string",
+                                    "value": null
+                                },
+                                "constraints": {
+                                    "required": false,
+                                    "description": "An optional definition of constraints to the parameter.",
+                                    "type": "object",
+                                    "value": {
+                                        "allowed_pattern": {
+                                            "required": true,
+                                            "description": "A regular expression pattern.",
+                                            "type": "string",
+                                            "value": null
+                                        },
+                                        "description": {
+                                            "required": true,
+                                            "description": "A human readable description of the parameter.",
+                                            "type": "string",
+                                            "value": null
+                                        }
+                                    }
+                                },
+                                "default": {
+                                    "required": false,
+                                    "description": "An optional default value for the parameter.",
+                                    "type": "string",
+                                    "value": null
+                                }
+                            }
+                        },
+                        "artifacts": {
+                            "required": false,
+                            "description": "A list of ArtifactsObject that contain providr specific information. If artifacts is present, source field SHALL be ignored.",
+                            "type": "object",
+                            "value": [
+                                 "kubernetes",
+                                 "openshift"
+                            ]
+                        }
+                    }
+                },
+                "requirements": {
+                    "required": false,
+                    "description": "A list of requirements of this containerapp.",
+                    "type": "object",
+                    "value": [
+                        "persistentVolume"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "README",
+            "value": "README.md",
+            "description": "information for deploying this application targetted towards deployment ops sysadmin",
+            "type": "file",
+            "required": false,
+            "contents": null
+        },
+        {
+            "name": "Dockerfile",
+            "value": "Dockerfile",
+            "description": "standard packaging for this application metadata",
+            "type": "file",
+            "required": true,
+            "contents": "FROM scratch\n\nADD / /application-entity"
+        },
+        {
+            "name": "provider",
+            "value": null,
+            "description": "directories of applications referenced in Atomicfile",
+            "type": "directory",
+            "required": false,
+            "contents": [
+                {
+                    "name": "application",
+                    "value": null,
+                    "description": "a file referenced in the Atomicfile via file://<path/to/file> URI",
+                    "type": "file",
+                    "contents": null
+                }
+            ]
+        }
+    ]
+}
