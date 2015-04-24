@@ -211,7 +211,7 @@ Constraints to the parameter.
 
 Field Name | Type | Description
 ---|:---:|---
-<a name="constraintObjectPattern"></a>allowed_pattern | `string` | **Required.** A human readable description of the parameter.
+<a name="constraintObjectPattern"></a>allowed_pattern | `string` | **Required.** A regexp declaring the allowed pattern. 
 <a name="constraintObjectDescription"></a>description | `string` | **Required.** A human readable description of the parameter.
 
 
