@@ -25,6 +25,7 @@
                 "metadata": {
                     "required": false,
                     "description": "An object holding optional metadata related to the Container Application, this may include license information or human readable information.",
+                    "type": "object",
                     "value": {
                         "name": {
                             "required": false,
@@ -70,58 +71,89 @@
                     "description": "A list of depending containerapps. Strings may either match a local sub directory or another containerapp-spec compliant containerapp image that can be pulled via a provider.",
                     "type": "object",
                     "value": {
-                        "source": {
-                            "required": false,
-                            "description": "Source location of the Container Application, the source MUST be specified by a valid URL. If source is present, all other fields SHALL be ignored.",
-                            "type": "url",
-                            "value": null
-                        },
-                        "params": {
-                            "required": false,
-                            "description": "A list of ParamsObject that contain provider specific information. If params is present, source field SHALL be ignored.",
+                        "component": {
+                            "required": true,
+                            "name": null,
+                            "description": "Id of a component",
                             "type": "object",
                             "value": {
-                                "description": {
-                                    "required": true,
-                                    "description": "A human readable description of the parameter.",
-                                    "type": "string",
+                                "source": {
+                                    "required": false,
+                                    "description": "Source location of the Container Application, the source MUST be specified by a valid URL. If source is present, all other fields SHALL be ignored.",
+                                    "type": "url",
                                     "value": null
                                 },
-                                "constraints": {
+                                "params": {
                                     "required": false,
-                                    "description": "An optional definition of constraints to the parameter.",
+                                    "description": "A list of ParamsObject that contain provider specific information. If params is present, source field SHALL be ignored.",
                                     "type": "object",
                                     "value": {
-                                        "allowed_pattern": {
+                                        "param": {
                                             "required": true,
-                                            "description": "A regular expression pattern.",
-                                            "type": "string",
-                                            "value": null
-                                        },
-                                        "description": {
-                                            "required": true,
-                                            "description": "A human readable description of the parameter.",
-                                            "type": "string",
-                                            "value": null
+                                            "name": null,
+                                            "description": "Name of the parameter as used in artifacts",
+                                            "type": "object",
+                                            "value": {
+                                                "description": {
+                                                    "required": true,
+                                                    "description": "A human readable description of the parameter.",
+                                                    "type": "string",
+                                                    "value": null
+                                                },
+                                                "constraints": {
+                                                    "required": false,
+                                                    "description": "An optional definition of constraints to the parameter.",
+                                                    "type": "object",
+                                                    "value": {
+                                                        "allowed_pattern": {
+                                                            "required": true,
+                                                            "description": "A regular expression pattern.",
+                                                            "type": "string",
+                                                            "value": null
+                                                        },
+                                                        "description": {
+                                                            "required": true,
+                                                            "description": "A human readable description of the constraint.",
+                                                            "type": "string",
+                                                            "value": null
+                                                        }
+                                                    }
+                                                },
+                                                "default": {
+                                                    "required": false,
+                                                    "description": "An optional default value for the parameter.",
+                                                    "type": "string",
+                                                    "value": null
+                                                }
+                                            }
                                         }
                                     }
-                                },
-                                "default": {
-                                    "required": false,
-                                    "description": "An optional default value for the parameter.",
-                                    "type": "string",
-                                    "value": null
                                 }
                             }
                         },
                         "artifacts": {
                             "required": false,
-                            "description": "A list of ArtifactsObject that contain providr specific information. If artifacts is present, source field SHALL be ignored.",
+                            "description": "A list of ArtifactsObject that contain provider specific information. If artifacts is present, source field SHALL be ignored.",
                             "type": "object",
-                            "value": [
-                                 "kubernetes",
-                                 "openshift"
-                            ]
+                            "value": {
+                                "provider": {
+                                    "required": true,
+                                    "description": "Name of the provider",
+                                    "name": [
+                                        "kubernetes",
+                                        "openshift"
+                                    ],
+                                    "type": "list",
+                                    "value": {
+                                        "artifact": {
+                                            "required": true,
+                                            "description": "Path to the artifact",
+                                            "type": "string",
+                                            "value": null
+                                        }
+                                    }
+                                }
+                            }
                         }
                     }
                 },
@@ -129,9 +161,17 @@
                     "required": false,
                     "description": "A list of requirements of this containerapp.",
                     "type": "object",
-                    "value": [
-                        "persistentVolume"
-                    ]
+                    "value": {
+                        "requirement": {
+                            "required": true,
+                            "description": "Requirement object ",
+                            "name": [
+                                "persistentVolume"
+                            ],
+                            "type": "list",
+                            "value": null
+                        }
+                    }
                 }
             }
         },
