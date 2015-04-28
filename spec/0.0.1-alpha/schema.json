@@ -128,28 +128,28 @@
                                             }
                                         }
                                     }
-                                }
-                            }
-                        },
-                        "artifacts": {
-                            "required": false,
-                            "description": "A list of ArtifactsObject that contain provider specific information. If artifacts is present, source field SHALL be ignored.",
-                            "type": "object",
-                            "value": {
-                                "provider": {
-                                    "required": true,
-                                    "description": "Name of the provider",
-                                    "name": [
-                                        "kubernetes",
-                                        "openshift"
-                                    ],
-                                    "type": "list",
+                                },
+                                "artifacts": {
+                                    "required": false,
+                                    "description": "A list of ArtifactsObject that contain provider specific information. If artifacts is present, source field SHALL be ignored.",
+                                    "type": "object",
                                     "value": {
-                                        "artifact": {
+                                        "provider": {
                                             "required": true,
-                                            "description": "Path to the artifact",
-                                            "type": "string",
-                                            "value": null
+                                            "description": "Name of the provider",
+                                            "name": [
+                                                "kubernetes",
+                                                "openshift"
+                                            ],
+                                            "type": "list",
+                                            "value": {
+                                                "artifact": {
+                                                    "required": true,
+                                                    "description": "Path to the artifact",
+                                                    "type": "string",
+                                                    "value": null
+                                                }
+                                            }
                                         }
                                     }
                                 }
