@@ -1,10 +1,15 @@
 # Container Application Specification
 
-## Goals
+## What it is
 
-1. Provide a simple, flexible way to describe a multi-container application, including all dependencies.
-1. Provide a way for an application designer to describe an application while allowing a sysadmin a clear way to parameterize the deployment at runtime.
-1. Provide a versioned specification for developer tools and runtime implementations to agree on.
+1. A standard to describe multi-container applications and their dependencies with support for multiple deployment platforms.
+1. A method to describe and deploy application composites from multiple sources.
+1. A method of packaging and distributing applications via container technology.
+1. A versioned specification for developer tools and runtime implementations to agree on.
+
+**What's a "Nulecule"?**
+
+It's a made-up word meaning ["the mother of all atomic particles"](http://simpsons.wikia.com/wiki/Made-up_words) pronounced `nu-le-cule`
 
 ## User Experience
 
