@@ -4,7 +4,9 @@
     "type": "list",
     "value": [
         {
-            "ref": "requirements/persistentvolume.json"
+            "persistentVolume": {
+                "ref": "requirements/persistentvolume.json"
+            }
         }
     ]
 }
