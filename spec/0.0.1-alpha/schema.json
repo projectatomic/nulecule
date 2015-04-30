@@ -2,6 +2,7 @@
     "version": "0.0.1-alpha",
     "description": "The Container Application specification is a project to describe 'an Application' that is composed of a set of dependent Container Applications (containerapp). The Container Application specification defines a set of files required to describe such a containerapp. These files can then be used by other tools to deploy a containerapp. Developers may use other tools to generate most of the required containerapp files. Additional utilities can also take advantage of the resulting files, such as testing tools.",
     "format": "The files describing a containerapp in accordance with the Container Application Specification are represented using YAML 1.2 or JSON.",
+    "source": "https://raw.githubusercontent.com/projectatomic/nulecule/master/spec/0.0.1-alpha/schema.json",
     "elements": [
         {
             "name": "Atomicfile",
@@ -11,165 +12,33 @@
             "required": true,
             "contents": {
                 "id": {
-                    "required": true,
+                    "multiplicity": "1",
                     "description": "The machine readable id of the Container Application.",
                     "type": "string",
                     "value": null
                 },
                 "specversion": {
-                    "required": true,
+                    "multiplicity": "1",
                     "description": "The semantic version string of the Container Application Specification used to describe the app. The value MUST be '0.0.1-alpha'.",
                     "type": "string",
                     "value": "0.0.1-alpha"
                 },
                 "metadata": {
-                    "required": false,
-                    "description": "An object holding optional metadata related to the Container Application, this may include license information or human readable information.",
-                    "type": "object",
-                    "value": {
-                        "name": {
-                            "required": false,
-                            "description": "A human readable name of the containerapp.",
-                            "type": "string",
-                            "value": null
-                        },
-                        "appversion": {
-                            "required": false,
-                            "description": "The semantic version string of the Container Application.",
-                            "type": "string",
-                            "value": null
-                        },
-                        "description": {
-                            "required": false,
-                            "description": "A human readable description of the Container Application. This may contain information for the deployer of the containerapp.",
-                            "type": "string",
-                            "value": null
-                        },
-                        "license": {
-                            "required": false,
-                            "description": "",
-                            "type": "object",
-                            "value": {
-                                "name": {
-                                    "required": true,
-                                    "description": "The human readable license name used for the Container Application, no format imposed.",
-                                    "type": "string",
-                                    "value": null
-                                },
-                                "url": {
-                                    "required": false,
-                                    "description": "A URL to the license used for the API. MUST be in the format of a URL.",
-                                    "type": "string",
-                                    "value": null
-                                }
-                            }
-                        }
-                    }
+                    "ref": "metadata.json",
+                    "multiplicity": "0..1"
                 },
                 "graph": {
-                    "required": true,
-                    "description": "A list of depending containerapps. Strings may either match a local sub directory or another containerapp-spec compliant containerapp image that can be pulled via a provider.",
-                    "type": "object",
-                    "value": {
-                        "component": {
-                            "required": true,
-                            "name": null,
-                            "description": "Id of a component",
-                            "type": "object",
-                            "value": {
-                                "source": {
-                                    "required": false,
-                                    "description": "Source location of the Container Application, the source MUST be specified by a valid URL. If source is present, all other fields SHALL be ignored.",
-                                    "type": "url",
-                                    "value": null
-                                },
-                                "params": {
-                                    "required": false,
-                                    "description": "A list of ParamsObject that contain provider specific information. If params is present, source field SHALL be ignored.",
-                                    "type": "object",
-                                    "value": {
-                                        "param": {
-                                            "required": true,
-                                            "name": null,
-                                            "description": "Name of the parameter as used in artifacts",
-                                            "type": "object",
-                                            "value": {
-                                                "description": {
-                                                    "required": true,
-                                                    "description": "A human readable description of the parameter.",
-                                                    "type": "string",
-                                                    "value": null
-                                                },
-                                                "constraints": {
-                                                    "required": false,
-                                                    "description": "An optional definition of constraints to the parameter.",
-                                                    "type": "object",
-                                                    "value": {
-                                                        "allowed_pattern": {
-                                                            "required": true,
-                                                            "description": "A regular expression pattern.",
-                                                            "type": "string",
-                                                            "value": null
-                                                        },
-                                                        "description": {
-                                                            "required": true,
-                                                            "description": "A human readable description of the constraint.",
-                                                            "type": "string",
-                                                            "value": null
-                                                        }
-                                                    }
-                                                },
-                                                "default": {
-                                                    "required": false,
-                                                    "description": "An optional default value for the parameter.",
-                                                    "type": "string",
-                                                    "value": null
-                                                }
-                                            }
-                                        }
-                                    }
-                                },
-                                "artifacts": {
-                                    "required": false,
-                                    "description": "A list of ArtifactsObject that contain provider specific information. If artifacts is present, source field SHALL be ignored.",
-                                    "type": "object",
-                                    "value": {
-                                        "provider": {
-                                            "required": true,
-                                            "description": "Name of the provider",
-                                            "name": [
-                                                "kubernetes",
-                                                "openshift"
-                                            ],
-                                            "type": "list",
-                                            "value": {
-                                                "artifact": {
-                                                    "required": true,
-                                                    "description": "Path to the artifact",
-                                                    "type": "string",
-                                                    "value": null
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
+                    "ref": "graph.json",
+                    "multiplicity": "1"
                 },
                 "requirements": {
-                    "required": false,
+                    "multiplicity": "0..1",
                     "description": "A list of requirements of this containerapp.",
                     "type": "object",
                     "value": {
                         "requirement": {
-                            "required": true,
-                            "description": "Requirement object ",
-                            "name": [
-                                "persistentVolume"
-                            ],
-                            "type": "list",
-                            "value": null
+                            "ref": "requirement.json",
+                            "multiplicity": "1..n"
                         }
                     }
                 }

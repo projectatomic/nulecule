@@ -1,0 +1,19 @@
+{
+    "description": "Constraint to the parameter.",
+    "name": "constraint%d",
+    "type": "object",
+    "value": {
+        "allowed_pattern": {
+            "multiplicity": "1",
+            "description": "A regular expression pattern.",
+            "type": "string",
+            "value": null
+        },
+        "description": {
+            "multiplicity": "1",
+            "description": "A human readable description of the constraint.",
+            "type": "string",
+            "value": null
+        }
+    }
+}
