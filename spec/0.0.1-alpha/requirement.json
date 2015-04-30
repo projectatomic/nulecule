@@ -1,0 +1,12 @@
+{
+    "description": "Requirement object",
+    "name": null,
+    "type": "list",
+    "value": [
+        {
+            "persistentVolume": {
+                "ref": "requirements/persistentvolume.json"
+            }
+        }
+    ]
+}

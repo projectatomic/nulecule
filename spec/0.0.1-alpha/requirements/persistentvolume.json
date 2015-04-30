@@ -1,0 +1,28 @@
+{
+    "description": "This describes a requirement for persistent, read-only or read-write storage that should be available to the containerapp on runtime. The name of this object MUST be 'persistentVolume'",
+    "type": "object",
+    "name": "persistentVolume",
+    "value": {
+        "name": {
+            "multiplicity": "1",
+            "description": "A name associated with the storage requirement.",
+            "type": "string",
+            "value": null
+        },
+        "accessMode": {
+            "description": "Access mode in which the persitent volume will be available",
+            "multiplicity": "1",
+            "type": "string",
+            "value": [
+                "ReadWrite",
+                "ReadOnly"
+            ]
+        },
+        "size": {
+            "description": "Size of required the storage.",
+            "multiplicity": "1",
+            "type": "integer",
+            "value": null
+        }
+    }
+}

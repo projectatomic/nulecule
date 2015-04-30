@@ -1,0 +1,30 @@
+{
+    "name": null,
+    "description": "Name of the parameter as used in artifacts",
+    "type": "object",
+    "value": {
+        "description": {
+            "multiplicity": "1",
+            "description": "A human readable description of the parameter.",
+            "type": "string",
+            "value": null
+        },
+        "constraints": {
+            "multiplicity": "0..1",
+            "description": "An optional definition of constraints to the parameter.",
+            "type": "list",
+            "value": {
+                "constraint": {
+                    "ref": "constraint.json",
+                    "multiplicity": "1..n"
+                }
+            }
+        },
+        "default": {
+            "multiplicity": "0..1",
+            "description": "An optional default value for the parameter.",
+            "type": "string",
+            "value": null
+        }
+    }
+}
