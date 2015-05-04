@@ -1,80 +1,29 @@
 {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+
+    "title": "Schema",
     "version": "0.0.1-alpha",
     "description": "The Container Application specification is a project to describe 'an Application' that is composed of a set of dependent Container Applications (containerapp). The Container Application specification defines a set of files required to describe such a containerapp. These files can then be used by other tools to deploy a containerapp. Developers may use other tools to generate most of the required containerapp files. Additional utilities can also take advantage of the resulting files, such as testing tools.",
-    "format": "The files describing a containerapp in accordance with the Container Application Specification are represented using YAML 1.2 or JSON.",
-    "source": "https://raw.githubusercontent.com/projectatomic/nulecule/master/spec/0.0.1-alpha/schema.json",
-    "elements": [
-        {
-            "name": "Atomicfile",
-            "value": "Atomicfile",
-            "description": "Application template. This is the root object for the specification.",
-            "type": "file",
-            "required": true,
-            "contents": {
-                "id": {
-                    "multiplicity": "1",
-                    "description": "The machine readable id of the Container Application.",
-                    "type": "string",
-                    "value": null
-                },
-                "specversion": {
-                    "multiplicity": "1",
-                    "description": "The semantic version string of the Container Application Specification used to describe the app. The value MUST be '0.0.1-alpha'.",
-                    "type": "string",
-                    "value": "0.0.1-alpha"
-                },
-                "metadata": {
-                    "ref": "metadata.json",
-                    "multiplicity": "0..1"
-                },
-                "graph": {
-                    "ref": "graph.json",
-                    "multiplicity": "1"
-                },
-                "requirements": {
-                    "multiplicity": "0..1",
-                    "description": "A list of requirements of this containerapp.",
-                    "type": "object",
-                    "value": {
-                        "requirement": {
-                            "ref": "requirement.json",
-                            "multiplicity": "1..n"
-                        }
-                    }
-                }
-            }
+    "required": [ "id", "specversion", "graph" ],
+    "properties": {
+        "id": {
+            "description": "The machine readable id of the Container Application.",
+            "type": "string",
+            "default": "null"
         },
-        {
-            "name": "README",
-            "value": "README.md",
-            "description": "information for deploying this application targetted towards deployment ops sysadmin",
-            "type": "file",
-            "required": false,
-            "contents": null
+        "specversion": {
+            "description": "The semantic version string of the Container Application Specification used to describe the app. The value MUST be '0.0.1-alpha'.",
+            "type": "string",
+            "default": "0.0.1-alpha"
         },
-        {
-            "name": "Dockerfile",
-            "value": "Dockerfile",
-            "description": "standard packaging for this application metadata",
-            "type": "file",
-            "required": true,
-            "contents": "FROM scratch\n\nADD / /application-entity"
+        "metadata": {
+            "$ref": "file:metadata.json"
         },
-        {
-            "name": "provider",
-            "value": null,
-            "description": "directories of applications referenced in Atomicfile",
-            "type": "directory",
-            "required": false,
-            "contents": [
-                {
-                    "name": "application",
-                    "value": null,
-                    "description": "a file referenced in the Atomicfile via file://<path/to/file> URI",
-                    "type": "file",
-                    "contents": null
-                }
-            ]
+        "graph": {
+            "$ref": "file:graph.json"
+        },
+        "requirements": {
+            "$ref": "file:requirement.json"
         }
-    ]
+    }
 }

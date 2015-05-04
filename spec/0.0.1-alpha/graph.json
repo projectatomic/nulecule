@@ -1,40 +1,35 @@
 {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+
+    "title": "Graph",
     "description": "A list of depending containerapps. Strings may either match a local sub directory or another containerapp-spec compliant containerapp image that can be pulled via a provider.",
-    "name": "graph",
-    "type": "collection",
-    "value": {
+    "type": "object",
+    "additionalProperties" : {
+        "$ref": "#/definitions/component"
+    },
+
+    "definitions": {
         "component": {
-            "multiplicity": "1..n",
-            "name": null,
-            "description": "Id of a component",
+            "description": "ID of a component",
             "type": "object",
-            "value": {
+            "properties": {
                 "source": {
-                    "multiplicity": "0..1",
                     "description": "Source location of the Container Application, the source MUST be specified by a valid URL. If source is present, all other fields SHALL be ignored.",
-                    "type": "url",
-                    "value": null
+                    "type": "string",
+                    "default": "null"
                 },
                 "params": {
-                    "multiplicity": "0..1",
                     "description": "A list of ParamsObject that contain provider specific information. If params is present, source field SHALL be ignored.",
-                    "type": "collection",
-                    "value": {
-                        "param": {
-                            "ref": "param.json",
-                            "multiplicity": "1..n"
-                        }
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "file:param.json"
                     }
                 },
                 "artifacts": {
-                    "multiplicity": "0..1",
                     "description": "A list of ArtifactsObject that contain provider specific information. If artifacts is present, source field SHALL be ignored.",
-                    "type": "collection",
-                    "value": {
-                        "provider": {
-                            "ref": "provider.json",
-                            "multiplicity": "1..n"
-                        }
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "file:provider.json"
                     }
                 }
             }

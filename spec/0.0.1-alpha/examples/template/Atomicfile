@@ -34,6 +34,6 @@ graph:
 
 requirements:
 - persistentVolume:
-  name: "var-lib-data"
-  accessMode: "ReadWrite"
-  size: 4
+    name: "var-lib-data"
+    accessMode: "ReadWrite"
+    size: 4
