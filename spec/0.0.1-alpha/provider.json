@@ -1,24 +1,28 @@
 {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+
+    "title": "Provider",
     "description": "Name of the provider",
-    "name": [
-        "kubernetes",
-        "openshift"
-    ],
-    "type": "list",
-    "value": {
-        "artifact": {
-            "multiplicity": "1..n",
-            "name": null,
+    "type": "array",
+    "items": {
+        "oneOf": [ { "$ref": "#/definitions/path" }, { "$ref": "#/definitions/inheritance" } ]
+    },
+
+    "definitions": {
+        "path": {
             "description": "Path to the artifact",
             "type": "string",
-            "value": null
+            "value": "null"
         },
-        "inherit": {
-            "multiplicity": "0..1",
-            "name": "inherit",
-            "description": "List of components whose artifacts will be added to the list of artifacts for the provider.",
-            "type": "list",
-            "value": null
+        "inheritance": {
+            "type": "object",
+            "properties": {
+                "inherit": {
+                    "name": "inherit",
+                    "description": "List of components whose artifacts will be added to the list of artifacts for the provider.",
+                    "type": "array"
+                }
+            }
         }
     }
 }

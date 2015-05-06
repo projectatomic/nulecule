@@ -1,30 +1,23 @@
 {
-    "name": null,
+    "$schema": "http://json-schema.org/draft-04/schema#",
+
+    "title": "Parameter",
     "description": "Name of the parameter as used in artifacts",
     "type": "object",
-    "value": {
+    "required": [ "description" ],
+    "properties": {
         "description": {
-            "multiplicity": "1",
             "description": "A human readable description of the parameter.",
             "type": "string",
-            "value": null
+            "default": "null"
         },
         "constraints": {
-            "multiplicity": "0..1",
-            "description": "An optional definition of constraints to the parameter.",
-            "type": "list",
-            "value": {
-                "constraint": {
-                    "ref": "constraint.json",
-                    "multiplicity": "1..n"
-                }
-            }
+            "$ref": "file:constraint.json"
         },
         "default": {
-            "multiplicity": "0..1",
             "description": "An optional default value for the parameter.",
             "type": "string",
-            "value": null
+            "default": "null"
         }
     }
 }

@@ -1,29 +1,27 @@
 {
-    "name": "metadata",
+    "$schema": "http://json-schema.org/draft-04/schema#",
+
+    "title": "Metadata",
     "description": "An object holding optional metadata related to the Container Application, this may include license information or human readable information.",
     "type": "object",
-    "value": {
+    "properties": {
         "name": {
-            "multiplicity": "0..1",
             "description": "A human readable name of the containerapp.",
             "type": "string",
-            "value": null
+            "default": "null"
         },
         "appversion": {
-            "multiplicity": "0..1",
             "description": "The semantic version string of the Container Application.",
             "type": "string",
-            "value": null
+            "default": "null"
         },
         "description": {
-            "multiplicity": "0..1",
             "description": "A human readable description of the Container Application. This may contain information for the deployer of the containerapp.",
             "type": "string",
-            "value": null
+            "default": "null"
         },
         "license": {
-            "ref": "license.json",
-            "multiplicity": "0..1"
+            "$ref": "file:license.json"
         }
     }
 }
