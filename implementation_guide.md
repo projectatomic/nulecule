@@ -1,6 +1,6 @@
 # Implementation Guide
 
-This specification has been fully described in the [schema.json](/spec/0.0.1-alpha/schema.json) file. Developer and deployment tools should be implemented using this file.
+This specification has been fully described in the [schema.json](/spec/0.0.2/schema.json) file. Developer and deployment tools should be implemented using this file.
 
 ## Developer Tools
 
