@@ -12,7 +12,7 @@ Wizard-style tools that generate the files for an application require these fiel
 * description
 * version (application)
 
-Each "application" component the user wants to define will compose the "graph" for the Aomicfile. A component may either be a remote application or defined locally in the directory structure.
+Each "application" component the user wants to define will compose the "graph" for the Atomicfile. A component may either be a remote application or defined locally in the directory structure.
 
 **Remote applications**
 
