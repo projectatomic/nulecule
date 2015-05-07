@@ -1,10 +1,25 @@
 # Container Application Specification
 
-## Goals
+## Problem Statement
+Currently there is no standard mechanism to define a composite multi-container application or composite service composed of aggregate pre-defined building blocks spanning multiple hosts and clustered deployments. In addition, the associated metadata and artifact management requires separate processes outside the context of the application itself. 
 
-1. Provide a simple, flexible way to describe a multi-container application, including all dependencies.
-1. Provide a way for an application designer to describe an application while allowing a sysadmin a clear way to parameterize the deployment at runtime.
-1. Provide a versioned specification for developer tools and runtime implementations to agree on.
+## What is Nulecule?
+It's a made-up word meaning ["the mother of all atomic particles"](http://simpsons.wikia.com/wiki/Made-up_words) pronounced `nu-le-cule`
+
+Nulecule defines a pattern and model for packaging complex multi-container applications, referencing all their dependencies, including orchestration metadata in a container image for building, deploying, monitoring, and active management.
+
+Nulecule specification enables complex applications to be defined, packaged and distributed using standard container technologies. The resulting container includes dependencies while supporting multiple orchestration providers and ability to specify resource requirements. The Nulecule specification also supports aggregation of multiple composite applications. The Nulecule specification is container and orchestration agnostic, enabling the use of any container and orchestration engine.
+
+## Nulecule Specification Highlights
+
+* Application description and context maintained within a single container through extensible metadata
+* Composable definition of complex applications through inheritance and composition of containers into a single, standards-based, portable description.
+* Simplified dependency management for the most complex applications through a directed graph to reflect relationships.
+* Container and orchestration engine agnostic, enabling the use of any container technology and/or orchestration technology
+
+## “The Big Picture”
+
+![Alt Nulecule specification high-level story.](/images/NuleculeHigh-LevelStory.png "Nulecule specification high-level story")
 
 ## User Experience
 
