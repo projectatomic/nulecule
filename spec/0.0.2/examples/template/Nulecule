@@ -26,9 +26,11 @@ graph:
             - provider1
     name: mycode
     params: 
-      password: 
+      -
+        name: password
         description: passphrase
-      username: 
+      -
+        name: username
         constraints: 
           - 
             allowed_pattern: "[A-Z0-9]+"

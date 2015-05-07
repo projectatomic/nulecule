@@ -174,12 +174,13 @@ source: uri://registry.devops.example.com
 
 #### <a name="paramsObject"></a>Parameters Object
 
-A set of Parameters the containerapp requires, has set some defaults for or needs user input.
+A list of Parameters the containerapp requires, has set some defaults for or needs user input.
 
 ##### Fields
 
 Field Name | Type | Description
 ---|:---:|---
+<a name="parametersName"></a>name| `string` | **Required.** The name of the parameter.
 <a name="parametersDescription"></a>description | `string` | **Required.** A human readable description of the parameter.
 <a name="parametersConstraints"></a>constraints | [ConstraintObject](#constraintObject) | **Optional** An optional definition of constraints to the parameter.
 <a name="parametersDefault"></a>default | `string` | **Optional** An optional default value for the parameter.
@@ -187,6 +188,7 @@ Field Name | Type | Description
 ##### Parameters Object Example:
 
 ```yaml
+name: password
 description: mongoDB Admin password
 constraints: 
   - allowed_pattern: "[A-Z0-9]+"
@@ -194,6 +196,7 @@ constraints:
 ```
 ```js
 {
+  "name": "password",
   "description": "mongoDB Admin password",
   "constraints": [
     {
