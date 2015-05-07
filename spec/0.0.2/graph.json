@@ -13,7 +13,7 @@
             "description": "ID of a component",
             "type": "object",
             "required": [ "name" ],
-            "properties": {
+            "properties": [{
                 "name": {
                     "description": "The name of the depending Container Application.",
                     "type": "string",
@@ -38,7 +38,7 @@
                         "$ref": "file:provider.json"
                     }
                 }
-            }
+            }]
         }
     }
 }
