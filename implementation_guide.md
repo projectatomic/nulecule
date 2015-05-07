@@ -12,7 +12,7 @@ Wizard-style tools that generate the files for an application require these fiel
 * description
 * version (application)
 
-Each "application" component the user wants to define will compose the "graph" for the Atomicfile. A component may either be a remote application or defined locally in the directory structure.
+Each "application" component the user wants to define will compose the "graph" for the Nulecule. A component may either be a remote application or defined locally in the directory structure.
 
 **Remote applications**
 
@@ -22,7 +22,7 @@ Remote applications are simply container images, for example `someuser/mariadb-a
 
 Local applications are defined by a directory in the graph. These fields are required for input:
 
-* application name: this is added to the Atomicfile graph and creates a directory in the graph.
+* application name: this is added to the Nulecule graph and creates a directory in the graph.
 * provider: a subdirectory of the application directory
 
 **Providers**
