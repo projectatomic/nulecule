@@ -22,7 +22,7 @@ Remote applications are simply container images, for example `someuser/mariadb-a
 
 Local applications are defined by a directory in the graph. These fields are required for input:
 
-* application name: this is added to the Atomicfile graph and creates a directory in the graph.
+* application name: this is added to the Nulecule graph and creates a directory in the graph.
 * provider: a subdirectory of the application directory
 
 **Providers**

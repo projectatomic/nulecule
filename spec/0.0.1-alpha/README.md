@@ -32,7 +32,7 @@ The files describing a containerapp in accordance with the Container Application
 
 All field names in the specification are **case sensitive**.
 
-By convention, the containerapp specification file is named `Atomicfile`. The Atomicfile is the primary file defining the containerapp and it's relationship to dependencies.
+By convention, the containerapp definition file is named `Nulecule`. The Nulecule is the primary file defining the containerapp and it's relationship to dependencies.
 
 ### Data Types
 
@@ -293,7 +293,7 @@ artifacts: # list of files to be processed by the provider selected at install-t
 ## Directory Layout
 
 ```
-├── Atomicfile
+├── Nulecule 
 ├── Dockerfile
 ├── <provider_files_dir>
 │   ├── ...
@@ -301,7 +301,7 @@ artifacts: # list of files to be processed by the provider selected at install-t
 └── README.md
 ```
 
-* `Atomicfile`: Container Application definition
+* `Nulecule`: Container Application definition
 * `Dockerfile`: standard packaging for this containerapp
 * `<provider_files_dir>`: directories of provider-specific files referenced in a containerapp definition file
   * `PROVIDER_FILES`: provider-specific files necessary for deploying to provider
