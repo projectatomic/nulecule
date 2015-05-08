@@ -11,34 +11,27 @@ metadata:
     url: www.example.com/license
 
 graph: 
-  - 
-    name: somedb
+  - name: somedb
     source: "docker://registry.example.com/some/database"
-  - 
-    artifacts: 
+  - artifacts: 
       provider1: 
-        - "file://providers/pod.json"
-        - "file://providers/service.json"
+        - "file://artifacts/provider1/pod.json"
+        - "file://artifacts/provider1/service.json"
       provider2: 
-        - "file://providers/file.json"
-        - 
-          inherit: 
+        - "file://artifacts/provider2/file.json"
+        - inherit: 
             - provider1
     name: mycode
     params: 
-      -
-        name: password
+      - name: password
         description: passphrase
-      -
-        name: username
+      - name: username
         constraints: 
-          - 
-            allowed_pattern: "[A-Z0-9]+"
+          - allowed_pattern: "[A-Z0-9]+"
             description: "Must consist of characters and numbers only."
         description: username
 requirements: 
-  - 
-    persistentVolume: 
+  - persistentVolume: 
       accessMode: ReadWrite
       name: var-lib-data
       size: 4
