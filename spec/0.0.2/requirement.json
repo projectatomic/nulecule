@@ -1,0 +1,12 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+
+    "title": "Requirements",
+    "description": "Requirement objects",
+    "type": "array",
+    "items": {
+        "oneOf": [
+            { "$ref": "file:requirements/persistentvolume.json" }
+        ]
+    }
+}

@@ -1,0 +1,23 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+
+    "title": "Constraint",
+    "description": "Constraint to the parameter.",
+    "type": "array",
+    "items": {
+        "type": "object",
+        "required": [ "allowed_pattern", "description" ],
+        "properties": {
+            "allowed_pattern": {
+                "description": "A regular expression pattern.",
+                "type": "string",
+                "default": "null"
+            },
+            "description": {
+                "description": "A human readable description of the constraint.",
+                "type": "string",
+                "default": "null"
+            }
+        }
+    }
+}
