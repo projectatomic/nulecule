@@ -184,12 +184,14 @@ Field Name | Type | Description
 <a name="parametersDescription"></a>description | `string` | **Required.** A human readable description of the parameter.
 <a name="parametersConstraints"></a>constraints | [ConstraintObject](#constraintObject) | **Optional** An optional definition of constraints to the parameter.
 <a name="parametersDefault"></a>default | `string` | **Optional** An optional default value for the parameter.
+<a name="parametersHidden"></a>hidden | `string` | **Optional** An optional boolean signifying the parameter should be obscured when displayed. 
 
 ##### Parameters Object Example:
 
 ```yaml
 name: password
 description: mongoDB Admin password
+hidden: true
 constraints: 
   - allowed_pattern: "[A-Z0-9]+"
     description: Must consist of characters and numbers only.
@@ -198,6 +200,7 @@ constraints:
 {
   "name": "password",
   "description": "mongoDB Admin password",
+  "hidden": true
   "constraints": [
     {
       "allowed_pattern": "[A-Z0-9]+",
