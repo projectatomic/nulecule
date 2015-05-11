@@ -31,4 +31,4 @@ Provider files may be generated based on some templates. Providing a mechanism t
 
 ## Runtime Tools
 
-Reference implementation (python): https://github.com/vpavlin/atomicapp-run
+Reference implementation (python): https://github.com/projectatomic/atomicapp
