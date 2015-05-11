@@ -51,7 +51,7 @@ Rufus has been tasked to package an existing application into container images t
 
 ## Implementations
 
-This is only a specification. Implementations may be written in any language. See [implementation guide](/implementation_guide.md) for more details.
+This is only a specification. Implementations may be written in any language. See [implementation guide](/docs/implementation_guide.md) for more details.
 
 ### Developer tooling
 
