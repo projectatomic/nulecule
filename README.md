@@ -61,7 +61,7 @@ Developer implementation provides tooling to help developers quickly package sev
 
 Deployment implementation provides tooling for deploying the complete application using this spec.
 
-* Reference implementation (python): https://github.com/vpavlin/atomicapp-run
+* Reference implementation (python): https://github.com/projectatomic/atomicapp
 
 ### Contributing
 
