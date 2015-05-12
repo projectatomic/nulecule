@@ -1,0 +1,31 @@
+{
+  "apiVersion": "v1beta1",
+  "id": "mariadb",
+  "desiredState": {
+    "manifest": {
+      "version": "v1beta1",
+      "id": "mariadb",
+      "containers": [
+        {
+          "name": "mariadb",
+          "image": "$image",
+          "env": [
+            {"name": "USER", "value": "$db_user"},
+            {"name": "PASS", "value": "$db_pass"},
+            {"name": "NAME", "value": "$db_name"}
+          ],
+          "cpu": 1,
+          "ports": [
+            {
+              "containerPort": 3306
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "labels": {
+    "name": "mariadb"
+  },
+  "kind": "Pod"
+}

@@ -1,0 +1,31 @@
+---
+specversion: 0.0.1-alpha
+id: mariadb-app
+metadata:
+  name: MariaDB App
+  appversion: 0.0.1
+  description: This is a MariaDB Atomicapp
+  license:
+    name: GNU AFFERO GENERAL PUBLIC LICENSE, Version 3
+    url: https://www.gnu.org/licenses/agpl-3.0.html
+graph:
+  mariadb-app:
+    params:
+      db_user:
+        description: database user
+      db_pass:
+        description: Database password
+      db_name:
+        description: database name
+      image:
+        description: which mariadb image to use (including registry if not docker hub)
+        default: fedora/mariadb
+    artifacts:
+      #i feel like i should be able to specify the dockerimage for maria here,
+      #but I don't it is in the kube file
+      #
+      # also, these will be ultimately ignored in favor of ones in the "caller"
+      # this also seems weird
+      kubernetes:
+        - file://graph/k8s/mariadb-pod.json
+        - file://graph/k8s/mariadb-service.json
