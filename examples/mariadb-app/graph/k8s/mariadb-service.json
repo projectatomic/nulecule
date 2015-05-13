@@ -1,0 +1,13 @@
+{
+  "kind": "Service",
+  "apiVersion": "v1beta1",
+  "id": "mariadb",
+  "port": 3306,
+  "selector": {
+    "name": "mariadb"
+  },
+  "containerPort": 3306,
+  "labels": {
+    "name": "db"
+  }
+}
