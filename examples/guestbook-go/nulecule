@@ -1,0 +1,46 @@
+---
+specversion: 0.0.1-alpha
+id: guestbookgo-app
+
+metadata:
+  name: Guestbook-Go App
+  appversion: 0.0.1
+  description: Atomic app for deploying the k8s guestbook-go app
+graph:
+  guestbookfront-app:
+    params:
+      image:
+        description: The frontend part
+        default: kubernetes/guestbook:v2
+      hostport:
+        description: The host TCP port as the external endpoint
+        default: 80
+    artifacts:
+      kubernetes:
+        - file://artifacts/k8s/guestbook-controller.json
+        - file://artifacts/k8s/guestbook-service.json
+  redismaster-app:
+    params:
+      image:
+        description: The redis master part
+        default: gurpartap/redis
+      hostport:
+        description: The host TCP port as the external endpoint
+        default: 6379
+    artifacts:
+      kubernetes:
+        - file://artifacts/k8s/redis-master-controller.json
+        - file://artifacts/k8s/redis-master-service.json
+  redisslave-app:
+    params:
+      image:
+        description: The redis slave part
+        default: gurpartap/redis
+      hostport:
+        description: The host TCP port as the external endpoint
+        default: 6379
+    artifacts:
+      kubernetes:
+        - file://artifacts/k8s/redis-slave-controller.json
+        - file://artifacts/k8s/redis-slave-service.json
+
