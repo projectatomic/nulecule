@@ -1,0 +1,20 @@
+---
+specversion: 0.0.1-alpha
+id: helloapache-app
+
+metadata:
+  name: Hello Apache App
+  appversion: 0.0.1
+  description: Atomic app for deploying a really basic Apache HTTP server
+graph:
+  helloapache-app:
+    params:
+      image:
+        description: The webserver image
+        default: centos/httpd
+      hostport:
+        description: The host TCP port as the external endpoint
+        default: 80
+    artifacts:
+      kubernetes:
+        - file://artifacts/k8s/hello-apache-pod.json

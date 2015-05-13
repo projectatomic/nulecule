@@ -1,0 +1,25 @@
+{
+    "apiVersion": "v1beta3",
+    "kind": "Pod",
+    "metadata": {
+        "labels": {
+            "app": "helloapache"
+        },
+        "name": "helloapache"
+    },
+    "spec": {
+        "containers": [
+            {
+                "image": "$image",
+                "name": "helloapache",
+                "ports": [
+                    {
+                        "containerPort": 80,
+                        "hostPort": $hostport,
+                        "protocol": "TCP"
+                    }
+                ]
+            }
+        ]
+    }
+}
