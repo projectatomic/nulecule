@@ -8,7 +8,7 @@
       }
    },
    "spec":{
-      "createExternalLoadBalancer": true,
+      "publicIPs": ["$CHANGEME"],
       "ports": [
          {
            "port":3000,

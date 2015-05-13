@@ -1,6 +1,6 @@
 FROM projectatomic/atomicapp:dev
 
-MAINTAINER Aaron Weitekamp <aweiteka@redhat.com>
+MAINTAINER Jason Brooks <jbrooks@redhat.com>
 
 ADD /nulecule /Dockerfile README.md /application-entity/
 ADD /artifacts /application-entity/artifacts
