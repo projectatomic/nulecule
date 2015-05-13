@@ -32,7 +32,7 @@ Nulecule specification enables complex applications to be defined, packaged and 
 * Provider - Plugin interface for specific deployment platform, an orchestration provider
 * Dependency Management: Refers to the ability to define order of deployment and managed dependencies including configurable parameters layered on top of stock container images, as well as the providers included in the application definition 
 * Directed Graph: Declarative representation of dependencies in the context of a Nulecule application
-Parameters - Variables that can have default values and can be overridden by the answers file
+* Parameters - Variables that can have default values and can be overridden by the answers file
 
 ## User Experience
 
