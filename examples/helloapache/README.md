@@ -6,7 +6,7 @@ It's a single pod based on the centos/httpd image, but you can use your own.
 
 Run the image. You will be prompted to override defaults
 ```
-[sudo] atomic run projectatomic/helloapache-app
+[sudo] atomic run projectatomic/helloapache
 ```
 
 ## Option 2: unattended
@@ -22,7 +22,7 @@ Run the image. You will be prompted to override defaults
 
 1. Run the application from the current working directory
 
-        $ [sudo] atomic run projectatomic/helloapache-app
+        $ [sudo] atomic run projectatomic/helloapache
         ...
         helloapache
 
@@ -32,7 +32,7 @@ You may want to download the application, review, edit the answerfile then run.
 
 1. Download the application files using `atomic install`
 
-        [sudo] atomic install projectatomic/helloapache-app
+        [sudo] atomic install projectatomic/helloapache
 
 1. Rename `answers.conf.sample`
 
@@ -40,7 +40,7 @@ You may want to download the application, review, edit the answerfile then run.
 
 1. Edit `answers.conf`, review files if desired and run
 
-        $ [sudo] atomic run projectatomic/helloapache-app
+        $ [sudo] atomic run projectatomic/helloapache
         ...
         helloapache
 
