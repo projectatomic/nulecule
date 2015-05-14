@@ -1,56 +1,26 @@
-This is an atomic application based on the nulecule specification. Kubernetes is currently the only supported provider. You'll need to run this from a workstation that has the atomic CLI and kubectl client that can connect to a kubernetes master.
+This is the [guestbook-go](https://github.com/GoogleCloudPlatform/kubernetes/tree/master/examples/guestbook-go) sample application from the kubernetes project, packaged as an atomic application based on the nulecule specification. 
 
-It's a single pod based on the centos/httpd image, but you can use your own.
+Kubernetes is currently the only supported provider. You'll need to run this from a workstation that has the atomic CLI and kubectl client that can connect to a kubernetes master. This example depends on kube-dns being configured on your kubernetes cluster.
 
-### Option 1: interactive
+### Step 1
 
-Run the image. You will be prompted to override defaults
-```
-[sudo] atomic run projectatomic/helloapache-app
-```
-
-## Option 2: unattended
-
-1. Create file `answers.conf` with these contents:
-
-        [general]
-        provider = kubernetes
-
-        [helloapache-app]
-        image = centos/httpd # optional: choose a different image
-        hostport = 80        # optional: choose a different port to expose
-
-1. Run the application from the current working directory
-
-        $ [sudo] atomic run projectatomic/helloapache-app
-        ...
-        helloapache
-
-### Option 3: install and run
-
-You may want to download the application, review, edit the answerfile then run.
-
-1. Download the application files using `atomic install`
-
-        [sudo] atomic install projectatomic/helloapache-app
-
-1. Rename `answers.conf.sample`
-
-        mv answers.conf.sample answers.conf
-
-1. Edit `answers.conf`, review files if desired and run
-
-        $ [sudo] atomic run projectatomic/helloapache-app
-        ...
-        helloapache
-
-## Test
-Any of these approaches should create a kubernetes pod. Once its state is "Running" curl the minion it's running on.
+Build this app:
 
 ```
-$ kubectl get pod fedoraapache
-POD                IP                  CONTAINER(S)       IMAGE(S)           HOST                LABELS              STATUS
-helloapache        172.17.0.8          helloapache        centos/httpd       10.3.9.216/         name=helloapache   Running
-$ curl 10.3.9.216
-<bunches_of_html_goodness>
+atomicapp build $USER/guestbookgo-app
 ```
+
+### Step 2 
+
+Run this app:
+
+```
+atomic run $USER/guestbookgo-app
+```
+
+You'll be prompted to replace the value `CHANGEME` with an IP address or addresses at which your app can be reached. On a single machine kubernetes cluster, for instance, you would provide the IP address of your single kubelet.
+
+### Step 3
+
+Access the guestbook. After a few minutes, you should be able to access the guestbook-go app at port 3000 of the IP address you provided.
+
