@@ -22,5 +22,5 @@ You'll be prompted to replace the value `publicip` with an IP address or address
 
 ### Step 3
 
-Access the guestbook. After a few minutes, you should be able to access the guestbook-go app at port 3000 of the IP address you provided.
+Access the guestbook. After the images are pulled (may take a few minutes), you should be able to access the guestbook-go app at port 3000 of the IP address you provided.
 
