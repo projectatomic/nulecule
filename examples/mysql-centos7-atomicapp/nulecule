@@ -1,0 +1,15 @@
+---
+specversion: 0.0.1-alpha
+id: mysql-atomicapp
+
+metadata:
+  name: MySQL Atomicapp
+  appversion: 1.0.0
+  description: This is MySQL
+graph:
+  mysql-atomicapp:
+    artifacts:
+      kubernetes:
+        - file://artifacts/kubernetes/mysql-pod.yaml
+        - file://artifacts/kubernetes/mysql-service.yaml
+

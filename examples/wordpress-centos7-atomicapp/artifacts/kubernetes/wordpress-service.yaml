@@ -1,0 +1,11 @@
+kind: Service
+apiVersion: v1beta1
+id: frontend
+port: 80
+selector:
+  name: frontend
+containerPort: 80
+labels:
+  name: frontend
+createExternalLoadBalancer: true
+
