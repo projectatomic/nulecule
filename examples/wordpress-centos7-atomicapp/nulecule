@@ -1,0 +1,17 @@
+---
+specversion: 0.0.1-alpha
+id: wordpress-atomicapp
+
+metadata:
+  name: Wordpress App
+  appversion: 1.0.0
+  description: Simple Wordpress atomic app. Uses remote mysql atomic app.
+graph:
+  aggregated-mysql-atomicapp:
+    source: docker://goern/mysql-centos7-atomicapp
+  wordpress:
+    artifacts:
+      kubernetes:
+        - file://artifacts/kubernetes/wordpress-pod.yaml
+        - file://artifacts/kubernetes/wordpress-service.yaml
+
