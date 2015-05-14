@@ -23,6 +23,11 @@
             "description": "An optional default value for the parameter.",
             "type": "string",
             "default": "null"
+        },
+        "hidden": {
+            "description": "An optional boolean signifying the parameter should be obscured when displayed.",
+            "type": "boolean",
+            "default": false
         }
     }]
 }
