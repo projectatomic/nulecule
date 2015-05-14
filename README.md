@@ -1,4 +1,4 @@
-# Container Application Specification
+# Composite Container-based Application Specification
 
 ## Problem Statement
 Currently there is no standard mechanism to define a composite multi-container application or composite service composed of aggregate pre-defined building blocks spanning multiple hosts and clustered deployments. In addition, the associated metadata and artifact management requires separate processes outside the context of the application itself. 
