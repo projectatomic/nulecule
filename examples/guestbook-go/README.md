@@ -18,7 +18,7 @@ Run this app:
 atomic run $USER/guestbookgo-app
 ```
 
-You'll be prompted to replace the value `CHANGEME` with an IP address or addresses at which your app can be reached. On a single machine kubernetes cluster, for instance, you would provide the IP address of your single kubelet.
+You'll be prompted to replace the value `publicip` with an IP address or addresses at which your app can be reached. On a single machine kubernetes cluster, for instance, you would provide the IP address of your single kubelet.
 
 ### Step 3
 

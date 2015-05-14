@@ -8,7 +8,7 @@
       }
    },
    "spec":{
-      "publicIPs": ["$CHANGEME"],
+      "publicIPs": ["$publicip"],
       "ports": [
          {
            "port":3000,
