@@ -1,0 +1,12 @@
+= Wordpress Atomicapp
+
+This is a Wordpress Atomicapp, it will use reuse MySQL and SkyDNS to
+provide a Kubernetes based Wordpress to you.
+
+== Usage
+
+`atomic run goern/wordpress-centos7-atomicapp`
+
+= Version
+
+This is version 1.1.0 of Wordpress Atomicapp.
