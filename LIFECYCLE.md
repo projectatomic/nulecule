@@ -8,3 +8,6 @@ The Nulecule Specification will have a certain set of releases, we will use sema
 
 Everybody is welcome to contribute to the draft version of the upcomming release. This will be documented by pull requests to the draft branch of the specification. Once a draft has stabalized, it will be prepared by the specification maintenance team and prepared for release. The maintainers will release a new release of the specification by tagging the repository.
 
+### changes to a releases
+
+Changes to released versions of the specification will not change the structure or feature set of the specification. They are only meant to fix spelling or languge errors, add or correct examples.
