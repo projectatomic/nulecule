@@ -33,26 +33,54 @@ Nulecule specification enables complex applications to be defined, packaged and 
 * __Directed Graph__ - Declarative representation of dependencies in the context of a multi-container Nulecule application
 * __Parameters__ - Variables that can have default values and can be overridden by answerfile.conf
 
-## User Experience
+## Deployment User Experience
 
-### Kelly the System Administrator
+Here's an example using the [atomicapp reference implementation](https://github.com/projectatomic/atomicapp) with a kubernetes provider.
 
-Kelly is deploying an application that she's been provided by Acme Corp's internal developer team, led by Rufus.
+### Option 1: interactive
 
-1. Download the application README and answerfile template
+Run the image. You will be prompted to override defaults
+```
+[sudo] atomic run projectatomic/helloapache
+```
 
-         atomic run <deployment-container-image> --dry-run
+## Option 2: unattended
 
-2. Review README and edit the local answerfile for your deployment environment
-3. Deploy the application
+1. Create file `answers.conf` with these contents:
 
-         atomic run <deployment-container-image> --answerfile answerfile.conf
+        [general]
+        provider = kubernetes
 
-At deployment the `<deployment-container-image>` is pulled, the target deployment files (e.g. kubernetes) are parameterized using the `answerfile.conf` and the application is started.
+        [helloapache-app]
+        image = centos/httpd # optional: choose a different image
+        hostport = 80        # optional: choose a different port to expose
 
-### Rufus the Developer
+1. Run the application from the current working directory
 
-Rufus has been tasked to package an existing application into container images that can be deployed via kubernetes. He has some combination of RPMs, jar files and source code.
+        $ [sudo] atomic run projectatomic/helloapache
+        ...
+        helloapache
+
+### Option 3: install and run
+
+You may want to download the application, review, edit the answerfile then run.
+
+1. Download the application files using `atomic install`
+
+        [sudo] atomic install projectatomic/helloapache
+
+1. Rename `answers.conf.sample`
+
+        mv answers.conf.sample answers.conf
+
+1. Edit `answers.conf`, review files if desired and run
+
+        $ [sudo] atomic run projectatomic/helloapache
+        ...
+        helloapache
+
+## Developer User Experience
+
 
 1. Develop an architecture to define how the services are connected and exposed.
 1. Create Dockerfiles and artifacts to package services as container images.
