@@ -48,7 +48,7 @@ You may want to download the application, review, edit the answerfile then run.
 Any of these approaches should create a kubernetes pod. Once its state is "Running" curl the minion it's running on.
 
 ```
-$ kubectl get pod fedoraapache
+$ kubectl get pod helloapache
 POD                IP                  CONTAINER(S)       IMAGE(S)           HOST                LABELS              STATUS
 helloapache        172.17.0.8          helloapache        centos/httpd       10.3.9.216/         name=helloapache   Running
 $ curl 10.3.9.216
