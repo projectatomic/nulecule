@@ -93,6 +93,8 @@ You may want to download the application, review, edit the answerfile then run.
 
 This is only a specification. Implementations may be written in any language. See [implementation guide](/docs/implementation_guide.md) for more details.
 
+**Reference implementation** https://github.com/projectatomic/atomicapp
+
 ### Developer tooling
 
 Developer implementation provides tooling to help developers quickly package several containers as a unit. It may be as simple as generating a template to start from or as complex as a GUI to develop and provide graphical representation of the target deployment.
