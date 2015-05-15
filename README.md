@@ -10,6 +10,8 @@ Nulecule defines a pattern and model for packaging complex multi-container appli
 
 Nulecule specification enables complex applications to be defined, packaged and distributed using standard container technologies. The resulting container includes dependencies while supporting multiple orchestration providers and ability to specify resource requirements. The Nulecule specification also supports aggregation of multiple composite applications. The Nulecule specification is container and orchestration agnostic, enabling the use of any container and orchestration engine.
 
+**[Glossary of terms](docs/glossary.md)**
+
 ## Nulecule Specification Highlights
 
 * Application description and context maintained within a single container through extensible metadata
@@ -87,17 +89,7 @@ This is only a specification. Implementations may be written in any language. Se
 
 Developer implementation provides tooling to help developers quickly package several containers as a unit. It may be as simple as generating a template to start from or as complex as a GUI to develop and provide graphical representation of the target deployment.
 
-### Deployment tooling
-
-Deployment implementation provides tooling for deploying the complete application using this spec.
-
-* Reference implementation (python): https://github.com/projectatomic/atomicapp
-
 ### Contributing
 
 Please review the [contributing guidelines](CONTRIBUTING.md) before submitting pull requests.
-
-## TODO
-
-* Create schema validation script
 
