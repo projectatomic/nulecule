@@ -26,7 +26,7 @@
             "containers":[
                {
                   "name":"redis-master",
-                  "image":"gurpartap/redis",
+                  "image":"$image",
                   "ports":[
                      {
                         "name":"redis-server",

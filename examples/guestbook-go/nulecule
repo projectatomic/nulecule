@@ -21,28 +21,5 @@ graph:
       kubernetes:
         - file://artifacts/k8s/guestbook-controller.json
         - file://artifacts/k8s/guestbook-service.json
-  redismaster-app:
-    params:
-      image:
-        description: The redis master part
-        default: gurpartap/redis
-      hostport:
-        description: The host TCP port as the external endpoint
-        default: 6379
-    artifacts:
-      kubernetes:
-        - file://artifacts/k8s/redis-master-controller.json
-        - file://artifacts/k8s/redis-master-service.json
-  redisslave-app:
-    params:
-      image:
-        description: The redis slave part
-        default: gurpartap/redis
-      hostport:
-        description: The host TCP port as the external endpoint
-        default: 6379
-    artifacts:
-      kubernetes:
-        - file://artifacts/k8s/redis-slave-controller.json
-        - file://artifacts/k8s/redis-slave-service.json
-
+  redis-centos7-atomicapp:
+    source: docker://jasonbrooks/redis-centos7-atomicapp
