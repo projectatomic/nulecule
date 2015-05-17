@@ -1,4 +1,4 @@
-FROM projectatomic/atomicapp:dev
+FROM projectatomic/atomicapp:0.0.1
 
 MAINTAINER Jason Brooks <jbrooks@redhat.com>
 
