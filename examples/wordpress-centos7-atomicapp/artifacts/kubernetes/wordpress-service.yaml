@@ -7,5 +7,3 @@ selector:
 containerPort: 80
 labels:
   name: frontend
-createExternalLoadBalancer: true
-
