@@ -12,7 +12,7 @@
             "default": "null"
         },
         "specversion": {
-		    "description": "The semantic version string of the Container Application Specification used to describe the app. The value SHOULD be '0.0.2'.",
+            "description": "The semantic version string of the Container Application Specification used to describe the app. The value SHOULD be '0.0.2'.",
             "type": "string",
             "default": "0.0.2"
         },

@@ -5,11 +5,11 @@
     "description": "Name of the parameter as used in artifacts",
     "type": "object",
     "required": [ "name", "description" ],
-    "properties": [{
+    "properties": {
         "name": {
             "description": "",
             "type": "string",
-            "default": "null",
+            "default": "null"
         },
         "description": {
             "description": "A human readable description of the parameter.",
@@ -29,5 +29,5 @@
             "type": "boolean",
             "default": false
         }
-    }]
+    }
 }
