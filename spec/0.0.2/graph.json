@@ -3,8 +3,8 @@
 
     "title": "Graph",
     "description": "A list of depending containerapps. Strings may either match a local sub directory or another containerapp-spec compliant containerapp image that can be pulled via a provider.",
-    "type": "object",
-    "additionalProperties" : {
+    "type": "array",
+    "items" : {
         "$ref": "#/definitions/component"
     },
 
@@ -13,7 +13,7 @@
             "description": "ID of a component",
             "type": "object",
             "required": [ "name" ],
-            "properties": [{
+            "properties": {
                 "name": {
                     "description": "The name of the depending Container Application.",
                     "type": "string",
@@ -26,8 +26,8 @@
                 },
                 "params": {
                     "description": "A list of ParamsObject that contain provider specific information. If params is present, source field SHALL be ignored.",
-                    "type": "object",
-                    "additionalProperties": {
+                    "type": "array",
+                    "items": {
                         "$ref": "file:param.json"
                     }
                 },
@@ -38,7 +38,7 @@
                         "$ref": "file:provider.json"
                     }
                 }
-            }]
+            }
         }
     }
 }
