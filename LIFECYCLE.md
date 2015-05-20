@@ -10,6 +10,10 @@ Versioning is using the [semantic versioning scheme](http://semver.org/spec/v2.0
 For convenience the latest version of the specification will be located at http://www.projectatomic.io/nulecule/spec/latest/index.html and redirect to the corresponding versioned URL.
 All versions of the specification will be available using their corresponding URL.
 
+In addition to the human readable HTML document, a JSON formated machine readable version of the specification will be published at the same URL path as the HTML document. The document name will be schema.json and may reference other files using the JSON DRAFT4 references.
+
+The normative machine readable Nulecule Specification document will be published at http://www.projectatomic.io/nulecule/spec/<major.minor.patch>/schema.json 
+
 ## States
 
 The Nulecule Specification will have a certain set of releases, we will use semantic versioning to identify the releases. 
