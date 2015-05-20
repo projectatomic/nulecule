@@ -1,0 +1,25 @@
+---
+specversion: 0.0.1-alpha
+id: guestbookgo-app
+
+metadata:
+  name: Guestbook-Go App
+  appversion: 0.0.1
+  description: Atomic app for deploying the k8s guestbook-go app
+graph:
+  guestbookfront-app:
+    params:
+      image:
+        description: The frontend part
+        default: kubernetes/guestbook:v2
+      hostport:
+        description: The host TCP port as the external endpoint
+        default: 80
+      publicip:
+        description: The IP address or addresses at which your app can be reached
+    artifacts:
+      kubernetes:
+        - file://artifacts/k8s/guestbook-controller.json
+        - file://artifacts/k8s/guestbook-service.json
+  redis-centos7-atomicapp:
+    source: docker://jasonbrooks/redis-centos7-atomicapp
