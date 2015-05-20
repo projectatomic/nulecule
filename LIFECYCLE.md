@@ -17,7 +17,7 @@ The normative machine readable Nulecule Specification document will be published
 ## States
 
 The Nulecule Specification will have a certain set of releases, we will use semantic versioning to identify the releases. 
-Prior each release there will be a draft version of the release. This will be use to work/collaborate on the spec itself.
+Prior each release there will be a draft version of the release. This will be used to work/collaborate on the spec itself.
 
 ## Contributors and release process
 
