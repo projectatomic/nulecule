@@ -55,3 +55,8 @@ git checkout master
 git merge 0.6.0-draft
 git tag 0.6.0 -m '0.6.0'
 ```
+
+## Maintainers
+
+Please see the MAINTAINERS file for a list of maintainers of the Nulecule Specification.
+
