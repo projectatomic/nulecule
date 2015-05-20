@@ -1,5 +1,15 @@
 # Lifecycle of the Specification
 
+This document and the processes it describes will become effective starting Nulecule Specification 0.5.0. It is valid until replaced by a newer version or noted otherwise.
+
+## Normative Document
+
+The normative Nulecule Specification document will be published at http://www.projectatomic.io/nulecule/spec/<major.minor.patch>/index.html
+Versioning is using the [semantic versioning scheme](http://semver.org/spec/v2.0.0.html).
+
+For convenience the latest version of the specification will be located at http://www.projectatomic.io/nulecule/spec/latest/index.html and redirect to the corresponding versioned URL.
+All versions of the specification will be available using their corresponding URL.
+
 ## States
 
 The Nulecule Specification will have a certain set of releases, we will use semantic versioning to identify the releases. 
@@ -7,14 +17,14 @@ Prior each release there will be a draft version of the release. This will be us
 
 ## Contributors and release process
 
-Everybody is welcome to contribute to the draft version of the upcomming release. This will be documented by pull 
-requests to the draft of the specification. Once a draft has stabalized, it will be prepared by the specification 
+Everybody is welcome to contribute to the draft version of the upcoming release. This will be documented by pull 
+requests to the draft of the specification. Once a draft has stabilized, it will be prepared by the specification 
 maintenance team and prepared for release. The maintainers will release a new release of the specification.
 
 ### Changes to a Releases
 
 Changes to released versions of the specification will not change the structure or feature set of the specification. 
-They are only meant to fix spelling or languge errors, add or correct examples.
+They are only meant to fix spelling or language errors, add or correct examples.
 
 ## Release tasks
 
