@@ -41,7 +41,7 @@ Only when everything is working are you ready to package the application. In thi
         ├── Nulecule
         └── README.md
 
-1. Consider the different ways your application may be deployed. Most likely there are many parameters that need to be exposed at deployment. It's best to overdo this and provide defaults whenever possible. Go through the provider files and change any values. For example `database_pass: changeme` becomes `database_pass: $db_pass`. The name of the parameter is `db_pass`. These go into the params secion of the Nulecule file under each provider. For example:
+1. Consider the different ways your application may be deployed. Most likely there are many parameters that need to be exposed at deployment. It's best to overdo this and provide defaults whenever possible. Go through the provider files and change any values. For example `database_pass: changeme` becomes `database_pass: $db_pass`. The name of the parameter is `db_pass`. These go into the params section of the Nulecule file under each provider. For example:
 
 
         graph:

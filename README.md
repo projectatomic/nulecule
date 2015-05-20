@@ -93,3 +93,7 @@ Developer implementation provides tooling to help developers quickly package sev
 
 Please review the [contributing guidelines](CONTRIBUTING.md) before submitting pull requests.
 
+###Communication channels
+
+* IRC: #nulecule (On Freenode)
+* Mailing List: [container-tools@redhat.com](https://www.redhat.com/mailman/listinfo/container-tools)
