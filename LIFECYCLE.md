@@ -22,13 +22,18 @@ Prior each release there will be a draft version of the release. This will be us
 ## Contributors and release process
 
 Everybody is welcome to contribute to the draft version of the upcoming release. This will be documented by pull 
-requests to the draft of the specification. Once a draft has stabilized, it will be prepared by the specification 
-maintenance team and prepared for release. The maintainers will release a new release of the specification.
+requests (to the github repository of the Nulecule Specification) to the draft of the specification. Once a draft 
+has stabilized, it will be prepared by the specification maintainers and prepared for release. The maintainers 
+will release a new release of the specification.
 
 ### Changes to a Releases
 
 Changes to released versions of the specification will not change the structure or feature set of the specification. 
 They are only meant to fix spelling or language errors, add or correct examples.
+
+Collaboration on the draft of the next release of the Nulecule Specification will be done on the master branch of the github
+repository of the Nulecule Specification. The release task itself is rather short: the maintainers will tag the repository
+and provide the human and machine readable versions of the normative documents.
 
 ## Release tasks
 
@@ -39,26 +44,13 @@ This chapter will walk you thru the steps to be taken to
 
 ### prepare a draft
 
-Given the example that the current version of the spec is 0.5.0, you do the following:
-```
-git branch 0.6.0-draft
-git checkout 0.6.0-draft
-cd spec
-mkdir 0.6.0
-cp -r 0.5.0/* 0.6.0/
-git add 0.6.0
-cd 0.6.0 && vi <somestuff>
-```
+Given the example that the current version of the spec is 0.5.0, collaboration of the specification will continue on the master branch 
+of https://github.com/projectatomic/nulecule
 
 ### release (move from draft to new version)
 
-This will bring the draft version of the spec to a released version of the spec
-
-```
-git checkout master
-git merge 0.6.0-draft
-git tag 0.6.0 -m '0.6.0'
-```
+This will bring the draft version of the spec to a released version of the spec: `git tag 0.6.0 -m '0.6.0'` After that, one of the maintainers will
+publush the human and machine readable files to http://projectatomic.io/nulecule/spec/0.6.0/
 
 ## Maintainers
 
