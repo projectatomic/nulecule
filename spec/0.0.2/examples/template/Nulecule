@@ -15,10 +15,11 @@ graph:
     source: "docker://registry.example.com/some/database"
   - artifacts: 
       provider1: 
-        - "file://artifacts/provider1/pod.json"
-        - "file://artifacts/provider1/service.json"
+        - source: "https://github.com/foo/bar/provider1.git"
+          path: /my/provider/files/
+          tag: release-1
       provider2: 
-        - "file://artifacts/provider2/file.json"
+        - "file://artifacts/provider2/"
         - inherit: 
             - provider1
     name: mycode
