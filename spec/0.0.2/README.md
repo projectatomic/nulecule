@@ -321,6 +321,12 @@ The README.md is the human-readable document. It describes the containerapp in e
 
 NOTE: This is optional. It is possible for some applications to be "self-describing" through well-written descriptions and input validation.
 
+## Good Practices
+
+An implementation of the Nulecule Specification should declare what providers it supports. This should be done by adding a Label to the container image, by adding a line to the Dockerfile:
+```
+LABEL io.projectatomic.nulecule.providers = "kubernetes,docker,openshift"
+``` 
 
 ## Conventions
 
@@ -330,3 +336,9 @@ A few conventions are used in the context of Container Applications.
 
 Each provider in the [ArtifactsObject](#artifactsObject) of the [GraphObject](#graphObject) may correspond to a containerapp level [ParamsObject](#paramsObject). 
 
+### Version Label
+
+The Dockerfile must carry a Label declaring the version of the specification that is used:
+```
+LABEL io.projectatomic.nulecule.specversion 0.0.2
+```
