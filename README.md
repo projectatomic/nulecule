@@ -71,13 +71,7 @@ You may want to download the application, review, edit the answerfile then run.
 
 ## Developer User Experience
 
-
-1. Develop an architecture to define how the services are connected and exposed.
-1. Create Dockerfiles and artifacts to package services as container images.
-1. Create provider files, e.g. for kubernetes pod, service, replication controller files
-1. Reviews example templates of the container application specification
-1. Builds the deployment container describing the application.
-1. Pushes all container images to a registy.
+See the [Getting Started with Nulecule guide](docs/getting-started.md).
 
 ## Implementations
 
@@ -87,7 +81,7 @@ This is only a specification. Implementations may be written in any language. Se
 
 ### Developer tooling
 
-Developer implementation provides tooling to help developers quickly package several containers as a unit. It may be as simple as generating a template to start from or as complex as a GUI to develop and provide graphical representation of the target deployment.
+Developer tooling is TBD. There is some work planned for [DevAssistant](http://devassistant.org/).
 
 ### Contributing
 
