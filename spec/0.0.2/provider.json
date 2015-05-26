@@ -12,7 +12,7 @@
         "path": {
             "description": "Path to the artifact",
             "type": "string",
-            "value": "null"
+            "default": "null"
         },
         "inheritance": {
             "type": "object",

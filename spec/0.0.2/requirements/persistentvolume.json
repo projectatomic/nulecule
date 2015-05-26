@@ -12,7 +12,7 @@
                 "name": {
                     "description": "A name associated with the storage requirement.",
                     "type": "string",
-                    "value": "null"
+                    "default": "null"
                 },
                 "accessMode": {
                     "description": "Access mode in which the persitent volume will be available",
