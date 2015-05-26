@@ -299,8 +299,12 @@ artifacts: # list of files to be processed by the provider selected at install-t
 
 ## Directory Layout
 
+Names of files that must be present are contained in the file `files` in
+the root directory of the specification. These filenames support globbing.
+
+A filesystem layout of a typical app is this:
 ```
-├── Nulecule 
+├── Nulecule
 ├── Dockerfile
 ├── <provider_files_dir>
 │   ├── ...
