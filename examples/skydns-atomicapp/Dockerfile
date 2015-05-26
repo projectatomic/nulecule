@@ -7,5 +7,5 @@ LABEL io.projectatomic.nulecule.specversion 0.0.1-alpha
 LABEL Build docker build --rm --tag testing/skydns-atomicapp .
 
 
-ADD nulecule /application-entity/
+ADD Nulecule /application-entity/
 ADD artifacts/ /application-entity/artifacts/
