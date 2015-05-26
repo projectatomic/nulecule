@@ -7,7 +7,7 @@ metadata:
   appversion: 1.0.0
   description: This is MySQL
 graph:
-  mysql-atomicapp:
+  - name: mysql-atomicapp
     artifacts:
       kubernetes:
         - file://artifacts/kubernetes/mysql-pod.yaml
