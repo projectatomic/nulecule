@@ -1,5 +1,5 @@
 ---
-specversion: 0.0.1-alpha
+specversion: 0.0.2
 id: skydns-atomicapp
 metadata:
   name: SkyDNS
@@ -8,16 +8,16 @@ metadata:
     This is a nulecule that will get you the container components you need
     to dev on nulecule apps
 graph:
-  skydns:
+  - name: skydns
     params:
-      dns_domain:
+      - name: dns_domain
         description: >
           Internal DNS domain name.
           This domain must not be used in your network. Services will be discoverable
           under <service-name>.<namespace>.<domainname>, e.g.
           myservice.default.kube.local
         default: kube.local
-      dns_server:
+      - name: dns_server
         description: >
           IP address of the DNS server.
           Kubernetes will create a pod with several containers, serving as the DNS
