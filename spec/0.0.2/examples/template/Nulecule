@@ -19,7 +19,7 @@ graph:
           path: /my/provider/files/
           tag: release-1
       provider2: 
-        - "file://artifacts/provider2/"
+        - "file:artifacts/provider2/"
         - inherit: 
             - provider1
     name: mycode

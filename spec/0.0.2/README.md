@@ -264,7 +264,7 @@ Field Name | Type | Description
 
 The Artifacts Object describes a list of provider specific artifact items. These artifact items will be used during installation of the containerapp to deploy it to the provider. Each provider key contains a list of artifacts. Each artifact list item is either a `URL` string or a [source control repository object](#repositoryObject).
 
-* URL: must be a URL string prepended by type such as `http://`, `https://` or `file://`. URL type `file://` may be a single file or a directory path to multiple files. Directories must end with a trailing slash such as `file://relative/path/to/multiple/artifact/files/`.
+* URL: must be a URL string prepended by URI type such as `http://`, `https://`, `file:` (relative path) or `file://` (absolute path). URI type `file:` may be a single file or a directory path to multiple files. Directories must end with a trailing slash such as `file:relative/path/to/multiple/artifact/files/`.
 * [SourceControlRepositoryObject](#repositoryObject)
 
 ##### Artifacts Example:
@@ -276,7 +276,7 @@ artifacts: # list of local or remote files or remote repository path to be proce
     - source: https://github.com/aweiteka/kube-files.git
       tag: release-1
   openshift:
-    - file://relative/path/openshift/artifacts/
+    - file:relative/path/openshift/artifacts/
     - https://example.com/openshift/strategies.json
     - inherit:
       - kubernetes
@@ -292,7 +292,7 @@ artifacts: # list of local or remote files or remote repository path to be proce
       }
     ],
     "openshift": [
-      "file://relative/path/openshift/artifacts/",
+      "file:relative/path/openshift/artifacts/",
       "https://example.com/openshift/strategies.json",
       {
         "inherit": [
