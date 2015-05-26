@@ -262,39 +262,61 @@ Field Name | Type | Description
 
 #### <a name="artifactsObject"></a>Artifacts Object
 
-The Artifacts Object describes a list of provider specific artifact items. These artifact items will be used during installation of the containerapp to deploy it to the provider. Each artifact item is a `URL`.
+The Artifacts Object describes a list of provider specific artifact items. These artifact items will be used during installation of the containerapp to deploy it to the provider. Each provider key contains a list of artifacts. Each artifact list item is either a `URL` string or a [source control repository object](#repositoryObject).
+
+* URL: must be a URL string prepended by URI type such as `http://`, `https://`, `file:` (relative path) or `file://` (absolute path). URI type `file:` may be a single file or a directory path to multiple files. Directories must end with a trailing slash such as `file:relative/path/to/multiple/artifact/files/`.
+* [SourceControlRepositoryObject](#repositoryObject)
 
 ##### Artifacts Example:
 
 ```yaml
 ---
-artifacts: # list of files to be processed by the provider selected at install-time
-  atomicplatform:
-    - file://relative/path/pod.json.tmpl
-    - https://git.devops.example.com
+artifacts: # list of local or remote files or remote repository path to be processed by the provider selected at install-time
+  kubernetes:
+    - source: https://github.com/aweiteka/kube-files.git
+      tag: release-1
   openshift:
-    - file://routes.json
+    - file:relative/path/openshift/artifacts/
+    - https://example.com/openshift/strategies.json
     - inherit:
-      - atomicplatform
+      - kubernetes
 ```
 ```js
 {
   "artifacts": {
-    "atomicplatform": [
-      "file://relative/path/pod.json.tmpl",
-      "https://git.devops.example.com"
+    "kubernetes": [
+      {
+        "source": "https://github.com/aweiteka/kube-files.git",
+        "path": "/artifacts/kubernetes/,
+        "tag": "release-1"
+      }
     ],
     "openshift": [
-      "file://routes.json",
+      "file:relative/path/openshift/artifacts/",
+      "https://example.com/openshift/strategies.json",
       {
         "inherit": [
-          "atomicplatform"
+          "kubernetes"
         ]
       }
     ]
   }
 }
 ```
+
+#### <a name="repositoryObject"></a>Source Control Repository Object
+
+Source Control Repository Object for artifact sources.
+
+##### Fields of a Source Control Repository Object
+
+Field Name | Type | Description
+---|:---:|---
+source | `URL` | **Required** Source location of the source control repository. The source MUST be specified by a valid URL.
+path | `string` | **Optional** The path to a specific artifact file or directory of artifact files. Default value is "/" which would reference all of the files in the repository.
+type | `string` | **Optional** The source control type. Default value is "git".
+branch | `string` | **Optional** The source control branch. Default value is "master".
+tag | `string` | **Optional** The source control tag.
 
 
 ## Directory Layout
