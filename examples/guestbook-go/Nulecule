@@ -1,5 +1,5 @@
 ---
-specversion: 0.0.1-alpha
+specversion: 0.0.2
 id: guestbookgo-app
 
 metadata:
@@ -7,7 +7,7 @@ metadata:
   appversion: 0.0.1
   description: Atomic app for deploying the k8s guestbook-go app
 graph:
-  guestbookfront-app:
+  - name: guestbookfront-app
     params:
       image:
         description: The frontend part
@@ -21,5 +21,5 @@ graph:
       kubernetes:
         - file://artifacts/k8s/guestbook-controller.json
         - file://artifacts/k8s/guestbook-service.json
-  redis-centos7-atomicapp:
+  - name: redis-centos7-atomicapp
     source: docker://jasonbrooks/redis-centos7-atomicapp

@@ -1,5 +1,5 @@
 ---
-specversion: 0.0.1-alpha
+specversion: 0.0.2
 id: mariadb-app
 metadata:
   name: MariaDB App
@@ -9,7 +9,7 @@ metadata:
     name: GNU AFFERO GENERAL PUBLIC LICENSE, Version 3
     url: https://www.gnu.org/licenses/agpl-3.0.html
 graph:
-  mariadb-app:
+  - name: mariadb-app
     params:
       db_user:
         description: database user
