@@ -1,5 +1,5 @@
 ---
-specversion: 0.0.1-alpha
+specversion: 0.0.2
 id: helloapache-app
 
 metadata:
@@ -7,7 +7,7 @@ metadata:
   appversion: 0.0.1
   description: Atomic app for deploying a really basic Apache HTTP server
 graph:
-  helloapache-app:
+  - name: helloapache-app
     params:
       image:
         description: The webserver image

@@ -1,5 +1,5 @@
 ---
-specversion: 0.0.1-alpha
+specversion: 0.0.2
 id: redis-atomicapp
 
 metadata:
@@ -7,7 +7,7 @@ metadata:
   appversion: 0.0.1
   description: Redis atomic app
 graph:
-  redismaster-app:
+  - name: redismaster-app
     params:
       image:
         description: The redis master part
@@ -19,7 +19,7 @@ graph:
       kubernetes:
         - file://artifacts/k8s/redis-master-controller.json
         - file://artifacts/k8s/redis-master-service.json
-  redisslave-app:
+  - name: redisslave-app
     params:
       image:
         description: The redis slave part

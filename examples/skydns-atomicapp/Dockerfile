@@ -1,4 +1,4 @@
-FROM projectatomic/atomicapp:0.0.1
+FROM projectatomic/atomicapp:0.1.0
 
 MAINTAINER langdon <langdon@fedoraproject.org>
 
