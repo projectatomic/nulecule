@@ -9,10 +9,10 @@ metadata:
 graph:
   - name: redismaster-app
     params:
-      image:
+      - name: image
         description: The redis master part
         default: jasonbrooks/redis 
-      hostport:
+      - name: hostport
         description: The host TCP port as the external endpoint
         default: 6379
     artifacts:
@@ -21,10 +21,10 @@ graph:
         - file://artifacts/k8s/redis-master-service.json
   - name: redisslave-app
     params:
-      image:
+      - name: image
         description: The redis slave part
         default: jasonbrooks/redis
-      hostport:
+      - name: hostport
         description: The host TCP port as the external endpoint
         default: 6379
     artifacts:
