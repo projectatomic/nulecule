@@ -9,10 +9,10 @@ metadata:
 graph:
   - name: helloapache-app
     params:
-      image:
+      - name: image
         description: The webserver image
         default: centos/httpd
-      hostport:
+      - name: hostport
         description: The host TCP port as the external endpoint
         default: 80
     artifacts:
