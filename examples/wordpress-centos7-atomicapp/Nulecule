@@ -8,9 +8,9 @@ metadata:
   description: Simple Wordpress atomic app. Uses remote mysql atomic app.
 graph:
   - name: aggregated-mysql-atomicapp
-    source: docker://goern/mysql-centos7-atomicapp
+    source: docker://projectatomic/mysql-centos7-atomicapp
   - name: aggregated-skydns-atomicapp
-    source: docker://goern/skydns-atomicapp
+    source: docker://projectatomic/skydns-atomicapp
   - name: wordpress
     artifacts:
       kubernetes:
