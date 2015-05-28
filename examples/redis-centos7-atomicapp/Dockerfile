@@ -1,6 +1,6 @@
-FROM projectatomic/atomicapp:0.1.0
+FROM projectatomic/atomicapp:0.1.1
 
 MAINTAINER Jason Brooks <jbrooks@redhat.com>
 
-ADD /nulecule /Dockerfile README.md /application-entity/
+ADD /Nulecule /Dockerfile README.md /application-entity/
 ADD /artifacts /application-entity/artifacts
