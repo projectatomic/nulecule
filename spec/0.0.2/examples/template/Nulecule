@@ -13,16 +13,7 @@ metadata:
 graph: 
   - name: somedb
     source: "docker://registry.example.com/some/database"
-  - artifacts: 
-      provider1: 
-        - source: "https://github.com/foo/bar/provider1.git"
-          path: /my/provider/files/
-          tag: release-1
-      provider2: 
-        - "file:artifacts/provider2/"
-        - inherit: 
-            - provider1
-    name: mycode
+  - name: mycode
     params: 
       - name: password
         description: passphrase
@@ -31,6 +22,15 @@ graph:
           - allowed_pattern: "[A-Z0-9]+"
             description: "Must consist of characters and numbers only."
         description: username
+    artifacts:
+      provider1:
+        - source: "https://github.com/foo/bar/provider1.git"
+          path: /my/provider/files/
+          tag: release-1
+      provider2:
+        - "file:artifacts/provider2/"
+        - inherit:
+            - provider1
 requirements: 
   - persistentVolume: 
       accessMode: ReadWrite
