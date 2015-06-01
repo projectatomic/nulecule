@@ -22,4 +22,4 @@ graph:
         - file://artifacts/k8s/guestbook-controller.json
         - file://artifacts/k8s/guestbook-service.json
   - name: redis-centos7-atomicapp
-    source: docker://jasonbrooks/redis-centos7-atomicapp
+    source: docker://projectatomic/redis-centos7-atomicapp
