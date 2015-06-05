@@ -1,6 +1,6 @@
-FROM projectatomic/atomicapp:0.1.0
+FROM projectatomic/atomicapp:0.1.1
 
 MAINTAINER langdon <langdon@fedoraproject.org>
 
-ADD nulecule /application-entity/
+ADD Nulecule /application-entity/
 ADD graph/ /application-entity/graph/
