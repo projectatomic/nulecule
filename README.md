@@ -1,10 +1,19 @@
 # Composite Container-based Application Specification
 
+`/NOO-le-kyul/` (n.) a made-up word meaning ["the mother of all atomic particles"](http://simpsons.wikia.com/wiki/Made-up_words). Sounds like "molecule". But different.
+
+**Package once. Run anywhere.** With pluggable orchestration providers you can package your application to run on OpenShift, Kubernetes, Docker Compose, Helios, Panamax, Docker Machine, etc. and allow the user to choose the target when deployed.
+
+**Compose applications from a catalog.** No need to re-package common services. Create composit applications by referencing other Nulecule-compliant apps. Adding a well-designed, orchestrated databse is simply a reference to another container image.
+
+**MSI Installer for containers.** Replace your shell script and deployment instructions with some metadata.
+
+**Change runtime parameters for different environments.** No need to edit files before deployment. Users can choose interactive or unattented deployment. Guide web interface users with parameter metadata to validate user input and provide descriptive help.
+
 ## Problem Statement
 Currently there is no standard mechanism to define a composite multi-container application or composite service composed of aggregate pre-defined building blocks spanning multiple hosts and clustered deployments. In addition, the associated metadata and artifact management requires separate processes outside the context of the application itself. 
 
 ## What is Nulecule?
-It's a made-up word meaning ["the mother of all atomic particles"](http://simpsons.wikia.com/wiki/Made-up_words) pronounced `NOO-le-kyul`, like "molecule".
 
 Nulecule defines a pattern and model for packaging complex multi-container applications, referencing all their dependencies, including orchestration metadata in a container image for building, deploying, monitoring, and active management.
 
