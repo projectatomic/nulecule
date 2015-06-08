@@ -30,7 +30,7 @@
                   "command":[
                      "sh",
                      "-c",
-                     "redis-server /etc/redis/redis.conf --slaveof redis-master 6379"
+                     "redis-server /etc/redis.conf --slaveof redis-master 6379"
                   ],
                   "ports":[
                      {
