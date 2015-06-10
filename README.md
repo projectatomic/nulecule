@@ -38,7 +38,7 @@ Here's an example using the [atomicapp reference implementation](https://github.
 
 ### Option 1: interactive
 
-Run the image. You will be prompted to override defaults
+Run the image. You will be prompted to provide required values that are missing from the default configuration.
 ```
 [sudo] atomic run projectatomic/helloapache
 ```
