@@ -1,4 +1,4 @@
-This is an mongodB 2.4 Atomicapp!
+This is an mongoDB 2.4 Atomicapp!
 
 required parameters:
  mongodb_admin_password

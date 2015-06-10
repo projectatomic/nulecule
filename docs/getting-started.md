@@ -10,7 +10,7 @@ You have an application you want to package up. It's composed of several contain
 From the planning phase you've got a collection of remote and local sources that are going to compose your application.
 
 1. Start with the containers. Understand how they run standalone. Get them running.
-1. Orchestrate the containers on the target provider. Start simply and build up. For example, with kubernetes just deploy as a pod. Once that succeeds, add a service, then replication controllers. There are many opportunities for error so make small changes, test and iterate slowly. Verify your [YAML](http://codebeautify.org/yaml-validator) or [JSON](http://jsonlint.com/) frequently. Use a method that can be easily incorporated into your developement workflow: small change -> save -> validate -> test -> rinse and repeat.
+1. Orchestrate the containers on the target provider. Start simply and build up. For example, with kubernetes just deploy as a pod. Once that succeeds, add a service, then replication controllers. There are many opportunities for error so make small changes, test and iterate slowly. Verify your [YAML](http://codebeautify.org/yaml-validator) or [JSON](http://jsonlint.com/) frequently. Use a method that can be easily incorporated into your development workflow: small change -> save -> validate -> test -> rinse and repeat.
 1. Test both custom and stock services together. Nulecule won't do magical things. The pieces must all work together before they can be packaged up as a unit.
 
 ## Package
@@ -74,7 +74,7 @@ Only when everything is working are you ready to package the application. In thi
     * yaml or json is not valid
     * missing parameter
 
-1. Once the Nulecule file and provider artifacts are working package the applicatoin as a container. Typically this means basing it off of an executable image such as `projectatomic/atomicapp`. Unless you have a special use case, the stock Dockerfile may be used unaltered.
+1. Once the Nulecule file and provider artifacts are working package the application as a container. Typically this means basing it off of an executable image such as `projectatomic/atomicapp`. Unless you have a special use case, the stock Dockerfile may be used unaltered.
 
         [sudo] docker build -t mydb-app .
 
