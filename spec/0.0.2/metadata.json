@@ -2,7 +2,7 @@
     "$schema": "http://json-schema.org/draft-04/schema#",
 
     "title": "Metadata",
-    "description": "An object holding optional metadata related to the Container Application, this may include license information or human readable information.",
+    "description": "An object holding optional metadata related to the Container Application. This will typically include the container application name, version, description, license information and other human readable information.",
     "type": "object",
     "properties": {
         "name": {

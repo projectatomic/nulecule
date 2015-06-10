@@ -2,7 +2,7 @@
     "$schema": "http://json-schema.org/draft-04/schema#",
 
     "title": "PersistentVolume",
-    "description": "This describes a requirement for persistent, read-only or read-write storage that should be available to the containerapp on runtime. The name of this object MUST be 'persistentVolume'",
+    "description": "This describes a requirement for persistent, read-only or read-write storage that should be available to the Container Application at runtime. The name of this object MUST be 'persistentVolume'",
     "type": "object",
     "properties": {
         "persistentVolume": {
@@ -15,7 +15,7 @@
                     "default": "null"
                 },
                 "accessMode": {
-                    "description": "Access mode in which the persitent volume will be available",
+                    "description": "The access mode, read-write or read-only, for the storage",
                     "type": "string",
                     "enum": [
                         "ReadWrite",
@@ -23,7 +23,7 @@
                     ]
                 },
                 "size": {
-                    "description": "Size of the required storage.",
+                    "description": "Size of the storage.",
                     "type": "number",
                     "minimum": 0
                 }

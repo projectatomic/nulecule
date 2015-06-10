@@ -2,7 +2,7 @@
     "$schema": "http://json-schema.org/draft-04/schema#",
 
     "title": "Provider",
-    "description": "Name of the provider",
+    "description": "A provider is a deployment platform or orchestrator.",
     "type": "array",
     "items": {
         "oneOf": [ { "$ref": "#/definitions/path" }, { "$ref": "#/definitions/repository" }, { "$ref": "#/definitions/inheritance" } ]
