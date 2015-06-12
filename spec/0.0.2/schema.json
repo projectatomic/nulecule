@@ -3,7 +3,7 @@
 
     "title": "Schema",
     "version": "0.0.2",
-    "description": "The Container Application specification is a project to describe 'an Application' that is composed of a set of dependent Container Applications (containerapp). The Container Application specification defines a set of files required to describe such a containerapp. These files can then be used by other tools to deploy a containerapp. Developers may use other tools to generate most of the required containerapp files. Additional utilities can also take advantage of the resulting files, such as testing tools.",
+    "description": "The Container Application specification defines a set of configuration files that describe a Container Application. A Container Application is composed of a set of container-based services and/or other Container Applications that together provide an application. These configuration files can be used by tools to deploy the application in an automated way or with customizations as specified by the deployer. Developers tools can generate most of the required files and utilities, such as testing tools, can take advantage of these files.",
     "required": [ "id", "specversion", "graph" ],
     "properties": {
         "id": {
