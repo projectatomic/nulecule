@@ -10,4 +10,4 @@ At this point, this document is probably woefully incomplete, but as decisions a
 ## Pull Requests
 
 * All changes will be made by pull request (PR), even from core committers. 
-* All changes will need 2 ACKs from the committers before it will be approved for inclusion. If the author of the PR is a committer, that will be construed as one of the ACKs. By "2 ACKs" we mean that 2 committers must acknowledge that the change is a good one. The 2nd person to ACK the PR should merge the PR with a comment including their aggreement.
+* All changes will need 2 ACKs from the committers before it will be approved for inclusion. If the author of the PR is a committer, that will be construed as one of the ACKs. By "2 ACKs" we mean that 2 committers must acknowledge that the change is a good one. The 2nd person to ACK the PR should merge the PR with a comment including their agreement.
