@@ -12,4 +12,6 @@ graph:
       kubernetes:
         - file://artifacts/kubernetes/mysql-pod.yaml
         - file://artifacts/kubernetes/mysql-service.yaml
-
+      openshift:
+        - inherit:
+          - kubernetes
