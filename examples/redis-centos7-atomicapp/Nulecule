@@ -17,8 +17,8 @@ graph:
         default: 6379
     artifacts:
       kubernetes:
-        - file://artifacts/k8s/redis-master-controller.json
-        - file://artifacts/k8s/redis-master-service.json
+        - file://artifacts/kubernetes/redis-master-controller.json
+        - file://artifacts/kubernetes/redis-master-service.json
   - name: redisslave-app
     params:
       - name: image
@@ -32,5 +32,6 @@ graph:
         default: 6379
     artifacts:
       kubernetes:
-        - file://artifacts/k8s/redis-slave-controller.json
-        - file://artifacts/k8s/redis-slave-service.json
+        - file://artifacts/kubernetes/redis-slave-controller.json
+        - file://artifacts/kubernetes/redis-slave-service.json
+

@@ -19,4 +19,4 @@ graph:
       docker:
         - file://artifacts/docker/hello-apache-pod_run
       kubernetes:
-        - file://artifacts/k8s/hello-apache-pod.json
+        - file://artifacts/kubernetes/hello-apache-pod.json
