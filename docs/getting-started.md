@@ -25,7 +25,7 @@ Only when everything is working are you ready to package the application. In thi
               source: "docker://registry.example.com/some/database"
     1. If they are local sources then provide a name and an artifacts key that will reference the source file(s). Each provider will have a key specifying the provider. For example, "docker" or "kubernetes".
 
-            graph
+            graph:
             - name: myapp
               artifacts:
                 kubernetes:
