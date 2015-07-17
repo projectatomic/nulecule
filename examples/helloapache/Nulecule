@@ -16,5 +16,7 @@ graph:
         description: The host TCP port as the external endpoint
         default: 80
     artifacts:
+      docker:
+        - file://artifacts/docker/hello-apache-pod_run
       kubernetes:
         - file://artifacts/k8s/hello-apache-pod.json
