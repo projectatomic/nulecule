@@ -1,0 +1,1 @@
+docker run -d --name helloapache -p $hostport:80 $image
