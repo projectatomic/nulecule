@@ -24,3 +24,5 @@ graph:
       kubernetes:
         - file://graph/k8s/mariadb-pod.json
         - file://graph/k8s/mariadb-service.json
+      docker:
+        - file://graph/docker/mariadb-app-pod_run

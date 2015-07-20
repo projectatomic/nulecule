@@ -1,4 +1,4 @@
-This is an atomic application based on the nulecule specification. Kubernetes is currently the only supported provider. You'll need to run this from a workstation that has the atomic command and kubectl client that can connect to a kubernetes master.
+This is an atomic application based on the nulecule specification. Kubernetes and native docker are currently the only supported providers. You'll need to run this from a workstation that has the atomic command and kubectl client that can connect to a kubernetes master.
 
 It's a single pod based on the fedora/mariadb image, but you can use your own.
 
@@ -26,6 +26,8 @@ Run the image. It will automatically use kubernetes as the orchestration provide
 
         $ [sudo] atomic run projectatomic/mariadb-app
 
+1. As an additional experiment, remove the kubernetes pod and change the provider to 'docker' and re-run the application to see it get deployed on native docker.
+
 ### Option 3: Install and Run
 
 You may want to download the application, review the configuraton and parameters as specified in the Nulecule file, and edit the answerfile before running the application.
@@ -52,7 +54,7 @@ $ kubectl get service mariadb
 NAME      LABELS    SELECTOR       IP               PORT(S)
 mariadb   name=db   name=mariadb   10.254.167.159   3306/TCP
 
-$ docker run fedora/mariadb mysql -h <IP address> -u <username> -p <database name>
+$ docker run -it fedora/mariadb mysql -h <IP address> -u <username> -p <database name>
 Enter password: <password>
 Welcome to the MariaDB monitor.  Commands end with ; or \g.
 Your MariaDB connection id is 3
