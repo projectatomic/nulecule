@@ -1,0 +1,1 @@
+docker run -d --name mariadb-app -p 3306:3306 -e 'USER=$db_user' -e 'PASS=$db_pass' -e 'NAME=$db_name' $image
