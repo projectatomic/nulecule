@@ -1,6 +1,6 @@
-= Wordpress Atomicapp
+= Wordpress Atomic App
 
-This is a Wordpress Atomicapp, it will use reuse MySQL and SkyDNS to
+This is a Wordpress Atomic App, it will use reuse MySQL and SkyDNS to
 provide a Kubernetes based Wordpress to you.
 
 == Usage
@@ -9,4 +9,4 @@ provide a Kubernetes based Wordpress to you.
 
 = Version
 
-This is version 1.1.0 of Wordpress Atomicapp.
+This is version 1.1.0 of Wordpress Atomic App.

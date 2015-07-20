@@ -1,8 +1,10 @@
+# helloapache
+
 This is an atomic application based on the nulecule specification. Kubernetes and native docker are currently the only supported providers. You'll need to run this from a workstation that has the atomic command.  If you wish to use the kubernetes provider, you will also need a kubectl client that can connect to a kubernetes master.
 
-It's a single pod based on the centos/httpd image, but you can use your own.
+It's a single container application based on the centos/httpd image, but you can use your own.
 
-### Option 1: Non-interactive using defaults
+## Option 1: Non-interactive defaults
 
 Run the image. It will automatically use kubernetes as the orchestration provider.
 ```
@@ -32,7 +34,7 @@ Note: This option is not interactive because all params in the Nulecule file hav
 
 1. As an additional experiment, remove the kubernetes pod and change the provider to 'docker' and re-run the application to see it get deployed on base docker.
 
-### Option 3: Install and Run
+## Option 3: Install and Run
 
 You may want to download the application, review the configuraton and parameters as specified in the Nulecule file, and edit the answerfile before running the application.
 

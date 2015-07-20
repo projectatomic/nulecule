@@ -161,7 +161,7 @@ Field Name | Type | Description
 ---
 name: atomicapp-zabbix-mongodb
 source: uri://registry.devops.example.com
-# if no "artifacts" is specified, than it is an external Atomicapp to be pulled 
+# if no "artifacts" is specified, than it is an external Atomic App to be pulled 
 # and installed from the specified source
 ```
 
