@@ -29,8 +29,8 @@ Only when everything is working are you ready to package the application. In thi
             - name: myapp
               artifacts:
                 kubernetes:
-                  - file://artifacts/kubernetes/pod.json
-                  - file://artifacts/kubernetes/service.json
+                  - file:///artifacts/kubernetes/pod.json
+                  - file:///artifacts/kubernetes/service.json
 1. Put all of the provider files into a directory structure that corresponds to the provider artifacts section in the Nulecule file. Using the above example, `artifacts/kubernetes/<file>.json`. The structure should resemble something like this:
 
         ├── Dockerfile
