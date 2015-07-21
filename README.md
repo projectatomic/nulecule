@@ -1,29 +1,29 @@
 # Composite Container-based Application Specification
 
-`/NOO-le-kyul/` (n.) a made-up word meaning ["the mother of all atomic particles"](http://simpsons.wikia.com/wiki/Made-up_words). Sounds like "molecule". But different.
+`\ˈnü-li-ˌkyül\` (n.) a made-up word meaning ["the mother of all atomic particles"](http://simpsons.wikia.com/wiki/Made-up_words).
 
-**Your installer for containers.** Replace your shell script and deployment instructions with some metadata.
+**Your installer for container-based applications.** Replace your shell script and deployment instructions with some metadata.
 
 **Change runtime parameters for different environments.** No need to edit files before deployment. Users can choose interactive or unattended deployment. Guide web interface users with parameter metadata to validate user input and provide descriptive help.
 
 **Bridge between Enterprise IT and PaaS** With pluggable orchestration providers you can package your application to run on OpenShift, Kubernetes, Docker Compose, Helios, Panamax, Docker Machine, etc. and allow the user to choose the target when deployed.
 
-**Compose applications from a catalog.** No need to re-package common services. Create composite applications by referencing other Nulecule-compliant apps. Adding a well-designed, orchestrated database is simply a reference to another container image.
+**Compose applications from a catalog.** No need to re-package common services. Create composite applications by referencing other Nulecule-compliant apps. For example, adding a well-designed, orchestrated database is simply a reference to another container image.
 
 ## Problem Statement
-Currently there is no standard mechanism to define a composite multi-container application or composite service composed of aggregate pre-defined building blocks spanning multiple hosts and clustered deployments. In addition, the associated metadata and artifact management requires separate processes outside the context of the application itself. 
+Currently there is no standard way of defining a multi-container application's configuration without distributing instructions and files to the end-user. Additionally, these files must be managed and distributed via different systems than the containers themselves.
 
 ## What is Nulecule?
 
-Nulecule defines a pattern and model for packaging complex multi-container applications, referencing all their dependencies, including orchestration metadata in a container image for building, deploying, monitoring, and active management.
+Nulecule defines a pattern and model for packaging complex multi-container applications and services, referencing all their dependencies, including orchestration metadata in a container image for building, deploying, monitoring, and active management.
 
-Nulecule specification enables complex applications to be defined, packaged and distributed using standard container technologies. The resulting container includes dependencies while supporting multiple orchestration providers and ability to specify resource requirements. The Nulecule specification also supports aggregation of multiple composite applications. The Nulecule specification is container and orchestration agnostic, enabling the use of any container and orchestration engine.
+The Nulecule specification enables complex applications to be defined, packaged and distributed using standard container technologies. The resulting container includes dependencies, supports multiple orchestration providers, and has the ability to specify resource requirements. The Nulecule specification also supports the aggregation of multiple composite applications. The Nulecule specification is container and orchestration agnostic, enabling the use of any container and orchestration technology.
 
 **[Glossary of terms](docs/glossary.md)**
 
 ## Nulecule Specification Highlights
 
-* Application description and context maintained within a single container through extensible metadata
+* Application description and context maintained in a single container through extensible metadata
 * Composable definition of complex applications through inheritance and composition of containers into a single, standards-based, portable description.
 * Simplified dependency management for the most complex applications through a directed graph to reflect relationships.
 * Container and orchestration engine agnostic, enabling the use of any container technology and/or orchestration technology
@@ -34,18 +34,22 @@ Nulecule specification enables complex applications to be defined, packaged and 
 
 ## Deployment User Experience
 
-Here's an example using the [atomicapp reference implementation](https://github.com/projectatomic/atomicapp) with a kubernetes provider.
+The Nulecule specification has been implemented in the [Atomic App reference implementation](https://github.com/projectatomic/atomicapp).  Atomic App currently supports docker containers and kubernetes and docker orchestration providers.  The [atomic command](https://github.com/projectatomic/atomic) is used to run the container that contains the Nulecule specification and the Atomic App implementation.
 
-### Option 1: interactive
+This example is a single container application based on the centos/httpd image, but you can use your own.
 
-Run the image. You will be prompted to provide required values that are missing from the default configuration.
+### Option 1: Non-interactive defaults
+
+Run the image. It will automatically use kubernetes as the orchestration provider.
 ```
 [sudo] atomic run projectatomic/helloapache
 ```
 
-## Option 2: unattended
+### Option 2: Unattended
 
-1. Create file `answers.conf` with these contents:
+1. Create the file `answers.conf` with these contents:
+
+    This sets up the values for the two configurable paramaters (image and hostport) and indicates that kubernetes should be the orchestration provider.
 
         [general]
         provider = kubernetes
@@ -53,16 +57,18 @@ Run the image. You will be prompted to provide required values that are missing 
         [helloapache-app]
         image = centos/httpd # optional: choose a different image
         hostport = 80        # optional: choose a different port to expose
-
 1. Run the application from the current working directory
 
         $ [sudo] atomic run projectatomic/helloapache
         ...
         helloapache
 
-### Option 3: install and run
 
-You may want to download the application, review, edit the answerfile then run.
+1. As an additional experiment, remove the kubernetes pod and change the provider to 'docker' and re-run the application to see it get deployed on native docker.
+
+### Option 3: Install and Run
+
+You may want to download the application, review the configuraton and parameters as specified in the Nulecule file, and edit the answerfile before running the application.
 
 1. Download the application files using `atomic install`
 
@@ -72,11 +78,33 @@ You may want to download the application, review, edit the answerfile then run.
 
         mv answers.conf.sample answers.conf
 
-1. Edit `answers.conf`, review files if desired and run
+1. Edit `answers.conf`, review files if desired and then run
 
         $ [sudo] atomic run projectatomic/helloapache
         ...
         helloapache
+
+## Test
+Any of these approaches should create a kubernetes pod or a running docker container. 
+
+With a kubernetes pod, once its state is "Running" curl the minion it's running on.
+
+```
+$ kubectl get pod helloapache
+POD                IP                  CONTAINER(S)       IMAGE(S)           HOST                LABELS              STATUS
+helloapache        172.17.0.8          helloapache        centos/httpd       10.3.9.216/         name=helloapache   Running
+$ curl 10.3.9.216
+<bunches_of_html_goodness>
+```
+
+If you test the docker provider, once the container is running, curl the port on your localhost.
+
+```
+$ curl localhost
+<bunches_of_html_goodness>
+```
+
+Additional examples are available in the [examples](examples/) directory.
 
 ## Developer User Experience
 
