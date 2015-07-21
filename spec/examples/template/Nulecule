@@ -7,7 +7,7 @@ metadata:
   appversion: v1.0.0
   description: "some application"
   license: 
-    name: "Apache 2.0"
+    name: "License 2.0"
     url: www.example.com/license
 
 graph: 
@@ -36,4 +36,3 @@ requirements:
       accessMode: ReadWrite
       name: var-lib-data
       size: 4
-
