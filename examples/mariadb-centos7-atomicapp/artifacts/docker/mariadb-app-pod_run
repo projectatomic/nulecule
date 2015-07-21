@@ -1,0 +1,1 @@
+docker run -d --name mariadb-atomicapp-app -p 3306:3306 -e MYSQL_USER=$db_user -e MYSQL_ROOT_PASSWORD=$root_pass -e MYSQL_PASSWORD=$db_pass -e MYSQL_DATABASE=$db_name centos/mariadb
