@@ -38,9 +38,12 @@ The Nulecule specification has been implemented in the [Atomic App reference imp
 
 This example is a single container application based on the centos/httpd image, but you can use your own.
 
+You may wish to run the nulecule from an empty directory as it will copy the nulecule files to the working directory for inspection everytime it is run.
+
 ### Option 1: Non-interactive defaults
 
-Run the image. It will automatically use kubernetes as the orchestration provider.
+Run the image. It will automatically use kubernetes as the orchestration provider.  This will become interactive and prompt for defaults if the Nulecule file doesn't provide defaults for all of the parameters.
+
 ```
 [sudo] atomic run projectatomic/helloapache
 ```
