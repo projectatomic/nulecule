@@ -1,0 +1,29 @@
+---
+specversion: 0.0.2
+id: mariadb-atomicapp
+
+metadata:
+  name: MySQL Atomic App
+  appversion: 1.0.0
+  description: This is MySQL
+graph:
+  - name: mariadb-atomicapp
+    params:
+      - name: db_user
+        description: Database User
+      - name: db_pass
+        description: Database Password
+      - name: db_name
+        description: Database Name
+      - name: root_pass
+        description: Database Root User Password
+        default: MySQLPass
+    artifacts:
+      kubernetes:
+        - file://artifacts/kubernetes/mariadb-pod.yaml
+        - file://artifacts/kubernetes/mariadb-service.yaml
+      openshift:
+        - inherit:
+          - kubernetes
+      docker:
+        - file://artifacts/docker/mariadb-app-pod_run

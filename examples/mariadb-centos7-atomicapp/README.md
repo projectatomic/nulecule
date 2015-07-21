@@ -1,12 +1,12 @@
 This is an atomic application based on the nulecule specification. Kubernetes and native docker are currently the only supported providers. You'll need to run this from a workstation that has the atomic command and kubectl client that can connect to a kubernetes master.
 
-It's a single pod based on the fedora/mariadb image, but you can use your own.
+It's a single container application based on the centos/mariadb image.
 
 ### Option 1: Interactive
 
 Run the image. It will automatically use kubernetes as the orchestration provider.  It will prompt for all parameters in the Nulecule file that do not have default values.  These are "db_user", "db_password", and "db_name"
 
-    $ [sudo] atomic run projectatomic/mariadb-app
+    $ [sudo] atomic run projectatomic/mariadb-centos7-atomicapp
 
 ## Option 2: Unattended
 
@@ -17,14 +17,14 @@ Run the image. It will automatically use kubernetes as the orchestration provide
         [general]
         provider = kubernetes
 
-        [mariadb-app]
+        [mariadb-atomicapp]
         db_user = username
         db_pass = password
         db_name = dbname
 
 1. Run the application from the current working directory
 
-        $ [sudo] atomic run projectatomic/mariadb-app
+        $ [sudo] atomic run projectatomic/mariadb-centos7-atomicapp
 
 1. As an additional experiment, remove the kubernetes pod and change the provider to 'docker' and re-run the application to see it get deployed on native docker.
 
@@ -34,7 +34,7 @@ You may want to download the application, review the configuraton and parameters
 
 1. Download the application files using `atomic install`
 
-        [sudo] atomic install projectatomic/mariadb-app
+        [sudo] atomic install projectatomic/mariadb-centos7-atomicapp
 
 1. Rename `answers.conf.sample`
 
@@ -42,19 +42,19 @@ You may want to download the application, review the configuraton and parameters
 
 1. Edit `answers.conf`, review files if desired and then run
 
-        $ [sudo] atomic run projectatomic/mariadb-app
+        $ [sudo] atomic run projectatomic/mariadb-centos7-atomicapp
 
 ## Test
 Any of these approaches should create a kubernetes pod and service.
 
-You can test it using the `mysql` command in the fedora/mariadb container.
+You can test it using the `mariadb` command in the centos/mariadb container.
 
 ```
 $ kubectl get service mariadb
 NAME      LABELS    SELECTOR       IP               PORT(S)
 mariadb   name=db   name=mariadb   10.254.167.159   3306/TCP
 
-$ docker run -it fedora/mariadb mysql -h <IP address> -u <username> -p <database name>
+$ docker run -it centos/mariadb mysql -h <IP address> -u <username> -p <database name>
 Enter password: <password>
 Welcome to the MariaDB monitor.  Commands end with ; or \g.
 Your MariaDB connection id is 3

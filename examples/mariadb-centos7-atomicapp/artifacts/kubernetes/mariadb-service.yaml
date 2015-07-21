@@ -1,10 +1,10 @@
 kind: Service
 apiVersion: v1beta1
-id: mysql
+id: mariadb
 port: 3306
 selector:
-  name: mysql
+  name: mariadb
 containerPort: 3306
 labels:
-  name: mysql
+  name: mariadb
 
