@@ -15,6 +15,6 @@ graph:
         - file://artifacts/kubernetes/wordpress-pod.yaml
         - file://artifacts/kubernetes/wordpress-service.yaml
       openshift:
-        - file://artifacts/openshift/volume.json
-        - file://artifacts/openshift/service.json
-        - file://artifacts/openshift/pod.json
+        - file://artifacts/openshift/volume.yaml
+        - file://artifacts/openshift/service.yaml
+        - file://artifacts/openshift/pod.yaml
