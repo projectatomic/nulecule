@@ -1,6 +1,6 @@
 # Implementation Guide
 
-This specification has been fully described in the [schema.json](/spec/0.0.2/schema.json) file. Developer and deployment tools should be implemented using this file.
+This specification has been fully described in the [schema.json](/spec/schema.json) file. Developer and deployment tools should be implemented using this file.
 
 ## Developer Tools
 
@@ -16,7 +16,7 @@ Each "application" component the user wants to define will compose the "graph" f
 
 **Remote applications**
 
-Remote applications are simply container images, for example `someuser/mariadb-app`. No other information is needed.
+Remote applications are other nulecule container images, for example `someuser/mariadb-app`. No other information is needed.
 
 **Local applications**
 
@@ -31,4 +31,4 @@ Provider files may be generated based on some templates. Providing a mechanism t
 
 ## Runtime Tools
 
-Reference implementation (python): https://github.com/projectatomic/atomicapp
+The Reference implementation, Atomic App, coded in python is located at: https://github.com/projectatomic/atomicapp
