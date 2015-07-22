@@ -4,11 +4,11 @@ id: wordpress-atomicapp
 
 metadata:
   name: Wordpress App
-  appversion: 1.1.1
+  appversion: 1.1.2
   description: Simple Wordpress atomic app. Uses remote mysql atomic app.
 graph:
-  - name: aggregated-mysql-atomicapp
-    source: docker://goern/mysql-centos7-atomicapp
+  - name: aggregated-mariadb-atomicapp
+    source: docker://projectatomic/mariadb-centos7-atomicapp
   - name: wordpress
     artifacts:
       kubernetes:
