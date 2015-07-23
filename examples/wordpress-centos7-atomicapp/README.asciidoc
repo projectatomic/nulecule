@@ -1,7 +1,7 @@
 = Wordpress Atomic App
 
-This is a Wordpress Atomic App, it will use reuse MySQL and SkyDNS to
-provide a Kubernetes based Wordpress to you.
+This is a Wordpress Atomic App, it will reuse the MariaDB Atomic App to
+provide a Kubernetes or OpenShift3 based Wordpress to you.
 
 == Usage
 
@@ -9,4 +9,4 @@ provide a Kubernetes based Wordpress to you.
 
 = Version
 
-This is version 1.1.0 of Wordpress Atomic App.
+This is version 1.1.2 of Wordpress Atomic App.
