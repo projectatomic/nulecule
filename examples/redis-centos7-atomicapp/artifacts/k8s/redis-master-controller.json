@@ -30,7 +30,7 @@
                   "ports":[
                      {
                         "name":"redis-server",
-                        "containerPort":6379,
+                        "containerPort":$hostport,
                         "protocol":"TCP"
                      }
                   ]

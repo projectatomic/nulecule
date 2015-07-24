@@ -5,7 +5,7 @@ id: redis-atomicapp
 metadata:
   name: Redis App
   appversion: 0.0.1
-  description: Redis atomic app
+  description: Redis Atomic App
 graph:
   - name: redismaster-app
     params:
@@ -24,6 +24,9 @@ graph:
       - name: image
         description: The redis slave part
         default: jasonbrooks/redis
+      - name: master_hostport
+        description: The host TCP port of the redis master
+        default: 6379
       - name: hostport
         description: The host TCP port as the external endpoint
         default: 6379
@@ -31,4 +34,3 @@ graph:
       kubernetes:
         - file://artifacts/k8s/redis-slave-controller.json
         - file://artifacts/k8s/redis-slave-service.json
-

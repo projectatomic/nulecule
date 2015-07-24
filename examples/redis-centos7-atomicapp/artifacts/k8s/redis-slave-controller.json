@@ -30,12 +30,12 @@
                   "command":[
                      "sh",
                      "-c",
-                     "redis-server /etc/redis.conf --slaveof redis-master 6379"
+                     "redis-server /etc/redis.conf --slaveof redis-master $master_hostport"
                   ],
                   "ports":[
                      {
                         "name":"redis-server",
-                        "containerPort":6379,
+                        "containerPort":$hostport,
                         "protocol":"TCP"
                      }
                   ]
