@@ -82,7 +82,7 @@ Only when everything is working are you ready to package the application. In thi
     * yaml or json is not valid
     * missing parameter
 
-1. Once the Nulecule file and provider artifacts are working, package the application as a container. Typically, this means basing it off of an executable image provided by the implementation of Nulecule you are using.  If you are using the [Atomic App reference implementation](https://github.com/proje  ctatomic/atomicapp), the stock Dockerfile may be used, unaltered, unless you have a special use case.
+1. Once the Nulecule file and provider artifacts are working, package the application as a container. Typically, this means basing it off of an executable image provided by the implementation of Nulecule you are using.  If you are using the [Atomic App reference implementation](https://github.com/projectatomic/atomicapp), the stock Dockerfile may be used, unaltered, unless you have a special use case.
 
         [sudo] docker build -t mydb-app .
 
