@@ -38,7 +38,7 @@ The Nulecule specification has been implemented in the [Atomic App reference imp
 
 This example is a single container application based on the centos/httpd image, but you can use your own.
 
-You may wish to run the nulecule from an empty directory as it will copy the nulecule files to the working directory for inspection everytime it is run.
+You may wish to run the nulecule from an empty directory as it will copy the nulecule files to the working directory for inspection every time it is run.
 
 ### Option 1: Non-interactive defaults
 
@@ -52,7 +52,7 @@ Run the image. It will automatically use kubernetes as the orchestration provide
 
 1. Create the file `answers.conf` with these contents:
 
-    This sets up the values for the two configurable paramaters (image and hostport) and indicates that kubernetes should be the orchestration provider.
+    This sets up the values for the two configurable parameters (image and hostport) and indicates that kubernetes should be the orchestration provider.
 
         [general]
         provider = kubernetes
