@@ -19,7 +19,7 @@ graph:
         description: The IP address or addresses at which your app can be reached
     artifacts:
       kubernetes:
-        - file://artifacts/k8s/guestbook-controller.json
-        - file://artifacts/k8s/guestbook-service.json
+        - file://artifacts/kubernetes/guestbook-controller.json
+        - file://artifacts/kubernetes/guestbook-service.json
   - name: redis-centos7-atomicapp
     source: docker://projectatomic/redis-centos7-atomicapp
