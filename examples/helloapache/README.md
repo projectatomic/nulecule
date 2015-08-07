@@ -17,7 +17,7 @@ Note: This option is not interactive because all params in the Nulecule file hav
 
 1. Create the file `answers.conf` with these contents:
 
-    This sets up the values for the two configurable paramaters (image and hostport) and indicates that kubernetes should be the orchestration provider.
+    This sets up the values for the two configurable parameters (image and hostport) and indicates that kubernetes should be the orchestration provider.
 
         [general]
         provider = kubernetes

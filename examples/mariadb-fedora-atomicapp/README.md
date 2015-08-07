@@ -12,7 +12,7 @@ Run the image. It will automatically use kubernetes as the orchestration provide
 
 1. Create the file `answers.conf` with these contents:
 
-    This sets up the values for the two configurable paramaters (image and hostport) and indicates that kubernetes should be the orchestration provider.
+    This sets up the values for the two configurable parameters (image and hostport) and indicates that kubernetes should be the orchestration provider.
 
         [general]
         provider = kubernetes
