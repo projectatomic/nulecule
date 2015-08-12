@@ -14,7 +14,7 @@ The Container Application specification is a project to describe 'an Application
 
 ### Versioning
 
-Within this specification we follow [the semantic versioning pattern](http://semver.org/spec/v2.0.0.html). 
+Within this specification we follow [the semantic versioning pattern](http://semver.org/spec/v2.0.0.html).
 
 ## Revision History
 
@@ -44,7 +44,7 @@ The formats defined by the Container Application Specification are:
 Common Name | [`type`](#dataTypeType) | [`format`](#dataTypeFormat) | Comments
 ----------- | ------ | -------- | --------
 integer | `integer` | `int32` | signed 64 bits
-float | `number` | `float` | 
+float | `number` | `float` |
 string | `string` | |
 byte | `string` | `byte` |
 boolean | `boolean` | |
@@ -71,7 +71,7 @@ This is the root object for the specification.
 Field Name | Type | Description
 ---|:---:|---
 <a name="containerAppId"></a>id | `string` | **Required.** The machine readable id of the Container Application.
-<a name="containerAppSpecVersion"></a>specversion | `string` | **Required.** The semantic version string of the Container Application Specification used to describe the app. The value MUST be `"0.0.2"`. 
+<a name="containerAppSpecVersion"></a>specversion | `string` | **Required.** The semantic version string of the Container Application Specification used to describe the app. The value MUST be `"0.0.2"`.
 <a name="containerAppMetadata"></a>metadata | [ [MetadataObject](#metadataObject) ] | **Optional** An object holding optional metadata related to the Container Application, this may include license information or human readable information.
 <a name="containerAppGraph"></a>graph | [ [GraphObject](#graphObject) ] | **Required.** A list of depending containerapps. Strings may either match a local sub directory or another containerapp-spec compliant containerapp image that can be pulled via a provider.
 <a name="containerAppRequirements"></a>requirements | [ [RequirementsObject](#requirementsObject) ] | **Optional** A list of requirements of this containerapp.
@@ -161,7 +161,7 @@ Field Name | Type | Description
 ---
 name: atomicapp-zabbix-mongodb
 source: uri://registry.devops.example.com
-# if no "artifacts" is specified, then it is an external Atomic App to be pulled 
+# if no "artifacts" is specified, then it is an external Atomic App to be pulled
 # and installed from the specified source
 ```
 
@@ -184,7 +184,7 @@ Field Name | Type | Description
 <a name="parametersDescription"></a>description | `string` | **Required.** A human readable description of the parameter.
 <a name="parametersConstraints"></a>constraints | [ConstraintObject](#constraintObject) | **Optional** An optional definition of constraints to the parameter.
 <a name="parametersDefault"></a>default | `string` | **Optional** An optional default value for the parameter.
-<a name="parametersHidden"></a>hidden | `string` | **Optional** An optional boolean signifying the parameter should be obscured when displayed. 
+<a name="parametersHidden"></a>hidden | `string` | **Optional** An optional boolean signifying the parameter should be obscured when displayed.
 
 ##### Parameters Object Example:
 
@@ -192,7 +192,7 @@ Field Name | Type | Description
 name: password
 description: mongoDB Admin password
 hidden: true
-constraints: 
+constraints:
   - allowed_pattern: "[A-Z0-9]+"
     description: Must consist of characters and numbers only.
 ```
@@ -218,7 +218,7 @@ Constraints to the parameter.
 
 Field Name | Type | Description
 ---|:---:|---
-<a name="constraintObjectPattern"></a>allowed_pattern | `string` | **Required.** A regexp declaring the allowed pattern. 
+<a name="constraintObjectPattern"></a>allowed_pattern | `string` | **Required.** A regexp declaring the allowed pattern.
 <a name="constraintObjectDescription"></a>description | `string` | **Required.** A human readable description of the parameter.
 
 
@@ -351,8 +351,8 @@ NOTE: This is optional. It is possible for some applications to be "self-describ
 
 An implementation of the Nulecule Specification should declare what providers it supports. This should be done by adding a Label to the container image, by adding a line to the Dockerfile:
 ```
-LABEL io.projectatomic.nulecule.providers = "kubernetes,docker,openshift"
-``` 
+LABEL io.projectatomic.nulecule.providers "kubernetes,docker,openshift"
+```
 
 ## Conventions
 
@@ -360,7 +360,7 @@ A few conventions are used in the context of Container Applications.
 
 ### Parameters for Providers
 
-Each provider in the [ArtifactsObject](#artifactsObject) of the [GraphObject](#graphObject) may correspond to a containerapp level [ParamsObject](#paramsObject). 
+Each provider in the [ArtifactsObject](#artifactsObject) of the [GraphObject](#graphObject) may correspond to a containerapp level [ParamsObject](#paramsObject).
 
 ### Version Label
 
