@@ -1,4 +1,4 @@
-FROM projectatomic/atomicapp:0.1.1
+FROM projectatomic/atomicapp:0.1.2
 
 MAINTAINER Aaron Weitekamp <aweiteka@redhat.com>
 
