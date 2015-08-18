@@ -1,33 +1,32 @@
 {
    "kind":"ReplicationController",
-   "apiVersion":"v1beta3",
+   "apiVersion":"v1",
    "metadata":{
       "name":"guestbook",
       "labels":{
-         "name":"guestbook"
+         "app":"guestbook"
       }
    },
    "spec":{
       "replicas":3,
       "selector":{
-         "name":"guestbook"
+         "app":"guestbook"
       },
       "template":{
          "metadata":{
             "labels":{
-               "name":"guestbook"
+               "app":"guestbook"
             }
          },
          "spec":{
             "containers":[
                {
-                  "image":"$image",
                   "name":"guestbook",
+                  "image":"$image",
                   "ports":[
                      {
                         "name":"http-server",
-                        "containerPort":3000,
-                        "protocol":"TCP"
+                        "containerPort":3000
                      }
                   ]
                }

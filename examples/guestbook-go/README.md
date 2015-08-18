@@ -4,23 +4,59 @@ Kubernetes is currently the only supported provider. You'll need to run this fro
 
 ### Step 1
 
-Build this app:
+Build:
 
 ```
-atomicapp build $USER/guestbookgo-app
+# docker build -t $USER/guestbookgo-atomicapp .
 ```
 
 ### Step 2 
 
-Run this app:
+Install and Run:
+
 
 ```
-atomic run $USER/guestbookgo-app
+# atomic install $USER/guestbookgo-atomicapp
+# atomic run $USER/guestbookgo-atomicapp
 ```
-
-You'll be prompted to replace the value `publicip` with an IP address or addresses at which your app can be reached. On a single machine kubernetes cluster, for instance, you would provide the IP address of your single kubelet.
 
 ### Step 3
 
-Access the guestbook. After the images are pulled (may take a few minutes), you should be able to access the guestbook-go app at port 3000 of the IP address you provided.
+Access the guestbook through a random NodePort on your cluster. Find the port by running:
 
+```
+$ kubectl describe service guestbook | grep NodePort
+
+NodePort:		<unnamed>	31288/TCP
+```
+
+To find the ip address on your node, run:
+
+```
+$ kubectl get nodes
+NAME          LABELS                               STATUS
+kube-node-1   kubernetes.io/hostname=kube-node-1   Ready
+```
+
+And using the node name from above, run:
+
+```
+$ kubectl describe nodes kube-node-1 | grep Addresses
+Addresses:	192.168.121.174
+```
+
+Once the app's container images are pulled and pods are running, you'll be able to reach the guestbook:
+
+```
+curl 192.168.121.174:31288
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+    <meta charset="utf-8">
+    <meta content="width=device-width" name="viewport">
+    <link href="/style.css" rel="stylesheet">
+    <title>Guestbook</title>
+  </head>
+...
+``` 
