@@ -1,24 +1,24 @@
 {
    "kind":"ReplicationController",
-   "apiVersion":"v1beta3",
+   "apiVersion":"v1",
    "id":"redis-slave",
    "metadata":{
       "name":"redis-slave",
       "labels":{
-         "name":"redis",
+         "app":"redis",
          "role":"slave"
       }
    },
    "spec":{
       "replicas":2,
       "selector":{
-         "name":"redis",
+         "app":"redis",
          "role":"slave"
       },
       "template":{
          "metadata":{
             "labels":{
-               "name":"redis",
+               "app":"redis",
                "role":"slave"
             }
          },
@@ -35,8 +35,7 @@
                   "ports":[
                      {
                         "name":"redis-server",
-                        "containerPort":$hostport,
-                        "protocol":"TCP"
+                        "containerPort":$hostport
                      }
                   ]
                }
