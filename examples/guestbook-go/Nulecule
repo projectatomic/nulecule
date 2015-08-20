@@ -12,11 +12,6 @@ graph:
       - name: image
         description: The frontend part
         default: kubernetes/guestbook:v2
-      - name: hostport
-        description: The host TCP port as the external endpoint
-        default: 80
-      - name: publicip
-        description: The IP address or addresses at which your app can be reached
     artifacts:
       kubernetes:
         - file://artifacts/kubernetes/guestbook-controller.json

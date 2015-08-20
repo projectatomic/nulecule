@@ -1,23 +1,22 @@
 {
    "kind":"Service",
-   "apiVersion":"v1beta3",
+   "apiVersion":"v1",
    "metadata":{
       "name":"guestbook",
       "labels":{
-         "name":"guestbook"
+         "app":"guestbook"
       }
    },
    "spec":{
-      "publicIPs": ["$publicip"],
       "ports": [
          {
            "port":3000,
-           "targetPort":"http-server",
-           "protocol":"TCP"
+           "targetPort":"http-server"
          }
       ],
       "selector":{
-         "name":"guestbook"
-      }
+         "app":"guestbook"
+      },
+      "type": "LoadBalancer"
    }
 }
