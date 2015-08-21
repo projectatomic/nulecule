@@ -1,21 +1,18 @@
-apiVersion: v1beta1
-id: wordpress
-desiredState:
-  manifest:
-    version: v1beta1
-    id: wordpress
-    containers:
-      - name: wordpress
-        image: goern/wordpress 
-        ports:
-          - containerPort: 80
-        env:
-          - name: WORDPRESS_DB_PASSWORD
-            # change this - must match mysql.yaml password
-            value: yourpassword
-          - name: WORDPRESS_DB_USER
-            value: root
-labels:
-  name: frontend
+apiVersion: v1
 kind: Pod
-
+metadata:
+  name: wordpress
+  labels:
+    name: frontend
+spec:
+  containers:
+    - name: wordpress
+      image: goern/wordpress:latest
+      ports:
+        - containerPort: 80
+      env:
+        - name: WORDPRESS_DB_PASSWORD
+          # change this - must match mysql.yaml password
+          value: yourpassword
+        - name: WORDPRESS_DB_USER
+          value: root
