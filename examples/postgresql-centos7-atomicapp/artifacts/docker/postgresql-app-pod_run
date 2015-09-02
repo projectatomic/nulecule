@@ -1,0 +1,1 @@
+docker run -d --name postgresql-atomicapp-app -p 5432:5432 -e DB_USER=$db_user -e DB_PASS=$db_pass -e DB_NAME=$db_name centos/postgresql

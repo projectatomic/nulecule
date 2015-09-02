@@ -1,0 +1,19 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: postgresql
+  labels:
+    name: postgresql
+spec:
+  ports:
+    - protocol: TCP
+      port: 5432
+      targetPort: 5432
+      nodePort: 0
+  selector:
+    name: postgresql
+  portalIP: None
+  type: ClusterIP
+  sessionAffinity: None
+status:
+  loadBalancer: {}

@@ -1,0 +1,26 @@
+---
+specversion: 0.0.2
+id: postgresql-atomicapp
+
+metadata:
+  name: PostgreSQL Atomic App
+  appversion: 1.0.0
+  description: This is PostgreSQL
+graph:
+  - name: postgresql-atomicapp
+    params:
+      - name: db_user
+        description: Database User
+      - name: db_pass
+        description: Database Password
+      - name: db_name
+        description: Database Name
+    artifacts:
+      kubernetes:
+        - file://artifacts/kubernetes/postgresql-pod.yaml
+        - file://artifacts/kubernetes/postgresql-service.yaml
+      openshift:
+        - inherit:
+          - kubernetes
+      docker:
+        - file://artifacts/docker/postgresql-app-pod_run
