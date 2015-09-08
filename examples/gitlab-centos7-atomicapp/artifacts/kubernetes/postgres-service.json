@@ -1,0 +1,18 @@
+{
+    "kind": "Service",
+    "apiVersion": "v1",
+    "metadata": {
+        "name": "postgresql"
+    },
+    "spec": {
+        "ports": [
+            {
+                "targetPort": "postgresql-port",
+                "port": 5432
+            }
+        ],
+        "selector": {
+            "name": "postgresql"
+        }
+    }
+}

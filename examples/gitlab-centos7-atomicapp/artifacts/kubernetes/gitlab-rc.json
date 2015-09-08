@@ -1,0 +1,59 @@
+{
+    "apiVersion": "v1",
+    "kind": "ReplicationController",
+    "metadata": {
+        "name": "gitlab",
+        "labels": {
+            "name": "gitlab"
+        }
+    },
+    "spec": {
+        "replicas": 1,
+        "selector": {
+            "name": "gitlab"
+        },
+        "template": {
+            "metadata": {
+                "labels": {
+                    "name": "gitlab"
+                }
+            },
+            "spec": {
+                "containers": [
+                    {
+                        "name": "gitlab",
+                        "image": "$image",
+                        "env": [
+                            {
+                                "name": "DB_USER",
+                                "value": "$DB_USER"
+                            },
+                            {
+                                "name": "DB_PASS",
+                                "value": "$DB_PASS"
+                            },
+                            {
+                                "name": "DB_NAME",
+                                "value": "$DB_NAME"
+                            }
+                        ],
+                        "ports": [
+                            {
+                                "name": "gitlab-http",
+                                "containerPort": 80
+                            },
+                            {
+                                "name": "gitlab-https",
+                                "containerPort": 443
+                            },
+                            {
+                                "name": "gitlab-ssh",
+                                "containerPort": 22
+                            }
+                        ]
+                    }
+                ]
+            }
+        }
+    }
+}

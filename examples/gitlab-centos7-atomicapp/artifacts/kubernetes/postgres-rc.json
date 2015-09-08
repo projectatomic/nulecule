@@ -1,0 +1,52 @@
+{
+    "kind": "ReplicationController",
+    "apiVersion": "v1",
+    "metadata": {
+        "name": "postgresql",
+        "labels": {
+            "name": "postgresql"
+        }
+    },
+    "spec": {
+        "replicas": 1,
+        "selector": {
+            "name": "postgresql"
+        },
+        "template": {
+            "metadata": {
+                "labels": {
+                    "name": "postgresql"
+                }
+            },
+            "spec": {
+                "containers": [
+                    {
+                        "name": "postgresql",
+                        "image": "$image",
+                        "ports": [
+                            {
+                                "name": "postgresql-port",
+                                "containerPort": 5432
+                            }
+                        ],
+                        "env": [
+                            {
+                                "name": "DB_USER",
+                                "value": "gitlab"
+                            },
+                            {
+                                "name": "DB_PASS",
+                                "value": "password"
+                            },
+                            {
+                                "name": "DB_NAME",
+                                "value": "gitlab_production"
+                            }
+                        ]
+                    }
+                ]
+            }
+        }
+
+    }
+}
