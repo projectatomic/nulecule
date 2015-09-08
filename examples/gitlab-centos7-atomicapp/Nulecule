@@ -1,0 +1,24 @@
+---
+specversion: 0.0.2
+id: gitlab-atomicapp
+
+metadata:
+  name: Gitlab App
+  appversion: 1.2.0
+  description: Gitlab.
+graph:
+  - name: redis
+    artifacts:
+      kubernetes:
+        - file://artifacts/kubernetes/redis-rc.json
+        - file://artifacts/kubernetes/redis-service.json
+  - name: postgresql
+    artifacts:
+      kubernetes:
+        - file://artifacts/kubernetes/postgres-rc.json
+        - file://artifacts/kubernetes/postgres-service.json
+  - name: gitlab
+    artifacts:
+      kubernetes:
+        - file://artifacts/kubernetes/gitlab-rc.json
+        - file://artifacts/kubernetes/gitlab-http-service.json
