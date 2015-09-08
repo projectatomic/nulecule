@@ -1,6 +1,6 @@
 This is an atomic application based on the nulecule specification. Kubernetes is the currently the only supported provider. You'll need to run this from a workstation that has the atomic command and kubectl client that can connect to a kubernetes master.
 
-It is 3 tier application based on redis, postgresql and gitlab.
+It is 3 a tier application based on redis, postgresql and gitlab. This is also an example of a Nulecule example having multiple tier artifacts rather using graphs.
 
 ### Option 1: Interactive
 
@@ -51,7 +51,7 @@ You may want to download the application, review the configuraton and parameters
 1. Edit `answers.conf`, review files if desired and then run
 
         $ [sudo] atomic run projectatomic/gitlab-centos7-atomicapp
-i
+
 ## Test
 Any of these approaches should create kubernetes replication controllers, pods and services.
 
@@ -60,6 +60,7 @@ We have configured the app on ADB port 30000 (see answer.conf). You can access
 the app using the IP of ADB box at port 30000 or by forwarding the port 30000 of ADB box to
 host machine port.
 
+To test out if app is running and intialized properly (run following inside ADB)
 ```
 $ kubectl get pods
 NAME               READY     STATUS    RESTARTS   AGE
@@ -123,14 +124,14 @@ stayed up for > than 1 seconds (startsecs)
 
 ```
 
-To forward port 30000 of ADB box to host machine port 30000, add following line your Vagrantfile
+To forward port `30000` of ADB box to host machine port `30000`, add following line your Vagrantfile
 
 ```
-  config.vm.network "forwarded_port", guest: 30000, host: 30000, auto_correct: true
+config.vm.network "forwarded_port", guest: 30000, host: 30000, auto_correct: true
 
 ```
 
-and do
+and run following command to apply changes in updated Vagrantfile
 
 ```
 vagrant reload
@@ -139,7 +140,7 @@ vagrant reload
 Observe logs as shown above if app is configured and ready to accept connections, once it is ready you should be able to access the app at host browser using address
 
 ```
-127.0.0.1:30000
+http://127.0.0.1:30000
 ```
 
 For first time login you can use following credentials:
