@@ -1,0 +1,18 @@
+apiVersion: v1
+id: postgres
+spec:
+  containers:
+    - name: $name
+      image: $image
+      env:
+        - name: POSTGRES_USER
+          value: $db_user
+        - name: POSTGRES_PASSWORD
+          value: $db_pass
+      ports:
+        - containerPort: 5432
+metadata:
+  name: postgres
+  labels:
+    name: postgres
+kind: Pod

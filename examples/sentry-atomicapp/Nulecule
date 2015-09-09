@@ -1,0 +1,26 @@
+---
+specversion: 0.0.2
+id: sentry-atomicapp
+
+metadata:
+  name: sentry Atomic App
+  appversion: 1.0.0
+  description: This is sentry
+graph:
+  - name: postgresql
+    artifacts:
+      kubernetes:
+        - file://artifacts/kubernetes/postgres-pod.yaml
+        - file://artifacts/kubernetes/postgres-service.yaml
+
+  - name: redis
+    artifacts:
+      kubernetes:
+        - file://artifacts/kubernetes/redis-pod.yaml
+        - file://artifacts/kubernetes/redis-service.yaml
+
+  - name: sentry
+    artifacts:
+      kubernetes:
+        - file://artifacts/kubernetes/sentry-pod.yaml
+        - file://artifacts/kubernetes/sentry-service.yaml
