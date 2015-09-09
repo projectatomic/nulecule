@@ -12,13 +12,19 @@ graph:
       kubernetes:
         - file://artifacts/kubernetes/redis-rc.json
         - file://artifacts/kubernetes/redis-service.json
+      docker:
+        - file://artifacts/docker/redis-container-run
   - name: postgresql
     artifacts:
       kubernetes:
         - file://artifacts/kubernetes/postgres-rc.json
         - file://artifacts/kubernetes/postgres-service.json
+      docker:
+        - file://artifacts/docker/postgresql-container-run
   - name: gitlab
     artifacts:
       kubernetes:
         - file://artifacts/kubernetes/gitlab-rc.json
         - file://artifacts/kubernetes/gitlab-http-service.json
+      docker:
+        - file://artifacts/docker/gitlab-container-link-run
