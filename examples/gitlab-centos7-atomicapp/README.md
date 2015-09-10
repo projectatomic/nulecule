@@ -1,4 +1,4 @@
-This is an atomic application based on the nulecule specification. Kubernetes is the currently the only supported provider. You'll need to run this from a workstation that has the atomic command and kubectl client that can connect to a kubernetes master.
+This is an atomic application based on the nulecule specification. Docker and Kubernetes are the supported providers. You'll need to run this from a workstation that has the atomic command and kubectl client that can connect to a kubernetes master.
 
 It is 3 a tier application based on redis, postgresql and gitlab. This is also an example of a Nulecule example having multiple tier artifacts rather using graphs.
 
@@ -23,6 +23,11 @@ Run the image. It will automatically use kubernetes as the orchestration provide
 
         [postgresql]
         image=swordphilic/postgresql:latest
+        # following params are used for Docker provider
+        DB_USER=gitlab
+        DB_PASS=password
+        DB_NAME=gitlab_production
+
 
         [gitlab]
         image=swordphilic/gitlab:latest
@@ -31,6 +36,7 @@ Run the image. It will automatically use kubernetes as the orchestration provide
         DB_NAME=gitlab_production
         # port on the node where Gitlab over HTTP will be accessible - valid range 30000-32667
         NODE_PORT=30000
+
 
 1. Run the application from the current working directory
 
