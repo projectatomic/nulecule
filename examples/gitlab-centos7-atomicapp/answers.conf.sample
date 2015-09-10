@@ -1,6 +1,7 @@
 [general]
 namespace = default
 provider = kubernetes
+# provider = docker
 
 [redis]
 image=swordphilic/redis:latest
