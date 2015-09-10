@@ -1,6 +1,6 @@
 This is an atomic application based on the nulecule specification. Docker and Kubernetes are the supported providers. You'll need to run this from a workstation that has the atomic command and kubectl client that can connect to a kubernetes master.
 
-It is 3 a tier application based on redis, postgresql and gitlab. This is also an example of a Nulecule example having multiple tier artifacts rather using graphs.
+It is 3 a tier application based on redis, postgresql and gitlab. This is also an example Nulecule having multiple tier artifacts rather using graphs.
 
 ### Option 1: Interactive
 
@@ -57,6 +57,8 @@ You may want to download the application, review the configuraton and parameters
 1. Edit `answers.conf`, review files if desired and then run
 
         $ [sudo] atomic run projectatomic/gitlab-centos7-atomicapp
+
+Note: You can change the provider to `docker` and the app will be deployed using `docker`.
 
 ## Test
 Any of these approaches should create kubernetes replication controllers, pods and services.
