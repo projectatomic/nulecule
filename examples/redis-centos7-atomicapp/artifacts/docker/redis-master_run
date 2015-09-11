@@ -1,0 +1,2 @@
+docker run -d --name redis-master -p ::$hostport $image
+

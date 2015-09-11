@@ -19,6 +19,8 @@ graph:
       kubernetes:
         - file://artifacts/kubernetes/redis-master-controller.json
         - file://artifacts/kubernetes/redis-master-service.json
+      docker:
+        - file://artifacts/docker/redis-master_run
   - name: redisslave-app
     params:
       - name: image
@@ -34,4 +36,6 @@ graph:
       kubernetes:
         - file://artifacts/kubernetes/redis-slave-controller.json
         - file://artifacts/kubernetes/redis-slave-service.json
+      docker:
+        - file://artifacts/docker/redis-slave_run
 
