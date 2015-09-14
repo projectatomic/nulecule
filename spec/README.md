@@ -287,7 +287,7 @@ artifacts: # list of local or remote files or remote repository path to be proce
     "kubernetes": [
       {
         "source": "https://github.com/aweiteka/kube-files.git",
-        "path": "/artifacts/kubernetes/,
+        "path": "/artifacts/kubernetes/",
         "tag": "release-1"
       }
     ],
