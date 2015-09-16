@@ -4,7 +4,7 @@ spec:
   containers:
     - resources:
         limits:
-          cpu: 100
+          cpu: 100m
       name: mariadb
       image: centos/mariadb
       env:
