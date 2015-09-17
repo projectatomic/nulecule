@@ -6,20 +6,53 @@ metadata:
   name: sentry Atomic App
   appversion: 1.0.0
   description: This is sentry
+
+params:
+  - name: db_user
+    description: Database user
+    default: sentry
+  - name: db_pass
+    description: Database password
+    default: password
+  - name: db_name
+    description: Database name
+    default: sentry
+
 graph:
   - name: postgresql
+    params:
+      - name: name
+        description: Container name for postgresql
+        default: postgres
+      - name: image
+        description: Container image name for postgresql
+        default: postgres
     artifacts:
       kubernetes:
         - file://artifacts/kubernetes/postgres-pod.yaml
         - file://artifacts/kubernetes/postgres-service.yaml
 
   - name: redis
+    params:
+      - name: name
+        description: Container name for redis
+        default: redis
+      - name: image
+        description: Container image name for redis
+        default: redis
     artifacts:
       kubernetes:
         - file://artifacts/kubernetes/redis-pod.yaml
         - file://artifacts/kubernetes/redis-service.yaml
 
   - name: sentry
+    params:
+      - name: name
+        description: Container name for sentry
+        default: sentry
+      - name: image
+        description: Container image name for sentry
+        default: rtnpro/sentry
     artifacts:
       kubernetes:
         - file://artifacts/kubernetes/sentry-pod.yaml
