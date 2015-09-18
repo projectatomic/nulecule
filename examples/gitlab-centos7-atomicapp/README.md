@@ -1,4 +1,4 @@
-This is an atomic application based on the nulecule specification. Docker and Kubernetes are the supported providers. You'll need to run this from a workstation that has the atomic command and kubectl client that can connect to a kubernetes master.
+This is an atomicapp application based on the nulecule specification. Docker and Kubernetes are the supported providers. You'll need to run this from a workstation that has the [atomic](https://github.com/projectatomic/atomic) command and kubectl client that can connect to a kubernetes master.
 
 It is 3 a tier application based on redis, postgresql and gitlab. This is also an example Nulecule having multiple tier artifacts rather using graphs.
 
