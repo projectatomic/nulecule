@@ -13,7 +13,7 @@
 ## Problem Statement
 Currently there is no standard way of defining a multi-container application's configuration without distributing instructions and files to the end-user. Additionally, these files must be managed and distributed via different systems than the containers themselves.
 
-Containers in the OCI (Open Container Initiative) format derived from Docker offers a new approach for application packaging. OCI enables application-centric aggregate packaing, optimized for deployment into containers. However most applications will consist of multiple containers, which surfaces two issues: the relationships between containers need to be expressed in order to manage dependencies and orchestrate the deployment (e.g. set up network connections) with consideration of environmental factors, and this application-level meta-data needs to be distributed. OCI itslef however stops at the individual Orchestration tools such as Kubernetes offer a generic description model for multi-container applications, however they do not define a transport model, nor a standard way to parameterize a generic template. The mindset of most if not all current container orchestration systems is to treat the aggregate, multi-container application as state of the cluster rather than an entity in it's own right and therefor they regress beyond the portability that OCI introduced. This means that it's very easy to put a individual service into a Docker-style Registry, however there is no way to represent a full application at the distribution level - I can create a single MariaDB container, but not a MariaDB/Galera cluster or even a full application such as Kollab. So what is missing, is a standard way to describe and package a multi-container application. 
+Containers in the OCI (Open Container Initiative) format derived from Docker offers a new approach for application packaging. OCI enables application-centric aggregate packaging, optimized for deployment into containers. However most applications will consist of multiple containers, which surfaces two issues: the relationships between containers need to be expressed in order to manage dependencies and orchestrate the deployment (e.g. set up network connections) with consideration of environmental factors, and this application-level meta-data needs to be distributed. OCI itself, however, stops at the individual Orchestration tools such as Kubernetes offer a generic description model for multi-container applications, however they do not define a transport model, nor a standard way to parameterize a generic template. The mindset of most, if not all, current container orchestration systems is to treat the aggregate, multi-container application as state of the cluster rather than an entity in it's own right and therefore they regress beyond the portability that OCI introduced. This means that it's very easy to put a individual service into a Docker-style Registry, however there is no way to represent a full application at the distribution level - I can create a single MariaDB container, but not a MariaDB/Galera cluster or even a full application such as Kollab. So what is missing, is a standard way to describe and package a multi-container application.
 
 ## What is Nulecule?
 
@@ -40,7 +40,7 @@ The Nulecule specification has been implemented in the [Atomic App reference imp
 
 This example is a single container application based on the centos/httpd image, but you can use your own.
 
-You may wish to run the nulecule from an empty directory as it will copy the nulecule files to the working directory for inspection every time it is run.
+You may wish to run the Nulecule from an empty directory as it will copy the Nulecule files to the working directory for inspection every time it is run.
 
 ### Option 1: Non-interactive defaults
 
@@ -90,7 +90,7 @@ You may want to download the application, review the configuraton and parameters
         helloapache
 
 ## Test
-Any of these approaches should create a kubernetes pod or a running docker container. 
+Any of these approaches should create a kubernetes pod or a running docker container.
 
 With a kubernetes pod, once its state is "Running" curl the minion it's running on.
 
