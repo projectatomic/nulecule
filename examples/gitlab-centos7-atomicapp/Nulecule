@@ -1,0 +1,66 @@
+---
+specversion: 0.0.2
+id: gitlab-atomicapp
+
+metadata:
+  name: Gitlab App
+  appversion: 1.2.0
+  description: Gitlab.
+graph:
+  - name: redis
+    params:
+      - name: image
+        description: Redis image to be used.
+        default: swordphilic/redis:latest
+    artifacts:
+      kubernetes:
+        - file://artifacts/kubernetes/redis-rc.json
+        - file://artifacts/kubernetes/redis-service.json
+      docker:
+        - file://artifacts/docker/redis-container-run
+  - name: postgresql
+    params:
+      - name: image
+        description: PostgreSQL image to be used.
+        default: swordphilic/postgresql:latest
+      - name: DB_USER
+        description: Database user (This parameter is used for Docker provider)
+        default: gitlab
+      - name: DB_PASS
+        description: Database password for DB_USER (This parameter is used for Docker provider)
+        default: password
+      - name: DB_NAME
+        description: Database name (This parameter is used for Docker provider)
+        default: gitlab_production
+    artifacts:
+      kubernetes:
+        - file://artifacts/kubernetes/postgres-rc.json
+        - file://artifacts/kubernetes/postgres-service.json
+      docker:
+        - file://artifacts/docker/postgresql-container-run
+  - name: gitlab
+    params:
+      - name: image
+        description: Gitlab image to be used.
+        default: swordphilic/gitlab:latest
+      - name: DB_USER
+        description: Database user (This parameter is used for Kubernetes provider)
+        default: gitlab
+      - name: DB_PASS
+        description: Database password for DB_USER (This parameter is used for Kubernetes provider)
+        default: password
+      - name: DB_NAME
+        description: Database name (This parameter is used for Kubernetes provider)
+        default: gitlab_production
+      - name: NODE_PORT
+        description: Node port where Gitlab HTTP service will be forwarded to
+        default: 30000
+        constraints:
+          allowed_patterns: "^(3[0-1][0-9][0-9][0-9]|32[0-5][0-9][0-9]|326[0-5][0-9]|3266[0-7])$"
+          description: The valid range for node port is 30000-32667 for Kubernetes provider
+    artifacts:
+      kubernetes:
+        - file://artifacts/kubernetes/gitlab-rc.json
+        - file://artifacts/kubernetes/gitlab-http-service.json
+      docker:
+        - file://artifacts/docker/gitlab-container-link-run

@@ -1,0 +1,24 @@
+[general]
+namespace = default
+provider = kubernetes
+# provider = docker
+
+[redis]
+image=swordphilic/redis:latest
+
+[postgresql]
+image=swordphilic/postgresql:latest
+# following params are used for Docker provider
+DB_USER=gitlab
+DB_PASS=password
+DB_NAME=gitlab_production
+
+
+[gitlab]
+image=swordphilic/gitlab:latest
+# following params are used for Kubernetes provider
+DB_USER=gitlab
+DB_PASS=password
+DB_NAME=gitlab_production
+# port on the node where Gitlab over HTTP will be accessible - valid range 30000-32667
+NODE_PORT=30000

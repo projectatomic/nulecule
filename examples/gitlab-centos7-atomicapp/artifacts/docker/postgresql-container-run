@@ -1,0 +1,1 @@
+docker run --name postgresql -d -e DB_USER=$DB_USER -e DB_PASS=$DB_PASS -e DB_NAME=$DB_NAME  $image

@@ -1,0 +1,18 @@
+{
+    "kind": "Service",
+    "apiVersion": "v1",
+    "metadata": {
+        "name": "redis"
+    },
+    "spec": {
+        "ports": [
+            {
+                "targetPort": "redis-port",
+                "port": 6379
+            }
+        ],
+        "selector": {
+            "name": "redis"
+        }
+    }
+}
