@@ -32,15 +32,15 @@
                         "env": [
                             {
                                 "name": "DB_USER",
-                                "value": "gitlab"
+                                "value": "$DB_USER"
                             },
                             {
                                 "name": "DB_PASS",
-                                "value": "password"
+                                "value": "$DB_PASS"
                             },
                             {
                                 "name": "DB_NAME",
-                                "value": "gitlab_production"
+                                "value": "$DB_NAME"
                             }
                         ]
                     }
