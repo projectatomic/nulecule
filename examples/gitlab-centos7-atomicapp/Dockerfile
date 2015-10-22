@@ -1,4 +1,4 @@
-FROM projectatomic/atomicapp:0.1.3
+FROM projectatomic/atomicapp:0.1.11
 
 MAINTAINER Navid Shaikh <nshaikh@redhat.com>
 
