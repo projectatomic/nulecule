@@ -1,4 +1,4 @@
-FROM projectatomic/atomicapp:0.1.10
+FROM projectatomic/atomicapp:0.1.12
 
 MAINTAINER Your Name <email@example.com>
 
