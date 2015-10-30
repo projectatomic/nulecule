@@ -167,7 +167,7 @@ source: uri://registry.devops.example.com
 
 ```js
 {
-"name": "atomicapp-zabbix-mongodb"
+"name": "atomicapp-zabbix-mongodb",
 "source": "uri://registry.devops.example.com"
 }
 ```
@@ -200,7 +200,7 @@ constraints:
 {
   "name": "password",
   "description": "mongoDB Admin password",
-  "hidden": true
+  "hidden": true,
   "constraints": [
     {
       "allowed_pattern": "[A-Z0-9]+",
