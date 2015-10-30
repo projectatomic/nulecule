@@ -1,0 +1,19 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: sentry
+  labels:
+    name: sentry
+spec:
+  ports:
+    - protocol: TCP
+      port: 9000
+      targetPort: 9000
+      nodePort: 0
+  selector:
+    name: sentry
+  portalIP: None
+  type: ClusterIP
+  sessionAffinity: None
+status:
+  loadBalancer: {}
