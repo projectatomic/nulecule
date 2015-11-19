@@ -1,0 +1,9 @@
+FROM projectatomic/atomicapp:0.1.3
+
+MAINTAINER Ratnadeep Debnath <rtnpro@redhat.com>
+
+LABEL io.projectatomic.nulecule.specversion="0.0.2" \
+      io.projectatomic.nulecule.providers="kubernetes,docker,openshift"
+
+ADD /Nulecule gpl-3.0.txt /application-entity/
+ADD /artifacts /application-entity/artifacts
