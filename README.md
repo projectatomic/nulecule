@@ -121,6 +121,10 @@ This is only a specification. Implementations may be written in any language. Se
 
 **Reference implementation** https://github.com/projectatomic/atomicapp
 
+## Examples / Library
+
+For a library of examples conforming to the current reference implementation [atomicapp](https://github.com/projectatomic/atomicapp) please visit [github.com/projectatomic/nulecule-library](https://github.com/projectatomic/nulecule-library)
+
 ### Developer tooling
 
 Developer tooling is TBD. There is some work planned for [DevAssistant](http://devassistant.org/).
