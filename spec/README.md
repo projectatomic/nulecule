@@ -186,6 +186,42 @@ Field Name | Type | Description
 <a name="parametersDefault"></a>default | `string` | **Optional** An optional default value for the parameter.
 <a name="parametersHidden"></a>hidden | `string` | **Optional** An optional boolean signifying the parameter should be obscured when displayed.
 
+##### JSON Pointers 
+JSON Pointers (otherwise known as XPathing) are supported by the Nulecule specification by implementing [RFC 6902](https://tools.ietf.org/html/rfc6902).
+A value can be provided by using the pointer reference within the JSON/Yaml format.
+
+ex.
+```yaml
+description: mongoDB Admin password
+hidden: true
+constraints:
+  - allowed_pattern: "[A-Z0-9]+"
+    description: Must consist of characters and numbers only.
+    default: 0
+    param:
+      - /spec/containers/0/param
+```
+```json
+{
+  "name": "password",
+  "description": "mongoDB Admin password",
+  "hidden": true,
+  "constraints": [
+    {
+      "allowed_pattern": "[A-Z0-9]+",
+      "description": "Must consist of characters and numbers only.",
+      "default": 0,
+      "param": {
+          "description": "An array of JSON pointers per RFC 6902.",
+          "type": "array",
+          "default": null
+      }
+    }
+  ]
+}
+```
+
+
 ##### Parameters Object Example:
 
 ```yaml

@@ -28,6 +28,10 @@
             "description": "An optional boolean signifying the parameter should be obscured when displayed.",
             "type": "boolean",
             "default": false
-        }
+        },
+        "param": [
+          "/spec/containers/0/param",
+          "/spec/containers/1/param"
+        ]
     }
 }
