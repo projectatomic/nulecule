@@ -29,9 +29,10 @@
             "type": "boolean",
             "default": false
         },
-        "param": [
-          "/spec/containers/0/param",
-          "/spec/containers/1/param"
-        ]
+        "param": {
+            "description": "An array of XPath strings per RFC 6902.",
+            "type": "array",
+            "default": "null"
+        }
     }
 }
