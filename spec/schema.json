@@ -19,6 +19,13 @@
         "metadata": {
             "$ref": "file:metadata.json"
         },
+        "params": {
+            "description": "A list of ParamsObject that contain information in the global context of the application, accessible to it's child graph items.",
+            "type": "array",
+            "items": {
+                "$ref": "file:param.json"
+            }
+        },
         "graph": {
             "$ref": "file:graph.json"
         },
