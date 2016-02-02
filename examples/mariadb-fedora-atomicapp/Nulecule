@@ -22,7 +22,7 @@ graph:
         default: fedora/mariadb
     artifacts:
       kubernetes:
-        - file://graph/k8s/mariadb-pod.json
-        - file://graph/k8s/mariadb-service.json
+        - file://artifacts/k8s/mariadb-pod.json
+        - file://artifacts/k8s/mariadb-service.json
       docker:
-        - file://graph/docker/mariadb-app-pod_run
+        - file://artifacts/docker/mariadb-app-pod_run
