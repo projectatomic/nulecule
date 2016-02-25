@@ -7,7 +7,7 @@ You have an application you want to package up as a Nulecule for distribution. I
 1. Find your resources. 
     - **nulecule applications** Are there existing Nulecule Applications you can leverage in your own application?
     - **container images** Carefully consider if you really need to build your own containers.  For example, do you really need your own web server or database image? If you're writing a Dockerfile for a common service, try to find a well-known, supported, certified, stable image that you can build on.
-    - **provider orchestration templates** When you are considering how to provide configuration for orchestration provides, such as kubernetes files (service, replication controller, pod) or OpenShift or Docker Compose files, see if you can use exising templates or known good files. As with container images, if you're writing files for common services, try to find well-known, supported, certified, stable templates that you can build on.
+    - **provider orchestration templates** When you are considering how to provide configuration for orchestration providers, such as kubernetes files (service, replication controller, pod) or OpenShift or Docker Compose files, see if you can use exising templates or known good files. As with container images, if you're writing files for common services, try to find well-known, supported, certified, stable templates that you can build on.
 
 ## Prepare
 From the planning phase, you've got a collection of remote and local sources that your application will be comprised of.
