@@ -1,0 +1,95 @@
+# Put all metadata here (no more separate id, specversion objects, etc.
+metadata:
+  name: Hello World
+  id: helloworld
+  appversion: 0.0.1
+  spec: 1.0.0
+  description: Application
+
+# All provider details / what provider to orchestrate to. Because let's face it, 99% of the time the user is only focused on one specified provider when deploying Atomic App
+provider:
+  default: kubernetes
+
+  # This will be encrypted on build / won't be shown to any user that uses it. This is also OPTIONAL. With providing "secrets" this makes applications super portable. Got to find someone whom is good at encryption to implement this.
+  secrets: 
+    provider-api: https://localhost:8080
+    provider-auth: foobar
+    provider-tlsverify: true
+    provider-cacert: |
+      ----BEGIN CERTIFICATE REQUEST-----
+      FOO
+      -----END CERTIFICATE REQUEST-----
+
+# Global parameters (hi rtnpro!)
+params: 
+  db_user:
+    description: Database username
+  db_pass:
+    description: Database password
+  db_name:
+    description: Database name
+  db_host:
+    description: Database service name
+    default: mariadb
+ 
+# Inheriting a container that's already been "nuleculized"
+db:
+  source: docker://projectatomic/mariadb:latest
+  # Other possible providers:
+  # source: rkt://projectatomic/mariadb:latest
+  # source: file://foo/bar/container
+  # source: https://localhost/container.tar.gz
+
+# MANUALLY: Creating a Nulecule container with artifact files (variable substition which is what we use at the moment.
+etherpad:
+  build: manual
+
+  params: 
+    image:
+      description: Container image
+      default: centos/etherpad
+    hostport:
+      description: Host port used
+      default: 9001
+  
+  artifacts:
+    docker:
+      - file://artifacts/docker/etherpad-centos7-atomicapp-run
+    kubernetes:
+      - file://artifacts/kubernetes/etherpad-rc.yaml
+      - file://artifacts/kubernetes/etherpad-svc.yaml
+    openshift:
+      - file://artifacts/openshift/etherpad-rc.yaml
+      - file://artifacts/openshift/etherpad-svc.yaml
+
+# The fun part!
+#
+# AUTOMATICALLY: Have Atomic App automatically come up with the best k8s/openshift/marathon layout. 
+# The motivation is that *a lot* of replicationControllers, Services, etc. are duplicate copy-and-pastes from other examples.
+#
+# It would be recommended to create these artifacts MANUALLY (see above) instead of AUTOMATICALLY. This would fill the niche of users whom have little experience with Kubernetes / OpenShift / Marathon  whom want a quick set-up up-and-running with little-to-no issues.
+#
+# For example. Atomic App wouldn't fill in the "resources / limits" area of k8s and this could instead be specified manually with their own artifact file. Atomic App would build the best possible and appropriate artifact files for whatever provided specified. Ex. How libvirt does it with their .xml on how you can specify whatever and it would work on vmware / kvm / openvz, etc. However, if you want to do it manually you can specify your cmd line arguments (ex. qemu + datamapper args)
+# 
+# This will plug in: appropriate metadata, labels, etc. where appropriate.
+# This is EARLY and would need help with this part. this is a COMPLICATED example in order to try and cover large angles
+# 
+# Ideally this will be similar and as easy as DOCKER COMPOSE
+# 
+# We will also figure out a way to interpolate with manual and automatic generation. For ex. params such as ports can be converted to default answers.conf params when built. This will be the hard part.
+
+# Redis EXAMPLE
+redis:
+  build: auto
+
+  image: docker://redis
+  replicas: 1
+  ports:
+    container: 6379
+    node: 80
+  volumes:
+    data: /data
+  env:
+    SENTINAL: 'true'
+  env: # OR
+    - SENTINAL='true'
