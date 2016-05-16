@@ -1,0 +1,55 @@
+---
+metadata:
+  name: Etherpad
+  id: etherpad
+  appversion: 0.0.1
+  spec: 1.0.0
+  description: Etherpad lite
+
+provider:
+  default: kubernetes
+  secrets:
+    provider-api: https://localhost:8080
+    provider-auth: foobar
+    provider-tlsverify: true
+    provider-cacert: |
+      ----BEGIN CERTIFICATE REQUEST-----
+      FOO
+      -----END CERTIFICATE REQUEST-----
+
+# Global params
+params: 
+  db_user:
+    description: Database username
+  db_pass:
+    description: Database password
+  db_name:
+    description: Database name
+  db_host:
+    description: Database service name
+    default: mariadb
+ 
+db:
+  source: docker://projectatomic/mariadb:latest
+
+etherpad:
+
+  params: 
+    image:
+      description: Container image
+      default: centos/etherpad
+    hostport:
+      description: Host port used
+      default: 9001
+  
+  provider: 
+    docker:
+      - run: |
+        docker run --link=mariadb-atomicapp-app:db -d --name etherpad -p $hostport:9001 $image
+
+    kubernetes:
+      - rc: file://artfifacts/kubernetes/rc.yaml
+      - svc: file://artfifacts/kubernetes/svc.yaml
+
+    openshift:
+      inherit: kubernetes

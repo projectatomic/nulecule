@@ -1,0 +1,40 @@
+# Using helloapache as an example
+---
+metadata:
+  name: helloworld 
+  id: helloworld
+  appversion: 0.0.1
+  spec: 1.0.0
+  description: Hello world!
+
+provider:
+  default: kubernetes
+
+helloworld:
+
+  params: 
+    image:
+      description: The webserver image
+      default: centos/httpd
+
+    hostport:
+      description: The host TCP port as the external endpoint
+      default: 80
+  
+  provider: 
+
+    # Pipe in the command (pref if it's short)
+    docker:
+      - run: | 
+        docker run -d -p $hostport:80 $image
+
+    # Grab from the artifact folder
+    kubernetes:
+      - pod: file://artifacts/kubernetes/pod.yaml
+
+    # Grab from https
+    marathon:
+      - container: https://github.com/cdrage/marathon-examples/helloapache/container.json
+
+    openshift:
+      inherit: kubernetes
