@@ -23,6 +23,10 @@ The Nulecule specification enables complex applications to be defined, packaged 
 
 **[Glossary of terms](docs/glossary.md)**
 
+## Specification
+
+An actively maintained page on the specifics of the specification can be found at [SPECIFICATION.md](SPECIFICATION.md).
+
 ## Nulecule Specification Highlights
 
 * Application description and context maintained in a single container through extensible metadata
@@ -36,90 +40,51 @@ The Nulecule specification enables complex applications to be defined, packaged 
 
 ## Deployment User Experience
 
-The Nulecule specification has been implemented in the [Atomic App reference implementation](https://github.com/projectatomic/atomicapp).  Atomic App currently supports docker containers and kubernetes and docker orchestration providers.  The [atomic command](https://github.com/projectatomic/atomic) is used to run the container that contains the Nulecule specification and the Atomic App implementation.
+The Nulecule specification has been implemented in the [Atomic App reference implementation](https://github.com/projectatomic/atomicapp).  Atomic App currently supports docker as well as container orchestrators such as Kubernetes, OpenShift and Marathon.  The [atomic](https://github.com/projectatomic/atomic) or [atomicapp](https://github.com/projectatomic/atomicapp] command is used to run the container that contains the Nulecule specification.
+
+## Getting started on Nulecule with Atomic App
+
+Nulecule can use the Atomic App implementation which can be used either natively on your OS __or__ ran via the [atomic](https://github.com/projectatomic/atomic) command on [Fedora or CentOS Atomic hosts](https://www.projectatomic.io/download/).
+
+__Detailed instructions on [getting started](https://github.com/projectatomic/atomicapp/blob/master/docs/start_guide.md) are available.__ Alternatively, use the [quick start guide](https://github.com/projectatomic/atomicapp/blob/master/docs/quick_start.md) to get a Nuleculized application running immediately.
 
 This example is a single container application based on the centos/httpd image, but you can use your own.
 
-You may wish to run the Nulecule from an empty directory as it will copy the Nulecule files to the working directory for inspection every time it is run.
+A quick example of this being used are launching the `projectatomic/helloapache` example:
 
-### Option 1: Non-interactive defaults
+```bash
+▶ sudo atomicapp run projectatomic/helloapache --destination helloapache
+INFO   :: Atomic App: 0.5.2 - Mode: Run
+INFO   :: Unpacking image projectatomic/helloapache to helloapache
+INFO   :: Skipping pulling docker image: projectatomic/helloapache
+INFO   :: Extracting Nulecule data from image projectatomic/helloapache to helloapache
+INFO   :: App exists locally and no update requested
+INFO   :: Using namespace default
+INFO   :: trying kubectl at /usr/bin/kubectl
+INFO   :: trying kubectl at /usr/local/bin/kubectl
+INFO   :: found kubectl at /usr/local/bin/kubectl
+INFO   :: Deploying to Kubernetes
 
-Run the image. It will automatically use kubernetes as the orchestration provider.  This will become interactive and prompt for defaults if the Nulecule file doesn't provide defaults for all of the parameters.
+Your application resides in helloapache
+Please use this directory for managing your application
 
+▶ kubectl get po
+NAME                   READY     STATUS    RESTARTS   AGE
+helloapache            1/1       Running   0          6s
+k8s-etcd-127.0.0.1     1/1       Running   0          20d
+k8s-master-127.0.0.1   4/4       Running   0          23h
+k8s-proxy-127.0.0.1    1/1       Running   0          23h
 ```
-[sudo] atomic run projectatomic/helloapache
-```
-
-### Option 2: Unattended
-
-1. Create the file `answers.conf` with these contents:
-
-    This sets up the values for the two configurable parameters (image and hostport) and indicates that kubernetes should be the orchestration provider.
-
-        [general]
-        provider = kubernetes
-
-        [helloapache-app]
-        image = centos/httpd # optional: choose a different image
-        hostport = 80        # optional: choose a different port to expose
-1. Run the application from the current working directory
-
-        $ [sudo] atomic run projectatomic/helloapache
-        ...
-        helloapache
-
-
-1. As an additional experiment, remove the kubernetes pod and change the provider to 'docker' and re-run the application to see it get deployed on native docker.
-
-### Option 3: Install and Run
-
-You may want to download the application, review the configuration and parameters as specified in the Nulecule file, and edit the answerfile before running the application.
-
-1. Download the application files using `atomic install`
-
-        [sudo] atomic install projectatomic/helloapache
-
-1. Rename `answers.conf.sample`
-
-        mv answers.conf.sample answers.conf
-
-1. Edit `answers.conf`, review files if desired and then run
-
-        $ [sudo] atomic run projectatomic/helloapache
-        ...
-        helloapache
-
-## Test
-Any of these approaches should create a kubernetes pod or a running docker container.
-
-With a kubernetes pod, once its state is "Running" curl the minion it's running on.
-
-```
-$ kubectl get pod helloapache
-POD                IP                  CONTAINER(S)       IMAGE(S)           HOST                LABELS              STATUS
-helloapache        172.17.0.8          helloapache        centos/httpd       10.3.9.216/         name=helloapache   Running
-$ curl 10.3.9.216
-<bunches_of_html_goodness>
-```
-
-If you test the docker provider, once the container is running, curl the port on your localhost.
-
-```
-$ curl localhost
-<bunches_of_html_goodness>
-```
-
-Additional examples are available in the [examples](examples/) directory.
 
 ## Developer User Experience
 
-See the [Getting Started with Nulecule guide](docs/getting-started.md).
+See the [Getting Started with Nulecule guide](GETTING_STARTED.md).
 
 ## Implementations
 
-This is only a specification. Implementations may be written in any language. See [implementation guide](/docs/implementation_guide.md) for more details.
+This is only a specification. Implementations may be written in any language. See [implementation guide](IMPLEMENTATION_GUIDE.md) for more details.
 
-**Reference implementation** https://github.com/projectatomic/atomicapp
+**Reference implementation:** https://github.com/projectatomic/atomicapp
 
 ## Examples / Library
 
