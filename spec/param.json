@@ -28,6 +28,11 @@
             "description": "An optional boolean signifying the parameter should be obscured when displayed.",
             "type": "boolean",
             "default": false
+        },
+        "param": {
+            "description": "An array of XPath strings per RFC 6902.",
+            "type": "array",
+            "default": "null"
         }
     }
 }
