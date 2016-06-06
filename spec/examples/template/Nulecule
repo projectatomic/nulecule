@@ -1,24 +1,24 @@
---- 
-specversion: "0.0.2"
+---
+specversion: "0.1.0"
 
 id: 191131-abcd
-metadata: 
+metadata:
   name: "my app"
   appversion: v1.0.0
   description: "some application"
-  license: 
+  license:
     name: "License 2.0"
     url: www.example.com/license
 
-graph: 
+graph:
   - name: somedb
     source: "docker://registry.example.com/some/database"
   - name: mycode
-    params: 
+    params:
       - name: password
         description: passphrase
       - name: username
-        constraints: 
+        constraints:
           - allowed_pattern: "[A-Z0-9]+"
             description: "Must consist of characters and numbers only."
         description: username
@@ -31,8 +31,8 @@ graph:
         - "file:artifacts/provider2/"
         - inherit:
             - provider1
-requirements: 
-  - persistentVolume: 
+requirements:
+  - persistentVolume:
       accessMode: ReadWrite
       name: var-lib-data
       size: 4

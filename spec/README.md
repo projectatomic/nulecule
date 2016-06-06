@@ -2,7 +2,7 @@
 
 **NOTE**: This is a work in progress effort that is expected to change quickly. Feel free to join the initiative!
 
-#### Version 0.0.2
+#### Version 0.1.0
 
 The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in [RFC 2119](http://www.ietf.org/rfc/rfc2119.txt).
 
@@ -14,12 +14,13 @@ The Container Application specification is a project to describe 'an Application
 
 ### Versioning
 
-Within this specification we follow [the semantic versioning pattern](http://semver.org/spec/v2.0.0.html).
+Within this specification we follow [the semantic versioning pattern](http://semver.org/spec/v2.0.0.html). A comparator ("version number A is bigger than version number B" or "version A is later than version B") is defined within the semantic versioning document.
 
 ## Revision History
 
 Version | Date | Notes
 --- | --- | ---
+0.1.0 | 2016-03-17 | add path to persistent storage requirement, see [#193]https://github.com/projectatomic/nulecule/issues/193
 0.0.2 | 2015-05-07 | close issue #35 the graph is now a list of named items
 0.0.1-alpha | 2015-mm-dd | TBD
 v1-alpha | 2015-04-10 | reversioned to 0.0.1-alpha
@@ -71,7 +72,7 @@ This is the root object for the specification.
 Field Name | Type | Description
 ---|:---:|---
 <a name="containerAppId"></a>id | `string` | **Required.** The machine readable id of the Container Application.
-<a name="containerAppSpecVersion"></a>specversion | `string` | **Required.** The semantic version string of the Container Application Specification used to describe the app. The value MUST be `"0.0.2"`.
+<a name="containerAppSpecVersion"></a>specversion | `string` | **Required.** The semantic version string of the Container Application Specification used to describe the app. The value MUST be at least `"0.0.2"`.
 <a name="containerAppMetadata"></a>metadata | [ [MetadataObject](#metadataObject) ] | **Optional** An object holding optional metadata related to the Container Application, this may include license information or human readable information.
 <a name="dependingContainerAppParams"></a>params | [ [ParamsObject](#paramsObject) ] | **Optional** A list of [ParamsObject](#paramsObject) that contain provider specific information.
 <a name="containerAppGraph"></a>graph | [ [GraphObject](#graphObject) ] | **Required.** A list of depending containerapps. Strings may either match a local sub directory or another containerapp-spec compliant containerapp image that can be pulled via a provider.
@@ -240,6 +241,7 @@ Field Name | Type | Description
 <a name="containerAppRequirementsName"></a>name | `string` | **Required.** A name associated with the storage requirement.
 <a name="containerAppRequirementsAccessMode"></a>accessModes | `string` | **Required.** May be `"ReadWrite"` or `"ReadOnly"`.
 <a name="containerAppRequirementsSize"></a>size | `integer` | **Required.** Size of required the storage.
+<a name="containerAppRequirementsPath"></a>path | `string` | **Optional** Path inside the container at which the storage should be provisioned.
 
 ##### Storage Requirement Example:
 
@@ -249,13 +251,15 @@ Field Name | Type | Description
     name: "var-lib-mongodb-data"
     accessMode: "ReadWrite"
     size: 4 # GB by default
+    path: "/var/lib/mongodb/data"
 ```
 ```js
   {
     "persistentVolume": {
       "name": "var-lib-mongodb-data",
       "accessMode": "ReadWrite",
-      "size": 4
+      "size": 4,
+      "path": "/var/lib/mongodb/data"
     }
   }
 ```
@@ -367,5 +371,5 @@ Each provider in the [ArtifactsObject](#artifactsObject) of the [GraphObject](#g
 
 The Dockerfile must carry a Label declaring the version of the specification that is used:
 ```
-LABEL io.projectatomic.nulecule.specversion 0.0.2
+LABEL io.projectatomic.nulecule.specversion 0.1.0
 ```

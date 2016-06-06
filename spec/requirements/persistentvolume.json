@@ -26,6 +26,10 @@
                     "description": "Size of the storage.",
                     "type": "number",
                     "minimum": 0
+                },
+                "path": {
+                    "description": "Path inside the container at which the storage should be provisioned.",
+                    "type": "string"
                 }
             }
         }
