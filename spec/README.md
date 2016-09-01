@@ -70,7 +70,7 @@ This is the root object for the specification.
 
 Field Name | Type | Description
 ---|:---:|---
-<a name="containerAppId"></a>id | `string` | **Required.** The machine readable id of the Container Application.
+<a name="containerAppId"></a>id | `string` | **Required.** The machine readable id of the Container Application (shouldn't contain ``:``).
 <a name="containerAppSpecVersion"></a>specversion | `string` | **Required.** The semantic version string of the Container Application Specification used to describe the app. The value MUST be `"0.0.2"`.
 <a name="containerAppMetadata"></a>metadata | [ [MetadataObject](#metadataObject) ] | **Optional** An object holding optional metadata related to the Container Application, this may include license information or human readable information.
 <a name="dependingContainerAppParams"></a>params | [ [ParamsObject](#paramsObject) ] | **Optional** A list of [ParamsObject](#paramsObject) that contain provider specific information.
@@ -151,7 +151,7 @@ The graph is a list of items (containerapps) the Container Application depends o
 
 Field Name | Type | Description
 ---|:---:|---
-<a name="dependingContainerAppName"></a>name | `string` | **Required.** The name of the depending Container Application.
+<a name="dependingContainerAppName"></a>name | `string` | **Required.** The name of the depending Container Application (shouldn't contain ``:``).
 <a name="dependingContainerAppSource"></a>source | `URL` | **Optional** Source location of the Container Application, the source MUST be specified by a valid URL. If source is present, all other fields SHALL be ignored.
 <a name="dependingContainerAppParams"></a>params | [ [ParamsObject](#paramsObject) ] | **Optional** A list of [ParamsObject](#paramsObject) that contain provider specific information. If params is present, source field SHALL be ignored.
 <a name="dependingContainerAppArtifacts"></a>artifacts | [ [ArtifactsObject](#artifactsObject) ] | **Optional** A list of [ArtifactsObject](#artifactsObject) that contain providr specific information. If artifacts is present, source field SHALL be ignored.
